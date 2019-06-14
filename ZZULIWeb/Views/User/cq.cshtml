@@ -1,0 +1,135 @@
+﻿@{
+    Layout = null;
+    //Layout = "~/Views/Shared/_LayoutUserCourse.cshtml";
+}
+<script src="~/Scripts/ajax_goto.js"></script>
+@using ZZULIWeb.Models
+@model ZZULIWeb.UserInfo
+
+<ul class="question_left_ul">
+    @{
+        if (ViewBag.CourseQuestionList == null || ViewBag.CourseQuestionList.Count <= 0)
+        {
+    <div id="content-null">
+        <p>还没课程问题！</p>
+    </div>
+        }
+        else
+        {
+            foreach (CoursesQuestions cq in ViewBag.CourseQuestionList)
+            {
+    <li class="question_left_li" style="width:900px;">
+        <img src="~/images/userImg/@(cq.User_ID).png" />
+        <ul>
+            <li>@(cq.CQ_Time.Year)年@(cq.CQ_Time.Month)月</li>
+            <li>源自：<a href="~/Course/Section/@cq.Cou_ID">@cq.Courses.Cou_Name</a>&nbsp;&nbsp;<a href="~/Learn/v/@cq.Mov_ID/#1">@(cq.Move.Chap_ID)-@(cq.Mov_ID) @(cq.Move.Section_Name)</a></li>
+        </ul>
+        <a href="~/Course/quesdetail/@cq.CQ_ID"><h4>@cq.CQ_Title</h4></a>
+        <dl>
+            @{
+                CoursesAnswers an = new Question().GetHotesCourseAnswer(cq.CQ_ID);
+                if (an == null)
+                {
+                    if (cq.CQ_Content.Length > 40)
+                    { @Html.Raw(cq.CQ_Content.Substring(0, 40) + "...");
+                    }
+                    else
+                    { @Html.Raw(cq.CQ_Content);
+                    }
+                }
+                else
+                {
+                        <dt><a href="/User/Index/@an.User_ID">@an.UserInfo.User_NickName</a><font>回答</font></dt>
+                        <dd>
+                            <p>
+                                @if (an.CA_Content.Length > 40)
+                                    {@Html.Raw(an.CA_Content.Substring(0, 40) + "...");
+                                    }
+                                    else
+                                    { @Html.Raw(an.CA_Content);
+                                    }
+                            </p>
+                        </dd>
+                }
+            }
+        </dl>
+        <ol>
+            <li>浏览 @cq.CQ_PageView</li>
+            <li>回复 @(new Question().GetCourseAnswerNum(cq.CQ_ID))</li>
+        </ol>
+    </li>
+            }
+        }
+    }
+
+</ul>
+
+
+@{
+    if (ViewBag.pageNum > 1)
+    {
+            <!--分页导航-->
+        <div class="page_nav">
+            @if (ViewBag.CurrentPageIndex == 1)
+            {
+                <a class="page_disabled">首页</a>
+                <a class="page_disabled">上一页</a>
+            }
+            else
+            {
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|0" id="ucq">首页</a>
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|(@ViewBag.CurrentPageIndex - 1)" id="ucq">上一页</a>
+            }
+            <p>
+                @{
+        if (ViewBag.pageNum <= 10)
+        {
+            for (int i = 1; i <= ViewBag.pageNum; i++)
+            {
+                if (ViewBag.CurrentPageIndex == i)
+                {
+                    <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@i" id="ucq">@i</a>
+                }
+                else
+                {
+                    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@i" id="ucq">@i</a>
+                }
+            }
+        }
+        else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+        {
+            int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+            if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+            {
+                startIndex = ViewBag.pageNum - 9;
+            }
+            int n = 1;
+            while (n <= 10)
+            {
+                if (ViewBag.CurrentPageIndex == startIndex)
+                {
+                    <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@startIndex" id="ucq">@startIndex</a>
+                }
+                else
+                {
+                    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@startIndex" id="ucq">@startIndex</a>
+                }
+                startIndex++;
+                n++;
+            }
+        }
+                }
+            </p>
+            @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+            {
+                <a class="page_disabled">下一页</a>
+                <a class="page_disabled">尾页</a>
+            }
+            else
+            {
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@(ViewBag.CurrentPageIndex + 1)" id="ucq">下一页</a>
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@ViewBag.pageNum" id="ucq">尾页</a>
+            }
+        </div>
+    }
+}

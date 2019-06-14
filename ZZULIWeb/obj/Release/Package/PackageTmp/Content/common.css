@@ -1,0 +1,81 @@
+﻿@charset "utf-8";
+/*分页*/
+.page_nav{height:60px; line-height:60px;text-align:center;}
+.page_nav p{display:inline; padding:0;}
+.page_nav a{margin:0 10px; font-size:14px; color:#4d555d;}
+.page_nav p a{border:1px solid #666; display:inline-block; width:28px; height:28px; border-radius:40%; text-align:center; line-height:28px; margin-top:24px;}
+.page_action{background-color:#99a1a6;}
+.page_disabled{opacity:0.2;} 
+/*.page_nav span{float:left;}*/
+.weiye a{float:right;
+}
+/*功能导航 选中*/
+.nav_active{background-color:#d5dee4 ;border-radius:5px 5px;}
+
+.ajax_goto_tab{
+    font-size:20px;
+    font-weight:bolder;
+    color:black;
+	line-height:50px;
+	margin-left:30px;
+    cursor:pointer;
+}
+.tab_active{
+    color:#ff0000;
+}
+
+.ajax_goto_tab:hover{
+    color:#00b43c;
+}
+
+/*推荐、不推荐、收藏*/
+.like_border{margin-left:800px; display:inline-block; height:20px; line-height:20px; padding:0 6px; border:1px solid #666;}
+.class_like, .class_notlike{color:red;}
+.class_collect{color:red;}
+
+/*搜索*/
+#index_header_form{float: right; width: 240px; height: 30px; border-bottom: 1px solid #d9dde1; margin-top:15px; margin-right:40px;}
+.index_header_form_text{width:220px; height:30px; float:left; border:none; outline:none; text-indent:1em;color:#99a1a6;}
+.index_header_form_button{width:20px; height:30px; float:left; background:url(../images/index/search.png) no-repeat 0 6px; border:none; outline:none; cursor:pointer;}
+.search_focus{color:#000;}
+
+/*用户信息*/
+.userinfo {float:right;line-height:60px;margin-right:40px;}
+.userinfo p{float:right;margin-left:32px;margin-top:0px;margin-left:5px;font-family:STSong;font-size:large;color:black;font-weight:700;}
+.userinfo img{float:left;margin-left:20px;margin-top:10px;}
+
+/*页脚*/
+#index_footer{background:#FFFFFF;clear:both;overflow:hidden;}
+#index_footer div{width:1000px;  margin:0 auto;}
+.index_footer_ul{width:1000px; height:35px; overflow:hidden; float:left; margin:50px 0 0 360px; }
+.index_footer_ul a{display:inline-block; width:35px; height:35px; float:left; margin-left:24px; outline:none;}
+.index_footer_ul a:hover{opacity: 0.6;}
+.index_footer_ul1{background: url(../images/index/wexin.png) no-repeat;}
+.index_footer_ul2{background: url(../images/index/wexin.png) no-repeat -59px 0;}
+.index_footer_ul3{background: url(../images/index/wexin.png) no-repeat -118px 0;}
+.index_footer_ul4{background: url(../images/index/wexin.png) no-repeat -178px 0;}
+.index_footer_ol{height:30px; float:left; margin:40px 0 20px 140px;}
+.index_footer_ol li{float: left; margin-right: 26px;}
+.index_footer_ol a{color: #99a1a6; font-size: 14px; font-weight: bold;}
+.index_footer_ol a:hover{color: red;}
+.index_footer_p{font-size: 16px; color: #b4bbbf; font-weight:bold; clear:both;margin:0 0 20px 350px;}
+#content-null{height:300px;}
+
+/*无内容*/
+#content-null p{
+    text-align:center;
+    margin-top:150px;
+    color:#99a1a6;
+    font-family:STSong;
+    font-size:x-large;
+    font-weight:bolder;
+}
+
+/*内容折叠*/
+.flod_a_all{display:none;}
+
+/*Tag选中*/
+.tags_active{
+    background-color:red;
+}
+

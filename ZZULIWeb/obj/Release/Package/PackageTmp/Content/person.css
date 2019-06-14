@@ -1,0 +1,235 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.person_top{height:180px; clear:both; background:#CCC;}
+.person_top div{width:1200px; height:180px; margin:0 auto; }
+.person_top img{width:160px; height:160px; float:left; margin-top:10px;}
+.person_top ul{float:left; margin-left:50px;}
+.person_top h1{color:#fff; height:60px; line-height:60px; font-size:24px; padding:0;}
+.person_top ul li{height:50px; line-height:50px; font-size:16px; color:#fff;}
+
+.person_content{width:1200px; margin:20px auto 0;}
+.person_content_ul{width:180px; height:100%; float:left; margin:20px 0 0 50px;}/*margin:20px 0 0 350px;*/
+.person_content_ul li{display:block; height:60px; line-height:60px; text-align:center;color:#666;font-size:larger;font-weight:bold;font-family:STSong;}
+.person_content_ul a{display:block; height:60px; line-height:60px; text-align:center;color:#666;font-size:large;font-weight:bold;font-family:STSong;opacity:0.5;}
+
+
+
+
+.person{width:1000px; float:right;}
+/*个人的首页*/
+.person1,.person2{border-top:1px solid #999;}
+.person1 li{height:240px; padding:20px 0; border-bottom:1px solid #999;}
+.person1 img{}
+.person1_r{width:940px; float:right;}
+.person_name{font-size:14px; color:#4d555d; display:block;}
+.person1_r em{font-size:12px; color:#93999f; display:block; line-height:20px;}
+.person1_r span{font-size:16px; color:#07111b; line-height:26px;}
+.person1_r div{height:150px; background:#F2F4F6;margin-top:20px;}
+.person1_r div img{width:260px; height:150px; float:left;}
+.person1_r div a{display:block; height:130px; width:660px; float:right; background:#fff; padding:10px;} 
+.person1_r div h3{font-size:18px; color:#4d555d; margin-top:20px;}
+.person1_r div ol{height:14px;}
+.person1_r div ol li{height:14px; line-height:14px; float:left; border:none; margin-right:20px; font-size:14px; color:#666;}
+.person1_r div p{height:20px; line-height:20px; width:660px; overflow:hidden; font-size:14px; color:#666;}
+
+/*个人的笔记页*/
+.person2{margin-left:30px; padding-top:20px;}
+.person2 h3{font-size:20px; height:24px; line-height:24px; color:#000;}
+.person2 h3 a{color:#000;}
+.person2 h3 span{border:1px solid #CCC; font-size:16px; line-height:24px; color:#999; font-weight:normal;}
+.person2 li{padding:10px 0 10px 0; border-bottom:1px solid #999;}
+.person2 p{line-height:20px; margin-top:6px;}
+.person2 ol{height:30px; line-height:30px; margin-bottom:20px;}
+.person2 ol li{margin-right:10px;font-size:14px; color:#93999f; border:none;}
+
+/*个人的课程页*/
+.person3{margin-left:20px; border-top:1px solid #999;}
+.person3_li{height:140px; border-bottom:1px solid #999;}
+.person3_li span{display:block; width:70px; height:50px; text-align:center; line-height:25px; color:#999; margin-top:40px;}
+.person3_li span b{display:block; font-size:18px;}
+.person3_li span em{display:block; font-size:14px; font-weight:bold;}
+.person3_li div{width:700px; height:100px; padding:20px;}
+.person3_img img{width:200px; height:100px;}
+.person3_li div div{width:440px; padding:0; margin-left:20px;}
+.person3_li div div h3{font-size:18px; color:#14191e; line-height:30px;}
+.person3_li div div h3 em{font-size:14px; color:#787d82; margin-left:6px;}
+.person3_li div div p{height:30px; width:500px; line-height:30px; font-size:14px; color:#14191e; overflow:hidden;}
+.person3_li div div p em{color:red; display:inline; margin-right:20px;}
+.person3_li div div p span{display:inline; margin-right:20px;}
+.person3_li div div ol{height:30px; width:400px; line-height:30px;}
+.person3_li div div ol li{float:left; margin-right:50px;}
+.person3_li div div ol a{font-size:14px; color:#5e5e5e;}
+.person3_li div div ol a:hover{color:#14191e;}
+.person3_again{display:block; width:90px; height:40px; line-height:40px; text-align:center; color:#F00; border:1px solid #F00; font-size:14px; margin:50px 0 0 0;}
+.person3_again:hover{background:red; color:#fff;}
+.person_action a{background-color:#666;opacity:1;color:#fff;border-radius:30px 5px;}
+
+
+/*个人信息*/
+.person_data{
+	width:940px;
+	float:right;
+}
+.person_data p{
+	width:940px;
+	height:50px;
+	line-height:50px;
+	border-bottom:1px solid #999;
+	margin-bottom:20px;
+	font-size:16px;
+}
+.person_data a{
+	font-size:14px;
+	color:#93999f;
+	float:right;
+}
+.person_data ul{
+	padding-left:40px;
+}
+.person_data ul li{
+	height:60px;	
+	width:900px;
+	font-size:16px;
+	margin-bottom:20px;
+}
+.person_data ul li span,.person_data ul li font{
+	display:inline-block;
+	height:60px;
+	line-height:60px;
+}
+.person_data ul li span{
+	width:120px;
+	text-align:center;
+	background:#f3f5f7;
+	float:left;
+	font-weight:bold;
+}
+.person_data ul li font{
+	width:750px;
+	float:right;
+	text-indent:20px;
+	border-bottom:1px solid #999;
+}
+.person_data ul li a{
+	float:right;
+	font-size:14px;
+	color:#93999f;
+}
+.person_data a:hover{
+	color:red;
+}
+.person_data .form1{
+	width:280px; 
+	height:400px; 
+	background:#999; 
+	padding:20px;
+	font-size:14px;
+	position:fixed;
+	left:50%;
+	margin-left:-140px;
+	top:50%;
+	margin-top:-200px;
+	display:none;
+	z-index:3;
+}
+.person_data .form1 input,.person_data .form1 select{
+	margin-bottom:20px;
+}
+.person_data_txt{
+	width:200px;
+	height:24px;
+	text-indent:20px;
+}
+.person_data select{
+	width:200px;
+	height:24px;
+}
+.person_data h4{
+	height:30px;
+	line-height:20px;
+	text-align:center;
+}
+.person_data h4 a,.person_data h3 a{
+	font-size:20px;
+	color:#666;
+}
+.ok{
+	margin:20px 90px 0 50px;
+	background:#fff;
+}
+.ok,.no{
+	outline:none;
+	border:none;
+	cursor:pointer;
+}
+
+
+.person_data .form2{
+	width:300px; 
+	height:230px; 
+	background:#999; 
+	padding:20px;
+	font-size:14px;
+	position:fixed;
+	left:50%;
+	margin-left:-140px;
+	top:50%;
+	margin-top:-200px;
+	z-index:3;
+	display:none;
+}
+.person_data .form2 input{
+	margin-bottom:20px;
+	width:170px;
+	height:24px;
+	text-indent:10px;
+}
+.person_data .form2 h3{
+	height:40px;
+	line-height:40px;
+	text-align:center;
+}
+#ok,#no{
+	outline:none;
+	border:none;
+	cursor:pointer;
+	width:50px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	margin-left:60px;
+	margin-top:15px;
+	text-indent:0;	
+}
+
+.person_p{
+	width:1000px;
+	height:50px;
+	background:#999;
+	text-align:center;
+}
+/*.person_p a{
+	font-size:20px;
+	color:#000;
+	line-height:50px;
+	margin-left:30px;
+    font-weight:bolder;
+}*/
+
+.person_p a:hover,#person_p_active{
+	color:#00b43c;
+}
+
+.person2_ul{
+	width:1000px;
+	height:30px;
+	clear:both;
+	margin-bottom:10px;	
+}
+.person2_ul li{
+	border:none;
+	float:left;
+	font-size:14px;
+	margin-right:10px;
+	color:#666;
+}

@@ -1,0 +1,159 @@
+﻿@{
+    Layout = null;
+    //Layout = "~/Views/Shared/_LayoutUserCourse.cshtml";
+}
+<script src="~/Scripts/ajax_goto.js"></script>
+@model ZZULIWeb.UserInfo
+@using ZZULIWeb.Models
+@*@section Nav{
+        <ul class="person_content_ul">
+            <li><a href="/User/Index/@Model.User_ID">主页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+            <li class="person_action"><a href="/User/LearnedCourse/@Model.User_ID">课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+            <li><a href="/User/Question/@Model.User_ID">问题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+            <li><a href="/User/Note/@Model.User_ID">笔记&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+            <li><a href="/User/PersonInfo/@Model.User_ID">个人资料&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        </ul>
+    }*@
+@*<div class="person_content">
+    <div class="person">*@
+
+@*<p class="person_p">
+                @Ajax.ActionLink("课程", "LearnedCourse", "User", new { id = @Model.User_ID }, new AjaxOptions()
+        {
+            UpdateTargetId = "replace",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "get"
+        }, new { @class = "ajax_a" })
+                @Ajax.ActionLink("笔记", "cn", "User", new { id = @Model.User_ID }, new AjaxOptions()
+        {
+            UpdateTargetId = "replace",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "get"
+        }, new { @class = "ajax_a" })
+                @Ajax.ActionLink("问题", "cq", "User", new { id = @Model.User_ID }, new AjaxOptions()
+        {
+            UpdateTargetId = "replace",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "get"
+        }, new { @class = "ajax_a" })
+    @Ajax.ActionLink("收藏", "collect", "User", new { id = @Model.User_ID }, new AjaxOptions()
+        {
+            UpdateTargetId = "replace",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "get"
+        }, new { @class = "ajax_a" })*@
+@*<a href="#" id="person_p_active">学习</a>
+    <a href="#">笔记</a>
+    <a href="#">问题</a>
+    <a href="#">收藏</a>*@
+@*</p>*@
+@*<div id="replace">*@
+<ul class="person3">
+    @{
+        if (ViewBag.LearnedCourseList == null || ViewBag.LearnedCourseList.Count <= 0)
+        {
+            <div id="content-null">
+                <p>没有学习任何课程</p>
+            </div>
+        }
+        else
+        {
+            foreach (UserLearnCoursesRecord rec in ViewBag.LearnedCourseList)
+            {
+
+                <li class="person3_li">
+                    <span class="fl"><b>@rec.ULC_Time.Year</b><em>@rec.ULC_Time.Month 月 @rec.ULC_Time.Day 日</em></span>
+                    <div class="fl">
+                        <a class="person3_img fl" href="~/Course/Section/@rec.Cou_ID"><img src="~/images/index/@(rec.Cou_ID).png" /></a>
+                        <div class="fl">
+                            <h3><a href="~/Course/Section/@rec.Cou_ID">@rec.Courses.Cou_Name</a>@*<em>更新完毕</em>*@<em>学习人数 @rec.Courses.Cou_StudyNum</em></h3>
+                            <p><em>已学 @(new User().GetPrecentLearned(Model.User_ID, rec.Cou_ID))%</em>@*<span>用时0分</span><span>学习至HTML方法实现下拉菜单</span>*@</p>
+                            <ol>
+                                <li><a href="~/Course/Comment/@rec.Cou_ID">评论 @(new Course().GetCourseComment(rec.Cou_ID).Count)</a></li>
+                                <li><a href="~/Course/Note/@rec.Cou_ID">笔记 @(new Course().GetCourseNote(rec.Cou_ID).Count)</a></li>
+                                <li><a href="~/Course/Question/@rec.Cou_ID">问题 @(new Course().GetCourseQuestion(rec.Cou_ID).Count)</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <a class="person3_again fr" href="~/Course/Section/@rec.Courses.Cou_ID">继续学习</a>
+                </li>
+            }
+        }
+    }
+</ul>
+@*</div>
+    </div>*@
+@*</div>*@
+
+
+
+    @{
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|0" id="uc">首页</a>
+    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|(@ViewBag.CurrentPageIndex - 1)" id="uc">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@i" id="uc">@i</a>
+                    }
+                    else
+                    {
+                        <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@i" id="uc">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@startIndex" id="uc">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@startIndex" id="uc">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+            }
+}
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@(ViewBag.CurrentPageIndex + 1)" id="uc">下一页</a>
+    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@ViewBag.pageNum" id="uc">尾页</a>
+                }
+            </div>
+        }
+    }
+
+

@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Note";
+    Layout = "~/Views/Shared/_LayoutRecommend.cshtml";
+}
+@using ZZULIWeb.Models
+<div class="recommend_content">
+    <ul class="recommend_content_ul">
+        <li><a href="/Recommend/Course">课程</a></li>
+        <li><a id="recommend_active" href="/Recommend/Note">笔记</a></li>
+        <li><a href="/Recommend/Question">问题</a></li>
+    </ul>
+    <div class="recommend_content_div">
+        <ul class="question_left_ul">
+            @{
+                foreach (Notes note in ViewBag.RecommendNoteList)
+                {
+                    <li class="question_left_li" style="float:rigth; width:940px;">
+                        <img src="~/images/userImg/@(note.User_ID).png" />
+                        <ul>
+                            @{
+                    List<Navigations> list = Common.GetFrom_Note(note.N_ID);
+                    if (list != null || list.Count > 0)
+                    {
+                        string str = "来自：";
+                        list.ForEach(n => str += n.Nav_Name + "  ");
+                        <li>@str</li>
+                    }
+                            }
+                            @*<li>来自:</li>
+                            <li><a href="#">c</a></li>
+                            <li><a href="#">java</a></li>
+                            <li><a href="#">Python</a></li>*@
+                        </ul>
+                        <a href="~/User/Index/@note.User_ID"><h4 style="font-size:18px;">@note.UserInfo.User_NickName</h4></a>
+                        <dl style="margin-top:6px;">
+                            <dt><a style="font-size:16px; color:#666;" href="~/Note/n/@note.N_ID">@note.N_Title</a></dt>
+                            <dd><p>@if (note.N_Content.Length > 40) { @Html.Raw(note.N_Content.Substring(0, 40) + "...");} else { @Html.Raw(note.N_Content);}</p></dd>
+                        </dl>
+                        <ol>
+                            <li class="question_border"><a href="javascript:;" class="like" data-id="@(note.N_ID)|16">赞同 @note.N_Likes</a></li>
+                            <li><a href="javascript:;" class="notlike" data-id="@(note.N_ID)|20">反对</a></li>
+                            <li>浏览 @note.N_PageViews</li>
+                            <li>评论 @(new Note().GetNoteCommentNum(note.N_ID))</li>
+                        </ol>
+                    </li>
+                }
+            }
+        </ul>
+
+    </div>
+</div>
+

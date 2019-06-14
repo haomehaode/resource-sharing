@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutRecommend.cshtml";
+}
+@using ZZULIWeb.Models
+<div class="recommend_content">
+    <ul class="recommend_content_ul">
+        <li><a id="recommend_active" href="/Recommend/Course">课程</a></li>
+        <li><a href="/Recommend/Note">笔记</a></li>
+        <li><a href="/Recommend/Question">问题</a></li>
+    </ul>
+    <div class="recommend_content_div">
+        <ul class="person3" style="margin:0;">
+            @{
+    foreach (Courses cou in ViewBag.RecommendCourseList)
+    {
+        <li class="person3_li">
+            @*<span class="fl"><b>@cou.Cou_Time.Year</b><em>@(cou.Cou_Time.Month)月@(cou.Cou_Time.Day)日</em></span>*@
+            <div class="fl">
+                <a class="person3_img fl" href="~/Course/Section/@cou.Cou_ID"><img src="~/images/course/@(cou.Cou_ID).png" /></a>
+                <div class="fl">
+                    <h3><a href="~/Course/Section/@cou.Cou_ID">@cou.Cou_Name</a>@*<em>更新完毕</em>*@</h3>
+
+                    <ol style="margin-top:24px;">
+                        <li><a href="~/Course/Comment/@cou.Cou_ID">评论 @(new Course().GetCourseComment(cou.Cou_ID).Count)</a></li>
+                        <li><a href="~/Course/Question/@cou.Cou_ID">问题 @(new Course().GetCourseQuestion(cou.Cou_ID).Count)</a></li>
+                        <li><a href="~/Course/Note/@cou.Cou_ID">笔记 @(new Course().GetCourseNote(cou.Cou_ID).Count)</a></li>
+                    </ol>
+                </div>
+            </div>
+            <a class="person3_again fr" href="~/Course/Section/@cou.Cou_ID">继续学习</a>
+        </li>
+    }
+}
+        </ul>
+    </div>
+</div>

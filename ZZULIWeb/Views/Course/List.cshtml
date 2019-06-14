@@ -1,0 +1,249 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Bundle{
+    @Scripts.Render("~/courselist_js")
+    @Styles.Render("~/courselist_css")
+}
+@using ZZULIWeb.Models
+
+@section Partition{
+
+    <ul class="index_header_nav">
+        @foreach (Partition item in new Navigation().GetPartition())
+        {
+            if (@item.Part_Name == "课程")
+            {
+                <li class="nav_active"><a class="" href="~/@item.Part_Url">@item.Part_Name</a></li>
+            }
+            else
+            {
+                <li><a class="" href="~/@item.Part_Url">@item.Part_Name</a></li>
+            }
+
+        }
+    </ul>
+}
+@*<link rel="stylesheet" type="text/css" href="~/Content/index.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/particulars.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/other.js"></script>*@
+
+
+<div id="particulars_top">
+    <div class="particulars_top1">
+        <h3>方向：</h3>
+        <ul>
+            @{
+                if (ViewBag.Nav0 == 0)
+                {
+                    <li class="particulars_active"><a href="/Course/List">全部</a></li>
+                }
+                else
+                {
+                    <li><a href="/Course/List">全部</a></li>
+                }
+
+                foreach (Navigations nav in @ViewBag.NavList0)
+                {
+                    if (nav.Nav_ID == @ViewBag.Nav0)
+                    {
+                        <li class="particulars_active"><a href="/Course/List/nav_@nav.Nav_ID/nav_0/page_1">@nav.Nav_Name</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Course/List/nav_@nav.Nav_ID/nav_0/page_1">@nav.Nav_Name</a></li>
+                    }
+                }
+            }
+
+            @*<li><a href="Course/List/@nav.Nav_ID" class="particulars_active">@nav.Nav_Name</a></li>*@
+
+        </ul>
+    </div>
+    <div class="particulars_top1">
+        <h3>方向：</h3>
+        <ul>
+            @{
+
+                if (ViewBag.Nav1 == 0)
+                {
+                    <li class="particulars_active"><a href="/Course/List/nav_@ViewBag.Nav0/nav_0/page_1">全部</a></li>
+                }
+                else
+                {
+                    <li><a href="/Course/List/nav_@ViewBag.Nav0/nav_0/page_1">全部</a></li>
+                }
+
+                foreach (Navigations tag in @ViewBag.NavList1)
+                {
+                    @*//没有点击
+                        if (@ViewBag.Nav0 == 0)
+                        {
+                            <li><a href="/Course/List/@tag.Ower_ID/@tag.Nav_ID">@tag.Nav_Name</a></li>
+                        }*@
+                    if (tag.Nav_ID == @ViewBag.Nav1) //点击的是0级导航或1级导航
+                    {
+                        <li class="particulars_active"><a href="/Course/List/nav_@tag.Ower_ID/nav_@tag.Nav_ID/page_1">@tag.Nav_Name</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Course/List/nav_@tag.Ower_ID/nav_@tag.Nav_ID/page_1">@tag.Nav_Name</a></li>
+                    }
+                    @*<li><a href="/Course/List" class="particulars_active">全部</a></li>*@
+                }
+            }
+
+            @*<li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>*@
+        </ul>
+    </div>
+    @*<div class="particulars_top1">
+            <h3>方向：</h3>
+            <ul>
+                <li><a href="#">全部</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#" class="particulars_active">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+                <li><a href="#">前端开发</a></li>
+            </ul>
+        </div>*@
+</div>
+@if (ViewBag.CourseList == null)
+{
+    <div id="content-null">
+        <p>还没有该类课课程</p>
+    </div>
+}
+
+else
+{
+
+    <div class="particulars_middle">
+        <div class="particulars_middle1">
+            <ul class="index_content_ul">
+                @foreach (Courses cou in @ViewBag.CourseList)
+            {
+            <li>
+                <a class="r" href="/Course/Section/@cou.Cou_ID">
+                    <div class="a index_content_ul_div" id="index_content_ul_div1">
+                        <h3>@cou.Cou_Name</h3>
+                        <p class="index_content_ul_div_p">
+                            @if (cou.Cou_Describe.Length > 40)
+                            { @Html.Raw(cou.Cou_Describe.Substring(0, 40) + "...");
+                            }
+                            else
+                            { @Html.Raw(cou.Cou_Describe);
+                            }
+                    </p>
+                </div>
+                <div class="a index_content_ul_div11">@cou.Cou_StudyNum 人在学</div>
+            </a>
+        </li>
+            }
+            </ul>
+        </div>
+    </div>
+}
+
+@section Page{
+    @{
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="/Course/List/nav_@ViewBag.Nav0/nav_@ViewBag.Nav1/page_1">首页</a>
+                    <a class="page" href="/Course/List/nav_@ViewBag.Nav0/nav_@ViewBag.Nav1/page_@(ViewBag.CurrentPageIndex-1)">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="/Course/List/nav_@ViewBag.Nav0/nav_@ViewBag.Nav1/page_@i" class="page_action">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Course/List/nav_@ViewBag.Nav0/nav_@ViewBag.Nav1/page_@i">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="/Course/List/nav_@ViewBag.Nav0/nav_@ViewBag.Nav1/page_@startIndex" class="page_action">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="/Course/List/nav_@ViewBag.Nav0/nav_@ViewBag.Nav1/page_@startIndex">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+                @*for (int j = startIndex; j <= 5; j++)
+                    {
+                        <a href="/Course/List/@course_id/@j">@j</a>
+                    }
+                    for (int k = pageNum - 5 + 1; k <= pageNum; k++)
+                    {
+                        <a href="/Course/List/@course_id/@k">@k</a>
+                    }*@
+            }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a class="page" href="/Course/List/nav_@ViewBag.Nav0/nav_@ViewBag.Nav1/page_@(ViewBag.CurrentPageIndex+1)">下一页</a>
+                    <a href="/Course/List/nav_@ViewBag.Nav0/nav_@ViewBag.Nav1/page_@ViewBag.pageNum">尾页</a>
+                }
+            </div>
+        }
+    }
+}
+<!--<ul class="particulars_bottom">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">上一页</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">6</a></li>
+    <li><a href="#">7</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">下一页</a></li>
+    <li><a href="#">尾页</a></li>
+</ul>-->

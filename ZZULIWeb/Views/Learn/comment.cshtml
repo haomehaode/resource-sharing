@@ -1,0 +1,171 @@
+﻿@{
+    Layout = null;
+}
+<script src="~/Scripts/submit_coursecomment.js"></script>
+<script src="~/Scripts/like.js"></script>
+<script src="~/Scripts/polling.js"></script>
+<script src="~/Scripts/ajax_goto.js"></script>
+@model ZZULIWeb.Move
+@using ZZULIWeb.Models
+
+
+@*<ol>
+        <li id="video_active"><a href="#">评论</a></li>
+        <li><a href="#">问答</a></li>
+        <li><a href="#">笔记</a></li>
+    </ol>*@
+
+@*@Html.ActionLink("评论", "comment", new { @id = "video_active" });*@
+@*@Html.ActionLink("问答", "question");
+    @Html.ActionLink("笔记", "note");*@
+<!--发表评论-->
+@*<form>
+        @if (Common.UserInfo != null)
+        {
+            <img src="~/images/userImg/@(Common.UserInfo.User_ID).png" />
+        }
+        <textarea></textarea>
+        <input type="button" class="submitdata_comment_nottarget" value="发表评论" />
+    </form>*@
+<form id="submitform" data-id="@(Model.Cou_ID)|@(Model.Mov_ID)">
+    @if (Common.UserInfo != null)
+    {
+    <img src="~/images/userImg/@(Common.UserInfo.User_ID).png" />
+    }
+    <textarea id="content"></textarea>
+    <input type="button" class="submit_coursecomment" value="发表评论" />
+</form>
+<!--评论内容-->
+<ul>
+    @if (ViewBag.CCList == null || ViewBag.CCList.Count <= 0)
+    {
+    <div id="content-null">
+        <p>该课程还没有评论！！</p>
+    </div>
+    }
+    else
+    {
+        foreach (CoursesComment cc in ViewBag.CCList)
+        {
+    <li>
+        <img src="~/images/userImg/@(cc.User_ID).png" />
+        <div>
+            <h2>@cc.UserInfo.User_NickName</h2>
+
+            @if (cc.CCom_Content.Length > 100)
+                    {
+                    <a class="flod_a_all" id="hidden_top">[..收起↑..]</a>
+                    <dd><p>@(cc.CCom_Content.Substring(0, 100) + "...")</p><a href="javascript:;" id="show_all">[..查看全文↓..]</a></dd>
+                    <dd class="flod_a_all"><p>@cc.CCom_Content</p><a href="javascript:;" id="hidden_bottom">[..收起↑..]</a></dd>
+                    }
+                    else
+                    {
+                    <p>@cc.CCom_Content</p>
+                    }
+
+
+            @*@{if (@cc.CCom_Content.Length > 40)
+                        {
+                        <div class="flod_a_all">
+                            <a href="javascript:;" class="flod_a" data-id="all_top">[..收起↑..]</a>
+                        </div>
+                        <div>
+                            <p>@cc.CCom_Content.Substring(0, 40)</p>
+                            <a href="javascript:;" class="flod_a" data-id="sub">[..查看全文↓..]</a>
+                        </div>
+                        <div class="flod_a_all">
+                            <p>@cc.CCom_Content</p>
+                            <a href="javascript:;" class="flod_a" data-id="all_bottom">[..收起↑..]</a>
+                        </div>
+                        }
+                        else
+                        {
+                        <p>@cc.CCom_Content</p>
+                        }
+                }*@
+
+
+            @*<p>内容打卡机第三方电视剧范德萨发的士大夫</p>*@
+            <span>@Common.GetTimeStringToNow(cc.CCom_Time)</span>
+            @if (Common.IsLike(Common.UserInfo.User_ID, cc.CCom_ID, 12))
+                    {
+                    <span><a class="like" href="javascrips:;" data-id="@(cc.CCom_ID)|12"><strong class="class_like">赞 @cc.CCom_Likes</strong></a></span>
+                    }
+                    else
+                    {
+                    <span><a class="like" href="javascrips:;" data-id="@(cc.CCom_ID)|12"><strong>赞 @cc.CCom_Likes</strong></a></span>
+                    }
+        </div>
+    </li>
+        }
+    }
+</ul>
+
+@{
+    if (ViewBag.pageNum > 1)
+    {
+            <!--分页导航-->
+        <div class="page_nav">
+            @if (ViewBag.CurrentPageIndex == 1)
+            {
+                <a class="page_disabled">首页</a>
+                <a class="page_disabled">上一页</a>
+            }
+            else
+            {
+                <a class="ajax_goto" href="javascript:;" data-id="@(Model.Mov_ID)|0" id="cc">首页</a>
+                <a class="ajax_goto" href="javascript:;" data-id="@(Model.Mov_ID)|(@ViewBag.CurrentPageIndex - 1)" id="cc">上一页</a>
+            }
+            <p>
+                @{
+        if (ViewBag.pageNum <= 10)
+        {
+            for (int i = 1; i <= ViewBag.pageNum; i++)
+            {
+                if (ViewBag.CurrentPageIndex == i)
+                {
+                    <a class="ajax_goto page_action" href="javascript:;" data-id="@(Model.Mov_ID)|@i" id="cc">@i</a>
+                }
+                else
+                {
+                    <a class="ajax_goto" href="javascript:;" data-id="@(Model.Mov_ID)|@i" id="cc">@i</a>
+                }
+            }
+        }
+        else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+        {
+            int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+            if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+            {
+                startIndex = ViewBag.pageNum - 9;
+            }
+            int n = 1;
+            while (n <= 10)
+            {
+                if (ViewBag.CurrentPageIndex == startIndex)
+                {
+                    <a class="ajax_goto page_action" href="javascript:;" data-id="@(Model.Mov_ID)|@startIndex" id="cc">@startIndex</a>
+                }
+                else
+                {
+                    <a class="ajax_goto" href="javascript:;" data-id="@(Model.Mov_ID)|@startIndex" id="cc">@startIndex</a>
+                }
+                startIndex++;
+                n++;
+            }
+        }
+                }
+            </p>
+            @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+            {
+                <a class="page_disabled">下一页</a>
+                <a class="page_disabled">尾页</a>
+            }
+            else
+            {
+                <a class="ajax_goto" href="javascript:;" data-id="@(Model.Mov_ID)|@(ViewBag.CurrentPageIndex + 1)" id="cc">下一页</a>
+                <a class="ajax_goto" href="javascript:;" data-id="@(Model.Mov_ID)|@ViewBag.pageNum" id="cc">尾页</a>
+            }
+        </div>
+    }
+}

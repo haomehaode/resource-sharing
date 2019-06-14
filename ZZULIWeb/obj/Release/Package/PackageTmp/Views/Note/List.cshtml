@@ -1,0 +1,243 @@
+﻿@{
+    //Layout = null;
+}
+@model ZZULIWeb.Notes
+@using ZZULIWeb.Models
+
+@section Bundle{
+    @Scripts.Render("~/notelist_js")
+    @Styles.Render("~/notelist_css")
+}
+
+
+<div class="note_content" style="background:#ffffff;">
+    <div class="note_l">
+        <!--笔记列表-->
+        <ul>
+            @{
+                if (ViewBag.NoteList == null || ViewBag.NoteList.Count <= 0)
+                {
+                    <div id="content-null"><p>还没有笔记~</p></div>
+                }
+                else if (ViewBag.NoteList.Count == 1)
+                {
+                    <li class="note_border">
+                        <h3>
+                            <a href="/Note/n/@ViewBag.NoteList[0].N_ID">@ViewBag.NoteList[0].N_Title</a><span>
+                                @if (ViewBag.NoteList[0].N_IsOriginal)
+                                {@Html.Raw("原创");
+                                }
+                                else
+                                {@Html.Raw("非原创");
+                                }
+                            </span>
+                        </h3>
+                        @{
+                    if (@ViewBag.NoteList[0].N_Content.Length > 20)
+                    {
+                        <p>@ViewBag.NoteList[0].N_Content.Substring(0, 20)</p>
+                    }
+                    else
+                    {
+                        <p>@ViewBag.NoteList[0].N_Content</p>
+                    }
+                        }
+                        <ol>
+                            <li class="fl"><a href="~/User/Index/@ViewBag.NoteList[0].User_ID">@ViewBag.NoteList[0].UserInfo.User_NickName</a></li>
+                            <li class="fr">举报</li>
+
+                            @*<li class="fr">0 评论</li>*@
+                            <li class="fr">不推荐 @ViewBag.NoteList[0].N_NotLikes</li>
+                            <li class="fr">推荐 @ViewBag.NoteList[0].N_Likes</li>
+                            <li class="fr"><span>评论 @(new Note().GetNoteCommentNum(@ViewBag.NoteList[0].N_ID))</span></li>
+                            <li class="fr"><span>浏览 @ViewBag.NoteList[0].N_PageViews</span></li>
+                        </ol>
+                    </li>
+                }
+                else
+                {
+                    <li class="note_border">
+                        <h3>
+                            <a href="/Note/n/@ViewBag.NoteList[0].N_ID">@ViewBag.NoteList[0].N_Title</a><span>
+                                @if (ViewBag.NoteList[0].N_IsOriginal)
+                                {@Html.Raw("原创");
+                                }
+                                else
+                                {@Html.Raw("非原创");
+                                }
+                            </span>
+                        </h3>
+                        @{
+                    if (@ViewBag.NoteList[0].N_Content.Length > 20)
+                    {
+                        <p>@ViewBag.NoteList[0].N_Content.Substring(0, 20)</p>
+                    }
+                    else
+                    {
+                        <p>@ViewBag.NoteList[0].N_Content</p>
+                    }
+                        }
+                        <ol>
+                            <li class="fl"><a href="~/User/Index/@ViewBag.NoteList[0].User_ID">@ViewBag.NoteList[0].UserInfo.User_NickName</a></li>
+                            <li class="fr">举报</li>
+
+                            @*<li class="fr">0 评论</li>*@
+                            <li class="fr">不推荐 @ViewBag.NoteList[0].N_NotLikes</li>
+                            <li class="fr">推荐 @ViewBag.NoteList[0].N_Likes</li>
+                            <li class="fr"><span>评论 @(new Note().GetNoteCommentNum(@ViewBag.NoteList[0].N_ID))</span></li>
+                            <li class="fr"><span>浏览 @ViewBag.NoteList[0].N_PageViews</span></li>
+                        </ol>
+                    </li>
+
+                    for (int i = 1; i < @ViewBag.NoteList.Count; i++)
+                    {
+                        <li>
+                            <h3>
+                                <a href="/Note/n/@ViewBag.NoteList[i].N_ID">@ViewBag.NoteList[i].N_Title</a><span>
+                                    @if (ViewBag.NoteList[i].N_IsOriginal)
+                                    {@Html.Raw("原创");
+                                    }
+                                    else
+                                    {@Html.Raw("非原创");
+                                    }
+                                </span>
+                            </h3>
+                            @{
+                        if (@ViewBag.NoteList[i].N_Content.Length > 20)
+                        {
+                            <p>@Html.Raw(ViewBag.NoteList[i].N_Content.Substring(0, 20) + "..."))</p>
+                        }
+                        else
+                        {
+                            <p>@Html.Raw(ViewBag.NoteList[i].N_Content)</p>
+                        }
+                            }
+                            <ol>
+                                <li class="fl"><a href="~/@ViewBag.NoteList[i].User_ID">@ViewBag.NoteList[i].UserInfo.User_NickName</a></li>
+                                <li class="fr">举报</li>
+
+                                @*<li class="fr">0 评论</li>*@
+                                <li class="fr">不推荐 @ViewBag.NoteList[i].N_NotLikes</li>
+                                <li class="fr">推荐 @ViewBag.NoteList[i].N_Likes</li>
+                                <li class="fr"><span>评论 @(new Note().GetNoteCommentNum(@ViewBag.NoteList[i].N_ID))</span></li>
+                                <li class="fr"><span>浏览 @ViewBag.NoteList[i].N_PageViews</span></li>
+                            </ol>
+                        </li>
+                    }
+                }
+            }
+        </ul>
+
+    </div>
+
+    <div class="note_r">
+        <a class="create" href="/Note">创建手记</a>
+        <!--如果用户已经登录-->
+        @if (Common.UserInfo != null)
+        {
+            <div class="note_people">
+                <div>
+                    <a href="~/User/Index/@Common.UserInfo.User_ID">
+                        <img src="~/images/userImg/@(Common.UserInfo.User_ID).png" />
+                        <h4>@Common.UserInfo.User_NickName</h4>
+                    </a>
+                </div>
+                <ul>
+                    @*<li><a href="#">手记 @(new User().GetNoteNumByUID(@Common.UserInfo.User_ID))</a></li>
+                        <li><a href="#">评论 @(new User().GetCommentNumByUID(@Common.UserInfo.User_ID))</a></li>*@
+                    <li><a href="~/User/Note/@Common.UserInfo.User_ID">手记 @(new User().GetNoteNumByUID(Common.UserInfo.User_ID))</a></li>
+                    <li><a href="~/User/Note/@Common.UserInfo.User_ID/tab_2">评论 @(new User().GetNoteCommentNumByUID(Common.UserInfo.User_ID))</a></li>
+                    <li><a href="~/User/Note/@Common.UserInfo.User_ID/tab_3">推荐 @(new User().GetNoteLikeNumByUID(Common.UserInfo.User_ID))</a></li>
+                    <li><a href="~/User/Note/@Common.UserInfo.User_ID/tab_4">收藏 @(new User().GetNoteCollectionNumByUID(Common.UserInfo.User_ID))</a></li>
+                </ul>
+            </div>
+        }
+
+        <ul class="note_recommend">
+            <li><strong>推荐作者</strong></li>
+            <li><a href="#"><img src="~/images/class/2017.png" /></a><a href="#">红发</a> </li>
+            <li><a href="#"><img src="~/images/class/2010.png" /></a><a href="#">索隆</a> </li>
+            <li><a href="#"><img src="~/images/class/2011.png" /></a><a href="#">大爱科比</a> </li>
+            <li><a href="#"><img src="~/images/class/2012.png" /></a><a href="#">残月流年</a> </li>
+        </ul>
+    </div>
+</div>
+
+@section Page{
+    @{
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="/Note/List">首页</a>
+                    <a class="page" href="/Note/List/page_@(ViewBag.CurrentPageIndex-1)">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="/Note/List/page_@i" class="page_action">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Note/List/page_@i">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="/Note/List/page_@startIndex" class="page_action">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="/Note/List/page_@startIndex">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+                @*for (int j = startIndex; j <= 5; j++)
+                    {
+                        <a href="/Note/List/@j">@j</a>
+                    }
+                    for (int k = pageNum - 5 + 1; k <= pageNum; k++)
+                    {
+                        <a href="/Note/List/@k">@k</a>
+                    }*@
+            }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a class="page" href="/Note/List/page_@(ViewBag.CurrentPageIndex+1)">下一页</a>
+                    <a href="/Note/List/page_@ViewBag.pageNum">尾页</a>
+                }
+            </div>
+        }
+    }
+}

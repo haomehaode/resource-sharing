@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ZZULIModelStoreContainer" CdmEntityContainer="ZZULIEntities">
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="ZZULIModel.Answers">
+        <MappingFragment StoreEntitySet="Answers">
+          <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+          <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="A_Target" ColumnName="A_Target" />
+          <ScalarProperty Name="A_Content" ColumnName="A_Content" />
+          <ScalarProperty Name="A_Time" ColumnName="A_Time" />
+          <ScalarProperty Name="A_Likes" ColumnName="A_Likes" />
+          <ScalarProperty Name="A_NotLikes" ColumnName="A_NotLikes" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="ZZULIModel.Courses">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Cou_Name" ColumnName="Cou_Name" />
+          <ScalarProperty Name="Cou_Describe" ColumnName="Cou_Describe" />
+          <ScalarProperty Name="Cou_Hot" ColumnName="Cou_Hot" />
+          <ScalarProperty Name="Cou_Likes" ColumnName="Cou_Likes" />
+          <ScalarProperty Name="Cou_NotLikes" ColumnName="Cou_NotLikes" />
+          <ScalarProperty Name="Cou_StudyNum" ColumnName="Cou_StudyNum" />
+          <ScalarProperty Name="Cou_CollectNum" ColumnName="Cou_CollectNum" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_Time" ColumnName="Cou_Time" />
+          <ScalarProperty Name="Is_UpLoading" ColumnName="Is_UpLoading" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesAnswers">
+      <EntityTypeMapping TypeName="ZZULIModel.CoursesAnswers">
+        <MappingFragment StoreEntitySet="CoursesAnswers">
+          <ScalarProperty Name="CA_ID" ColumnName="CA_ID" />
+          <ScalarProperty Name="CQ_ID" ColumnName="CQ_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="CA_Target" ColumnName="CA_Target" />
+          <ScalarProperty Name="CA_Content" ColumnName="CA_Content" />
+          <ScalarProperty Name="CA_Time" ColumnName="CA_Time" />
+          <ScalarProperty Name="CA_Likes" ColumnName="CA_Likes" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesComment">
+      <EntityTypeMapping TypeName="ZZULIModel.CoursesComment">
+        <MappingFragment StoreEntitySet="CoursesComment">
+          <ScalarProperty Name="CCom_ID" ColumnName="CCom_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Mov_ID" ColumnName="Mov_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="CCom_Content" ColumnName="CCom_Content" />
+          <ScalarProperty Name="CCom_Time" ColumnName="CCom_Time" />
+          <ScalarProperty Name="CCom_Likes" ColumnName="CCom_Likes" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesNotes">
+      <EntityTypeMapping TypeName="ZZULIModel.CoursesNotes">
+        <MappingFragment StoreEntitySet="CoursesNotes">
+          <ScalarProperty Name="CN_ID" ColumnName="CN_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Mov_ID" ColumnName="Mov_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="CN_Content" ColumnName="CN_Content" />
+          <ScalarProperty Name="CN_Time" ColumnName="CN_Time" />
+          <ScalarProperty Name="CN_Likes" ColumnName="CN_Likes" />
+          <ScalarProperty Name="CN_Hot" ColumnName="CN_Hot" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesQuestions">
+      <EntityTypeMapping TypeName="ZZULIModel.CoursesQuestions">
+        <MappingFragment StoreEntitySet="CoursesQuestions">
+          <ScalarProperty Name="CQ_ID" ColumnName="CQ_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Mov_ID" ColumnName="Mov_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="CQ_Title" ColumnName="CQ_Title" />
+          <ScalarProperty Name="CQ_Content" ColumnName="CQ_Content" />
+          <ScalarProperty Name="CQ_Time" ColumnName="CQ_Time" />
+          <ScalarProperty Name="CQ_Hot" ColumnName="CQ_Hot" />
+          <ScalarProperty Name="CQ_PageView" ColumnName="CQ_PageView" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Follow">
+      <EntityTypeMapping TypeName="ZZULIModel.Follow">
+        <MappingFragment StoreEntitySet="Follow">
+          <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="F_Target" ColumnName="F_Target" />
+          <ScalarProperty Name="F_Time" ColumnName="F_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Move">
+      <EntityTypeMapping TypeName="ZZULIModel.Move">
+        <MappingFragment StoreEntitySet="Move">
+          <ScalarProperty Name="Mov_ID" ColumnName="Mov_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Is_Chapter" ColumnName="Is_Chapter" />
+          <ScalarProperty Name="Chap_ID" ColumnName="Chap_ID" />
+          <ScalarProperty Name="Chap_Name" ColumnName="Chap_Name" />
+          <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+          <ScalarProperty Name="Section_Name" ColumnName="Section_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Navigations">
+      <EntityTypeMapping TypeName="ZZULIModel.Navigations">
+        <MappingFragment StoreEntitySet="Navigations">
+          <ScalarProperty Name="Nav_ID" ColumnName="Nav_ID" />
+          <ScalarProperty Name="Nav_Name" ColumnName="Nav_Name" />
+          <ScalarProperty Name="Ower_ID" ColumnName="Ower_ID" />
+          <ScalarProperty Name="Nav_FollowNum" ColumnName="Nav_FollowNum" />
+          <ScalarProperty Name="Nav_Describe" ColumnName="Nav_Describe" />
+          <ScalarProperty Name="Nav_Type" ColumnName="Nav_Type" />
+          <ScalarProperty Name="Nav_UseNum" ColumnName="Nav_UseNum" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewAry">
+      <EntityTypeMapping TypeName="ZZULIModel.NewAry">
+        <MappingFragment StoreEntitySet="NewAry">
+          <ScalarProperty Name="Arr_ID" ColumnName="Arr_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Nav_ID" ColumnName="Nav_ID" />
+          <ScalarProperty Name="Ary_Sco" ColumnName="Ary_Sco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="ZZULIModel.Notes">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="N_ID" ColumnName="N_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="N_Title" ColumnName="N_Title" />
+          <ScalarProperty Name="N_Content" ColumnName="N_Content" />
+          <ScalarProperty Name="N_Content_Style" ColumnName="N_Content_Style" />
+          <ScalarProperty Name="N_IsOriginal" ColumnName="N_IsOriginal" />
+          <ScalarProperty Name="N_PageViews" ColumnName="N_PageViews" />
+          <ScalarProperty Name="N_Likes" ColumnName="N_Likes" />
+          <ScalarProperty Name="N_NotLikes" ColumnName="N_NotLikes" />
+          <ScalarProperty Name="N_Time" ColumnName="N_Time" />
+          <ScalarProperty Name="N_Hot" ColumnName="N_Hot" />
+          <ScalarProperty Name="N_CollectNum" ColumnName="N_CollectNum" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotesComments">
+      <EntityTypeMapping TypeName="ZZULIModel.NotesComments">
+        <MappingFragment StoreEntitySet="NotesComments">
+          <ScalarProperty Name="NC_ID" ColumnName="NC_ID" />
+          <ScalarProperty Name="N_ID" ColumnName="N_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="NC_Content" ColumnName="NC_Content" />
+          <ScalarProperty Name="NC_Time" ColumnName="NC_Time" />
+          <ScalarProperty Name="NC_Likes" ColumnName="NC_Likes" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObjectTags">
+      <EntityTypeMapping TypeName="ZZULIModel.ObjectTags">
+        <MappingFragment StoreEntitySet="ObjectTags">
+          <ScalarProperty Name="OT_ID" ColumnName="OT_ID" />
+          <ScalarProperty Name="Obj_Type" ColumnName="Obj_Type" />
+          <ScalarProperty Name="Obj_ID" ColumnName="Obj_ID" />
+          <ScalarProperty Name="Obj_TagID" ColumnName="Obj_TagID" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OptionType">
+      <EntityTypeMapping TypeName="ZZULIModel.OptionType">
+        <MappingFragment StoreEntitySet="OptionType">
+          <ScalarProperty Name="OT_ID" ColumnName="OT_ID" />
+          <ScalarProperty Name="OT_Name" ColumnName="OT_Name" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partition">
+      <EntityTypeMapping TypeName="ZZULIModel.Partition">
+        <MappingFragment StoreEntitySet="Partition">
+          <ScalarProperty Name="Part_ID" ColumnName="Part_ID" />
+          <ScalarProperty Name="Part_Name" ColumnName="Part_Name" />
+          <ScalarProperty Name="Part_Url" ColumnName="Part_Url" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Priority">
+      <EntityTypeMapping TypeName="ZZULIModel.Priority">
+        <MappingFragment StoreEntitySet="Priority">
+          <ScalarProperty Name="Pri_ID" ColumnName="Pri_ID" />
+          <ScalarProperty Name="Pri_Name" ColumnName="Pri_Name" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="ZZULIModel.Questions">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Q_Title" ColumnName="Q_Title" />
+          <ScalarProperty Name="Q_Content" ColumnName="Q_Content" />
+          <ScalarProperty Name="Q_Content_Style" ColumnName="Q_Content_Style" />
+          <ScalarProperty Name="Q_Time" ColumnName="Q_Time" />
+          <ScalarProperty Name="Q_Hot" ColumnName="Q_Hot" />
+          <ScalarProperty Name="Q_PageViews" ColumnName="Q_PageViews" />
+          <ScalarProperty Name="Q_CollectNum" ColumnName="Q_CollectNum" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResourceComment">
+      <EntityTypeMapping TypeName="ZZULIModel.ResourceComment">
+        <MappingFragment StoreEntitySet="ResourceComment">
+          <ScalarProperty Name="RC_ID" ColumnName="RC_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="RC_Target" ColumnName="RC_Target" />
+          <ScalarProperty Name="RC_Content" ColumnName="RC_Content" />
+          <ScalarProperty Name="RC_Time" ColumnName="RC_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResourceInfo">
+      <EntityTypeMapping TypeName="ZZULIModel.ResourceInfo">
+        <MappingFragment StoreEntitySet="ResourceInfo">
+          <ScalarProperty Name="R_ID" ColumnName="R_ID" />
+          <ScalarProperty Name="R_Type" ColumnName="R_Type" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="R_Name" ColumnName="R_Name" />
+          <ScalarProperty Name="R_Content" ColumnName="R_Content" />
+          <ScalarProperty Name="R_Time" ColumnName="R_Time" />
+          <ScalarProperty Name="R_DownLoad" ColumnName="R_DownLoad" />
+          <ScalarProperty Name="R_Hot" ColumnName="R_Hot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResourceType">
+      <EntityTypeMapping TypeName="ZZULIModel.ResourceType">
+        <MappingFragment StoreEntitySet="ResourceType">
+          <ScalarProperty Name="RT_ID" ColumnName="RT_ID" />
+          <ScalarProperty Name="RT_Name" ColumnName="RT_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ZZULIModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAry">
+      <EntityTypeMapping TypeName="ZZULIModel.UserAry">
+        <MappingFragment StoreEntitySet="UserAry">
+          <ScalarProperty Name="Arr_ID" ColumnName="Arr_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Nav_ID" ColumnName="Nav_ID" />
+          <ScalarProperty Name="Ary_Sco" ColumnName="Ary_Sco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserCollections">
+      <EntityTypeMapping TypeName="ZZULIModel.UserCollections">
+        <MappingFragment StoreEntitySet="UserCollections">
+          <ScalarProperty Name="UC_ID" ColumnName="UC_ID" />
+          <ScalarProperty Name="UC_Type" ColumnName="UC_Type" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="UC_Target" ColumnName="UC_Target" />
+          <ScalarProperty Name="UC_Time" ColumnName="UC_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFollows">
+      <EntityTypeMapping TypeName="ZZULIModel.UserFollows">
+        <MappingFragment StoreEntitySet="UserFollows">
+          <ScalarProperty Name="UF_ID" ColumnName="UF_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Nav_ID" ColumnName="Nav_ID" />
+          <ScalarProperty Name="UF_Time" ColumnName="UF_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="ZZULIModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="User_Account" ColumnName="User_Account" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_NickName" ColumnName="User_NickName" />
+          <ScalarProperty Name="User_Priority" ColumnName="User_Priority" />
+          <ScalarProperty Name="User_Priority_Now" ColumnName="User_Priority_Now" />
+          <ScalarProperty Name="User_LastLoginTime" ColumnName="User_LastLoginTime" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Gender" ColumnName="User_Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLearnCoursesRecord">
+      <EntityTypeMapping TypeName="ZZULIModel.UserLearnCoursesRecord">
+        <MappingFragment StoreEntitySet="UserLearnCoursesRecord">
+          <ScalarProperty Name="ULC_ID" ColumnName="ULC_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="ULC_Time" ColumnName="ULC_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLearnSectionRecord">
+      <EntityTypeMapping TypeName="ZZULIModel.UserLearnSectionRecord">
+        <MappingFragment StoreEntitySet="UserLearnSectionRecord">
+          <ScalarProperty Name="ULSR_ID" ColumnName="ULSR_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Mov_ID" ColumnName="Mov_ID" />
+          <ScalarProperty Name="Is_Finish" ColumnName="Is_Finish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLikes">
+      <EntityTypeMapping TypeName="ZZULIModel.UserLikes">
+        <MappingFragment StoreEntitySet="UserLikes">
+          <ScalarProperty Name="UL_ID" ColumnName="UL_ID" />
+          <ScalarProperty Name="UL_Type" ColumnName="UL_Type" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="UL_Target" ColumnName="UL_Target" />
+          <ScalarProperty Name="UL_Time" ColumnName="UL_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserNotLikes">
+      <EntityTypeMapping TypeName="ZZULIModel.UserNotLikes">
+        <MappingFragment StoreEntitySet="UserNotLikes">
+          <ScalarProperty Name="UNL_ID" ColumnName="UNL_ID" />
+          <ScalarProperty Name="UNL_Type" ColumnName="UNL_Type" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="UNL_Target" ColumnName="UNL_Target" />
+          <ScalarProperty Name="UNL_Time" ColumnName="UNL_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPageViews">
+      <EntityTypeMapping TypeName="ZZULIModel.UserPageViews">
+        <MappingFragment StoreEntitySet="UserPageViews">
+          <ScalarProperty Name="UPV_ID" ColumnName="UPV_ID" />
+          <ScalarProperty Name="UPV_Type" ColumnName="UPV_Type" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="UPV_Target" ColumnName="UPV_Target" />
+          <ScalarProperty Name="UPV_Time" ColumnName="UPV_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSearchRecord">
+      <EntityTypeMapping TypeName="ZZULIModel.UserSearchRecord">
+        <MappingFragment StoreEntitySet="UserSearchRecord">
+          <ScalarProperty Name="USR_ID" ColumnName="USR_ID" />
+          <ScalarProperty Name="USR_Type" ColumnName="USR_Type" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="USR_Content" ColumnName="USR_Content" />
+          <ScalarProperty Name="USR_Time" ColumnName="USR_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_All">
+      <EntityTypeMapping TypeName="ZZULIModel.View_All">
+        <MappingFragment StoreEntitySet="View_All">
+          <ScalarProperty Name="用户编号" ColumnName="用户编号" />
+          <ScalarProperty Name="标签" ColumnName="标签" />
+          <ScalarProperty Name="操作类型" ColumnName="操作类型" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_learn">
+      <EntityTypeMapping TypeName="ZZULIModel.View_learn">
+        <MappingFragment StoreEntitySet="View_learn">
+          <ScalarProperty Name="用户编号" ColumnName="用户编号" />
+          <ScalarProperty Name="标签" ColumnName="标签" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PR_ALL" FunctionName="ZZULIModel.Store.PR_ALL" />
+    <FunctionImportMapping FunctionImportName="PR_AllID" FunctionName="ZZULIModel.Store.PR_AllID" />
+    <FunctionImportMapping FunctionImportName="PR_CouID" FunctionName="ZZULIModel.Store.PR_CouID" />
+    <FunctionImportMapping FunctionImportName="PR_Learn" FunctionName="ZZULIModel.Store.PR_Learn" />
+    <FunctionImportMapping FunctionImportName="PR_learnID" FunctionName="ZZULIModel.Store.PR_learnID" />
+    <FunctionImportMapping FunctionImportName="PR_NewAry" FunctionName="ZZULIModel.Store.PR_NewAry" />
+    <FunctionImportMapping FunctionImportName="PR_SelAll" FunctionName="ZZULIModel.Store.PR_SelAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.PR_SelAll_Result">
+          <ScalarProperty Name="Arr_ID" ColumnName="Arr_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Nav_ID" ColumnName="Nav_ID" />
+          <ScalarProperty Name="Ary_Sco" ColumnName="Ary_Sco" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_SelectAll" FunctionName="ZZULIModel.Store.PR_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.PR_SelectAll_Result">
+          <ScalarProperty Name="Arr_ID" ColumnName="Arr_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Nav_ID" ColumnName="Nav_ID" />
+          <ScalarProperty Name="Ary_Sco" ColumnName="Ary_Sco" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_UserAry" FunctionName="ZZULIModel.Store.PR_UserAry" />
+    <FunctionImportMapping FunctionImportName="PR_UserID" FunctionName="ZZULIModel.Store.PR_UserID" />
+    <FunctionImportMapping FunctionImportName="SP_Account_IsExist" FunctionName="ZZULIModel.Store.SP_Account_IsExist" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ZZULIModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ZZULIModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ZZULIModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="SP_GetAllCourses" FunctionName="ZZULIModel.Store.SP_GetAllCourses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.SP_GetAllCourses_Result">
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Cou_Name" ColumnName="Cou_Name" />
+          <ScalarProperty Name="Cou_Describe" ColumnName="Cou_Describe" />
+          <ScalarProperty Name="Cou_Hot" ColumnName="Cou_Hot" />
+          <ScalarProperty Name="Cou_Likes" ColumnName="Cou_Likes" />
+          <ScalarProperty Name="Cou_NotLikes" ColumnName="Cou_NotLikes" />
+          <ScalarProperty Name="Cou_StudyNum" ColumnName="Cou_StudyNum" />
+          <ScalarProperty Name="Cou_CollectNum" ColumnName="Cou_CollectNum" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_Time" ColumnName="Cou_Time" />
+          <ScalarProperty Name="Is_UpLoading" ColumnName="Is_UpLoading" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetCatalogByCou_ID" FunctionName="ZZULIModel.Store.SP_GetCatalogByCou_ID" />
+    <FunctionImportMapping FunctionImportName="SP_GetCourseCatalog_PageViewsINC" FunctionName="ZZULIModel.Store.SP_GetCourseCatalog_PageViewsINC" />
+    <FunctionImportMapping FunctionImportName="SP_GetCourses" FunctionName="ZZULIModel.Store.SP_GetCourses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.SP_GetCourses_Result">
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Cou_Name" ColumnName="Cou_Name" />
+          <ScalarProperty Name="Cou_Describe" ColumnName="Cou_Describe" />
+          <ScalarProperty Name="Cou_Hot" ColumnName="Cou_Hot" />
+          <ScalarProperty Name="Cou_Likes" ColumnName="Cou_Likes" />
+          <ScalarProperty Name="Cou_NotLikes" ColumnName="Cou_NotLikes" />
+          <ScalarProperty Name="Cou_StudyNum" ColumnName="Cou_StudyNum" />
+          <ScalarProperty Name="Cou_CollectNum" ColumnName="Cou_CollectNum" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_Time" ColumnName="Cou_Time" />
+          <ScalarProperty Name="Is_UpLoading" ColumnName="Is_UpLoading" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetCoursesTopN_OrderByHot" FunctionName="ZZULIModel.Store.SP_GetCoursesTopN_OrderByHot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.SP_GetCoursesTopN_OrderByHot_Result">
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Cou_Name" ColumnName="Cou_Name" />
+          <ScalarProperty Name="Cou_Describe" ColumnName="Cou_Describe" />
+          <ScalarProperty Name="Cou_Hot" ColumnName="Cou_Hot" />
+          <ScalarProperty Name="Cou_Likes" ColumnName="Cou_Likes" />
+          <ScalarProperty Name="Cou_NotLikes" ColumnName="Cou_NotLikes" />
+          <ScalarProperty Name="Cou_StudyNum" ColumnName="Cou_StudyNum" />
+          <ScalarProperty Name="Cou_CollectNum" ColumnName="Cou_CollectNum" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_Time" ColumnName="Cou_Time" />
+          <ScalarProperty Name="Is_UpLoading" ColumnName="Is_UpLoading" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+          <ScalarProperty Name="row" ColumnName="row" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetCoursesTopN_OrderByStudyNum" FunctionName="ZZULIModel.Store.SP_GetCoursesTopN_OrderByStudyNum">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.SP_GetCoursesTopN_OrderByStudyNum_Result">
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Cou_Name" ColumnName="Cou_Name" />
+          <ScalarProperty Name="Cou_Describe" ColumnName="Cou_Describe" />
+          <ScalarProperty Name="Cou_Hot" ColumnName="Cou_Hot" />
+          <ScalarProperty Name="Cou_Likes" ColumnName="Cou_Likes" />
+          <ScalarProperty Name="Cou_NotLikes" ColumnName="Cou_NotLikes" />
+          <ScalarProperty Name="Cou_StudyNum" ColumnName="Cou_StudyNum" />
+          <ScalarProperty Name="Cou_CollectNum" ColumnName="Cou_CollectNum" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_Time" ColumnName="Cou_Time" />
+          <ScalarProperty Name="Is_UpLoading" ColumnName="Is_UpLoading" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+          <ScalarProperty Name="RowNum" ColumnName="RowNum" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetFuncGroup" FunctionName="ZZULIModel.Store.SP_GetFuncGroup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.SP_GetFuncGroup_Result">
+          <ScalarProperty Name="Part_ID" ColumnName="Part_ID" />
+          <ScalarProperty Name="Part_Name" ColumnName="Part_Name" />
+          <ScalarProperty Name="Part_Url" ColumnName="Part_Url" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetNavigation" FunctionName="ZZULIModel.Store.SP_GetNavigation" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ZZULIModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ZZULIModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Login_IsSuccess" FunctionName="ZZULIModel.Store.SP_Login_IsSuccess">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZZULIModel.SP_Login_IsSuccess_Result">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="User_Account" ColumnName="User_Account" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_NickName" ColumnName="User_NickName" />
+          <ScalarProperty Name="User_Priority" ColumnName="User_Priority" />
+          <ScalarProperty Name="User_Priority_Now" ColumnName="User_Priority_Now" />
+          <ScalarProperty Name="User_LastLoginTime" ColumnName="User_LastLoginTime" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Gender" ColumnName="User_Gender" />
+          <ScalarProperty Name="Pri_ID" ColumnName="Pri_ID" />
+          <ScalarProperty Name="Pri_Name" ColumnName="Pri_Name" />
+          <ScalarProperty Name="Extends11" ColumnName="Extends11" />
+          <ScalarProperty Name="Extends21" ColumnName="Extends21" />
+          <ScalarProperty Name="Extends31" ColumnName="Extends31" />
+          <ScalarProperty Name="Extends41" ColumnName="Extends41" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ZZULIModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateCourseHotByCou_ID" FunctionName="ZZULIModel.Store.SP_UpdateCourseHotByCou_ID" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateCourseNoteHot" FunctionName="ZZULIModel.Store.SP_UpdateCourseNoteHot" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateCourseQuestionHot" FunctionName="ZZULIModel.Store.SP_UpdateCourseQuestionHot" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateNoteHotByN_ID" FunctionName="ZZULIModel.Store.SP_UpdateNoteHotByN_ID" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateQuestionHotByQ_ID" FunctionName="ZZULIModel.Store.SP_UpdateQuestionHotByQ_ID" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ZZULIModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

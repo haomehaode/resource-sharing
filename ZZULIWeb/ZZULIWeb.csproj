@@ -1,0 +1,1050 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D68EC8B-811C-4537-BF30-ADFF6BAE00C7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZZULIWeb</RootNamespace>
+    <AssemblyName>ZZULIWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.BZip2, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\MC_S\Desktop\播放器插件\DotNetZipLib-DevKit-v1.9\Tools\Ionic.BZip2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\MC_S\Desktop\播放器插件\DotNetZipLib-DevKit-v1.9\Tools\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zlib, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\MC_S\Desktop\播放器插件\DotNetZipLib-DevKit-v1.9\Tools\Ionic.Zlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Answers.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ALController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\DownLoadController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LearnController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\RecommendController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UpLoadController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Courses.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoursesAnswers.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoursesComment.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoursesNotes.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoursesQuestions.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Follow.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\DataBase.cs" />
+    <Compile Include="Models\EnumActionType.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\EnumOptionType.cs" />
+    <Compile Include="Models\EnumUploadResult.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Matix_Decompose.cs" />
+    <Compile Include="Models\Matrix.cs" />
+    <Compile Include="Models\Move.cs" />
+    <Compile Include="Models\MovieHelper.cs" />
+    <Compile Include="Models\Navigation.cs" />
+    <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\ObjectTag.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Resource.cs" />
+    <Compile Include="Models\Search.cs" />
+    <Compile Include="Models\Upload.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserActionRecord.cs" />
+    <Compile Include="Move.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Navigations.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewAry.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notes.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotesComments.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectTags.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="OptionType.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partition.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Priority.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PR_SelAll_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_SelectAll_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Questions.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceComment.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceInfo.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceType.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_GetAllCourses_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_GetCoursesTopN_OrderByHot_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_GetCoursesTopN_OrderByStudyNum_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_GetCourses_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_GetFuncGroup_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_Login_IsSuccess_Result.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAry.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCollections.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserFollows.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLearnCoursesRecord.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLearnSectionRecord.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLikes.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserNotLikes.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserPageViews.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSearchRecord.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View_All.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View_learn.cs">
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZZULI.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZZULI.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZZULI.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZZULI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZZULI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZZULI.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Ionic.BZip2.dll" />
+    <Content Include="bin\Ionic.Zip.dll" />
+    <Content Include="bin\Ionic.Zlib.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.xml" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.xml" />
+    <Content Include="bin\Microsoft.Owin.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\zh-Hans\EntityFramework.resources.dll" />
+    <Content Include="bin\zh-Hans\EntityFramework.SqlServer.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Helpers.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Mvc.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Optimization.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Razor.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
+    <Content Include="bin\ZZULIWeb.dll" />
+    <Content Include="bin\ZZULIWeb.pdb" />
+    <Content Include="Content\behind.css" />
+    <Content Include="Content\download.css" />
+    <Content Include="Content\loading\reset.css" />
+    <Content Include="Content\loading\style.css" />
+    <Content Include="Content\notes_des.css" />
+    <Content Include="Content\person_notes.css" />
+    <Content Include="Content\question_des.css" />
+    <Content Include="Content\recommend.css" />
+    <Content Include="Content\video-js.css" />
+    <Content Include="Content\video.css" />
+    <Content Include="Content\video.cssok.css" />
+    <Content Include="Content\wangEditor.min.css" />
+    <Content Include="download\test.txt" />
+    <Content Include="download\资源名称_10.txt" />
+    <Content Include="images\class\girl.jpg" />
+    <Content Include="images\index\nicEditorIcons.gif" />
+    <Content Include="images\index\zan.png" />
+    <Content Include="index.html" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Antlr3.Runtime.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\EntityFramework.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\EntityFramework.SqlServer.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Ionic.BZip2.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Ionic.Zip.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Ionic.Zlib.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.Security.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Newtonsoft.Json.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Owin.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Helpers.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Mvc.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Optimization.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Razor.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.WebPages.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\WebGrease.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\EntityFramework.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\EntityFramework.SqlServer.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.Owin.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.Owin.Security.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\System.Web.Helpers.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\System.Web.Mvc.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\System.Web.Optimization.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\System.Web.Razor.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\zh-Hans\System.Web.WebPages.resources.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\ZZULIWeb.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\alert.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\behind.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\class.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\common.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\download.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\font.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\index.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\loading\reset.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\loading\style.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\mediaelementplayer.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\notes.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\notes_des.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\particulars.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\person.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\person_notes.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\question.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\question_des.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\recommend.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\register.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\search.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\Site.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\test.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\userinfo.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\video-js.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\video.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\video.cssok.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\wangEditor.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\favicon.ico" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="obj\Release\Package\PackageTmp\Global.asax" />
+    <Content Include="obj\Release\Package\PackageTmp\images\class\dit.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\class\file.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\class\girl.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\class\header.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\class\shou.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\class\top.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\be.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\data.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\fe.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\free1.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\free2.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\free3.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\free4.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\free5.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\logo.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\mobile.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\nicEditorIcons.gif" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\photo.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\prictise1.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\prictise2.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\prictise3.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\prictise4.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\prictise5.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\search.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\Web.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\web1.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\web2.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\web3.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\web4.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\web5.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\wexin.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\yjs.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\yw.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\index\zan.png" />
+    <Content Include="obj\Release\Package\PackageTmp\index.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\ajax_goto.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\ajax_goto_tab.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\alert.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\behind.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\bootstrap.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\bootstrap.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\collect.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\common.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\float_top.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\fold.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\index_showNav.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-1.10.2.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-1.10.2.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-3.1.1.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery.validate.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery.validate.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\like.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\listbox.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\loading\index.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\loading\prefixfree.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\login.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\modernizr-2.6.2.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\nicEdit.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\personinfo.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\polling.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\question.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\register.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\respond.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\respond.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\search.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\section.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\submit_coursecomment.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\submit_coursenote.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\submit_coursequestion.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\submit_note.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\submit_notecomment.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\submit_question.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\submit_questionanswer.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\ueditor.all.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\ueditor.config.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\uploadfile.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\user.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\cs.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\dailymotion.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\de.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\demo.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\es.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\facebook.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\fr.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\hr.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\hu.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\it.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\ja.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\jquery.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\ko.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\mediaelement-and-player.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\nl.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\pl.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\pt-br.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\pt.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\ro.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\ru.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\sk.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\soundcloud.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\sv.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\twitch.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\uk.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\vimeo.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\zh-cn.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\video\zh.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\wangEditor.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\zh-cn.js" />
+    <None Include="obj\Release\Package\PackageTmp\Scripts\_references.js" />
+    <Content Include="obj\Release\Package\PackageTmp\test.html" />
+    <Content Include="obj\Release\TempPE\Models.ZZULI.cs.dll" />
+    <Content Include="obj\Release\TempPE\Models.ZZULI.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\ZZULI.cs.dll" />
+    <Content Include="obj\Release\TempPE\ZZULI.Designer.cs.dll" />
+    <Content Include="obj\Release\ZZULIWeb.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\ZZULIWeb.dll" />
+    <Content Include="obj\Release\ZZULIWeb.pdb" />
+    <Content Include="obj\Release\_WPPLastBuildInfo.txt" />
+    <Content Include="Scripts\ajax_goto.js" />
+    <Content Include="Scripts\ajax_goto_tab.js" />
+    <Content Include="Scripts\behind.js" />
+    <Content Include="Scripts\collect.js" />
+    <Content Include="Scripts\float_top.js" />
+    <Content Include="Scripts\fold.js" />
+    <Content Include="Scripts\like.js" />
+    <Content Include="Scripts\listbox.js" />
+    <Content Include="Scripts\loading\index.js" />
+    <Content Include="Scripts\loading\prefixfree.min.js" />
+    <Content Include="Scripts\nicEdit.js" />
+    <Content Include="Scripts\polling.js" />
+    <Content Include="Scripts\question.js" />
+    <Content Include="Scripts\search.js" />
+    <Content Include="Scripts\submit_coursecomment.js" />
+    <Content Include="Scripts\submit_coursenote.js" />
+    <Content Include="Scripts\submit_coursequestion.js" />
+    <Content Include="Scripts\submit_note.js" />
+    <Content Include="Scripts\submit_notecomment.js" />
+    <Content Include="Scripts\submit_question.js" />
+    <Content Include="Scripts\submit_questionanswer.js" />
+    <Content Include="Scripts\uploadfile.js" />
+    <Content Include="Scripts\video.js" />
+    <Content Include="Scripts\video\soundcloud.min.js" />
+    <Content Include="Content\alert.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\class.css" />
+    <Content Include="Content\common.css" />
+    <Content Include="Content\font.css" />
+    <Content Include="Content\index.css" />
+    <Content Include="Content\mediaelementplayer.min.css" />
+    <Content Include="Content\notes.css" />
+    <Content Include="Content\particulars.css" />
+    <Content Include="Content\person.css" />
+    <Content Include="Content\question.css" />
+    <Content Include="Content\register.css" />
+    <Content Include="Content\search.css" />
+    <Content Include="Content\test.css" />
+    <Content Include="Content\userinfo.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\class\dit.png" />
+    <Content Include="images\class\file.png" />
+    <Content Include="images\class\header.png" />
+    <Content Include="images\class\shou.png" />
+    <Content Include="images\class\top.png" />
+    <Content Include="images\index\be.png" />
+    <Content Include="images\index\data.png" />
+    <Content Include="images\index\fe.png" />
+    <Content Include="images\index\free1.png" />
+    <Content Include="images\index\free2.png" />
+    <Content Include="images\index\free3.png" />
+    <Content Include="images\index\free4.png" />
+    <Content Include="images\index\free5.png" />
+    <Content Include="images\index\logo.png" />
+    <Content Include="images\index\mobile.png" />
+    <Content Include="images\index\photo.png" />
+    <Content Include="images\index\prictise1.jpg" />
+    <Content Include="images\index\prictise2.jpg" />
+    <Content Include="images\index\prictise3.png" />
+    <Content Include="images\index\prictise4.jpg" />
+    <Content Include="images\index\prictise5.jpg" />
+    <Content Include="images\index\search.png" />
+    <Content Include="images\index\Web.png" />
+    <Content Include="images\index\web1.jpg" />
+    <Content Include="images\index\web2.jpg" />
+    <Content Include="images\index\web3.png" />
+    <Content Include="images\index\web4.jpg" />
+    <Content Include="images\index\web5.jpg" />
+    <Content Include="images\index\wexin.png" />
+    <Content Include="images\index\yjs.png" />
+    <Content Include="images\index\yw.png" />
+    <Content Include="Scripts\alert.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="packages.config" />
+    <Content Include="fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon.woff" />
+    <None Include="bin\ZZULIWeb.dll.config" />
+    <Content Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\ZZULI.csdl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\ZZULI.msl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\ZZULI.ssdl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\ZZULI.csdl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\ZZULI.msl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\ZZULI.ssdl" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\icomoon.ttf" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\icomoon.woff" />
+    <Content Include="obj\Release\Package\PackageTmp\packages.config" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-1.10.2.min.map" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\Login.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\Manage.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\Register.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\AL\Index.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Course\Comment.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Course\List.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Course\Note.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Course\quesdetail.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Course\Question.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Course\Section.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Course\_ViewStart.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\DownLoad\getcontent.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\DownLoad\Index.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Home\Index.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Learn\comment.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Learn\note.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Learn\question.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Learn\v.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Login\Index.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Login\Register.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Note\Index.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Note\List.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Note\n.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Note\_ViewStart.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Question\des.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Question\Index.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Question\List.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Question\_ViewStart.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Recommend\Course.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Recommend\Note.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Recommend\Question.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Search\c.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Search\n.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Search\q.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Search\s.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\Error.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_Layout.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LayoutCourse.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LayoutNote.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LayoutQuestion.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LayoutRecommend.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LayoutSearch.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LayoutUpDown.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\UpLoad\Index.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\an.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\cn.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\collect.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\Course.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\cq.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\Follow.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\Index.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\LearnedCourse.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\n.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\nc.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\Note.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\notecollect.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\nr.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\PersonInfo.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\q.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\qc.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\User\Question.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Web.config" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\_ViewStart.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\vtt\demo.vtt" />
+    <Content Include="obj\Release\Package\PackageTmp\vtt\demo2.vtt" />
+    <Content Include="obj\Release\Package\PackageTmp\Web.config" />
+    <Content Include="obj\Release\Package\PackageTmp\ZZULI.edmx.diagram" />
+    <Content Include="obj\Release\TransformWebConfig\assist\Web.config" />
+    <Content Include="obj\Release\TransformWebConfig\original\Web.config" />
+    <Content Include="obj\Release\TransformWebConfig\transformed\Web.config" />
+    <Content Include="obj\Release\ZZULIWeb.csprojResolveAssemblyReference.cache" />
+    <None Include="Properties\PublishProfiles\aa.pubxml" />
+    <None Include="Properties\PublishProfiles\ATMVC4.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\index_showNav.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\personinfo.js" />
+    <Content Include="Scripts\register.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\section.js" />
+    <Content Include="Scripts\ueditor.all.min.js" />
+    <Content Include="Scripts\ueditor.config.js" />
+    <Content Include="Scripts\user.js" />
+    <Content Include="Scripts\video\cs.js" />
+    <Content Include="Scripts\video\dailymotion.min.js" />
+    <Content Include="Scripts\video\de.js" />
+    <Content Include="Scripts\video\demo.js" />
+    <Content Include="Scripts\video\es.js" />
+    <Content Include="Scripts\video\facebook.min.js" />
+    <Content Include="Scripts\video\fr.js" />
+    <Content Include="Scripts\video\hr.js" />
+    <Content Include="Scripts\video\hu.js" />
+    <Content Include="Scripts\video\it.js" />
+    <Content Include="Scripts\video\ja.js" />
+    <Content Include="Scripts\video\jquery.js" />
+    <Content Include="Scripts\video\ko.js" />
+    <Content Include="Scripts\video\mediaelement-and-player.js" />
+    <Content Include="Scripts\video\nl.js" />
+    <Content Include="Scripts\video\pl.js" />
+    <Content Include="Scripts\video\pt-br.js" />
+    <Content Include="Scripts\video\pt.js" />
+    <Content Include="Scripts\video\ro.js" />
+    <Content Include="Scripts\video\ru.js" />
+    <Content Include="Scripts\video\sk.js" />
+    <Content Include="Scripts\video\sv.js" />
+    <Content Include="Scripts\video\twitch.min.js" />
+    <Content Include="Scripts\video\uk.js" />
+    <Content Include="Scripts\video\vimeo.min.js" />
+    <Content Include="Scripts\video\zh-cn.js" />
+    <Content Include="Scripts\video\zh.js" />
+    <Content Include="Scripts\wangEditor.min.js" />
+    <Content Include="Scripts\zh-cn.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="test.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Course\Section.cshtml" />
+    <Content Include="Views\Shared\_LayoutCourse.cshtml" />
+    <Content Include="Views\Course\List.cshtml" />
+    <Content Include="Views\Course\_ViewStart.cshtml" />
+    <Content Include="Views\Course\Comment.cshtml" />
+    <Content Include="Views\Course\Question.cshtml" />
+    <Content Include="Views\Course\Note.cshtml" />
+    <Content Include="Views\Note\List.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Note\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LayoutNote.cshtml" />
+    <Content Include="Views\Question\List.cshtml" />
+    <Content Include="Views\Question\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LayoutQuestion.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\User\LearnedCourse.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\User\q.cshtml" />
+    <Content Include="Views\User\n.cshtml" />
+    <Content Include="Views\User\PersonInfo.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\Learn\v.cshtml" />
+    <Content Include="vtt\demo.vtt" />
+    <Content Include="Views\Search\s.cshtml" />
+    <Content Include="Views\Shared\_LayoutSearch.cshtml" />
+    <Content Include="vtt\demo2.vtt" />
+    <Content Include="Views\Search\c.cshtml" />
+    <Content Include="Views\Search\q.cshtml" />
+    <Content Include="Views\Search\n.cshtml" />
+    <Content Include="Views\Note\n.cshtml" />
+    <Content Include="Views\Question\des.cshtml" />
+    <Content Include="Views\Note\Index.cshtml" />
+    <Content Include="Views\Course\quesdetail.cshtml" />
+    <Content Include="Views\Learn\comment.cshtml" />
+    <Content Include="Views\Learn\question.cshtml" />
+    <Content Include="Views\Learn\note.cshtml" />
+    <Content Include="Views\UpLoad\Index.cshtml" />
+    <Content Include="Views\User\cq.cshtml" />
+    <Content Include="Views\User\Course.cshtml" />
+    <Content Include="Views\User\cn.cshtml" />
+    <Content Include="Views\User\collect.cshtml" />
+    <Content Include="Views\User\Note.cshtml" />
+    <Content Include="Views\User\nc.cshtml" />
+    <Content Include="Views\User\nr.cshtml" />
+    <Content Include="Views\User\notecollect.cshtml" />
+    <Content Include="Views\User\Question.cshtml" />
+    <Content Include="Views\User\an.cshtml" />
+    <Content Include="Views\User\qc.cshtml" />
+    <Content Include="Views\User\Follow.cshtml" />
+    <Content Include="Views\Recommend\Course.cshtml" />
+    <Content Include="Views\Shared\_LayoutRecommend.cshtml" />
+    <Content Include="Views\Recommend\Question.cshtml" />
+    <Content Include="Views\Recommend\Note.cshtml" />
+    <Content Include="Views\Shared\_LayoutUpDown.cshtml" />
+    <Content Include="Views\DownLoad\Index.cshtml" />
+    <Content Include="Views\DownLoad\getcontent.cshtml" />
+    <Content Include="Views\AL\Index.cshtml" />
+    <EntityDeploy Include="ZZULI.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ZZULI.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ZZULI.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ZZULI.edmx</DependentUpon>
+      <LastGenOutput>ZZULI.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ZZULI.edmx.diagram">
+      <DependentUpon>ZZULI.edmx</DependentUpon>
+    </Content>
+    <Content Include="ZZULI.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ZZULI.edmx</DependentUpon>
+      <LastGenOutput>ZZULI.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="obj\Release\ProfileTransformWebConfig\transformed\Views\" />
+    <Folder Include="obj\Release\TransformWebConfig\transformed\Views\" />
+    <Folder Include="upload\" />
+    <Folder Include="video\" />
+    <Folder Include="Views\Common\" />
+    <Folder Include="Views\_ViewStart\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>35899</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:35899/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

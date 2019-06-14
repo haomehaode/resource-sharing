@@ -1,0 +1,186 @@
+﻿@{
+    //Layout = null;
+    //Layout = "/Views/Shared/_LayoutCourse.cshtml";
+}
+@using ZZULIWeb.Models@section Bundle{
+    @Scripts.Render("~/class_js")
+    @Styles.Render("~/class_css")
+}
+@*@section Comment{*@
+<ul class="class_content_l_ul">
+    <li><a href="~/Course/Section/@Model.Cou_ID">章节</a></li>
+    <li class="class_active"><a href="~/Course/Comment/@Model.Cou_ID">评论</a></li>
+    <li><a href="~/Course/Question/@Model.Cou_ID">问答</a></li>
+    <li><a href="~/Course/Note/@Model.Cou_ID">笔记</a></li>
+</ul>
+<!--评论-->
+<div id="list1" class="class_content_l2" style="display:block">
+    @*@{
+            string s = @ViewBag.MovieDetail.User_ID + ".png";
+            <img src="~/images/userImg/@s" />
+        }*@
+    @*<form action="">
+            <textarea class="r" cols="96" rows="6">
+                扯淡、吐槽、想说啥说啥！
+            </textarea>
+            <input type="submit" class="r" value="发表评论" />
+        </form>*@
+    @if (ViewBag.CCList == null)
+    {
+        <div id="content-null">
+            <p>该课程还没有评论</p>
+        </div>
+    }
+    else
+    {
+        <ul>
+            @{
+        foreach (CoursesComment cc in @ViewBag.CCList)
+        {
+            <li>
+                @{
+            string ss = cc.User_ID + ".png";
+            <img src="~/images/userImg/@ss" />
+                }
+                <dl>
+                    <dt>
+                        <a href="#">@cc.UserInfo.User_NickName</a>
+                    </dt>
+                    @{if (@cc.CCom_Content.Length > 100)
+                    {
+                        <a href="javascript:;" class="flod_a_all" id="hidden_top">[..收起↑..]</a>
+                        <dd>
+                            <p>@Html.Raw(cc.CCom_Content.Substring(0, 100)+"...")</p>
+                            <a href="javascript:;" id="show_all">[..查看全文↓..]</a>
+                        </dd>
+                        <dd class="flod_a_all">
+                            <p>@cc.CCom_Content</p>
+                            <a href="javascript:;" id="hidden_bottom">[..收起↑..]</a>
+                        </dd>
+                    }
+                    else
+                    {
+                        <dd><p>@cc.CCom_Content</p></dd>
+                    }
+                    }
+                    <dd>
+                        <span>时间:@Common.GetTimeStringToNow(cc.CCom_Time)</span>
+                        <a href="#">源自：@(cc.Move.Chap_ID)-@(cc.Move.Section_ID) @cc.Move.Section_Name</a>
+                        @{
+            if (Common.UserInfo == null)
+            {
+                <a href="javascript:;" class="like" data-id="@(cc.CCom_ID)|12"><strong>赞 @cc.CCom_Likes</strong></a>
+            }
+            else
+            {
+                if (Common.IsLike(Common.UserInfo.User_ID, cc.CCom_ID, 12))
+                {
+                    <a href="javascript:;" class="like" data-id="@(cc.CCom_ID)|12"><strong class="class_like">赞 @cc.CCom_Likes</strong></a>
+                }
+                else
+                {
+                    <a href="javascript:;" class="like" data-id="@(cc.CCom_ID)|12"><strong>赞 @cc.CCom_Likes</strong></a>
+                }
+            }
+
+                        }
+                    </dd>
+                </dl>
+            </li>
+        }
+            }
+        </ul>
+    }
+
+</div>
+
+@section Page{
+    @{
+        int course_id = Model.Cou_ID;
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="/Course/Comment/@course_id">首页</a>
+                    <a class="page" href="/Course/Comment/@course_id/page_@(ViewBag.CurrentPageIndex-1)">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="/Course/Comment/@course_id/page_@i" class="page_action">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Course/Comment/@course_id/page_@i">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="/Course/Comment/@course_id/page_@startIndex" class="page_action">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="/Course/Comment/@course_id/page_@startIndex">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+                @*for (int j = startIndex; j <= 5; j++)
+                    {
+                        <a href="/Course/Comment/@course_id/@j">@j</a>
+                    }
+                    for (int k = pageNum - 5 + 1; k <= pageNum; k++)
+                    {
+                        <a href="/Course/Comment/@course_id/@k">@k</a>
+                    }*@
+            }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a class="page" href="/Course/Comment/@course_id/page_@(ViewBag.CurrentPageIndex+1)">下一页</a>
+                    <a href="/Course/Comment/@course_id/page_@ViewBag.pageNum">尾页</a>
+                }
+            </div>
+        }
+    }
+}
+@*<p>
+        <a class="note_active" href="#">1</a>
+        <a href="/Course/Comment/pageIndex=">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+    </p>
+    <a href="/Course/Comment">首页</a>
+    <a href="#">上一页</a>*@
+@*}*@

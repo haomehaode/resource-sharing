@@ -1,0 +1,189 @@
+﻿@{
+    Layout = null;
+}<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>个人信息首页</title>
+    @*<link rel="stylesheet" type="text/css" href="style/index.css" />
+        <link rel="stylesheet" type="text/css" href="style/person.css" />
+        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="js/other.js"></script>*@
+    @Styles.Render("~/user_css")
+    @Scripts.Render("~/user_js")
+</head>
+@using ZZULIWeb.Models
+@model ZZULIWeb.UserInfo
+<body>
+    <a id="index_sidebar" href="#">回到顶部</a>
+    <div id="index_header">
+        <a href="~/Home/Index" target="_blank"><img class="index_logo" src="~/images/index/logo.gif" alt="郑州轻工业学院软件开发资源共享平台" title="郑州轻工业学院软件开发资源共享平台" />	</a>
+        <ul class="index_header_nav">
+            @foreach (Partition item in new Navigation().GetPartition())
+            {
+                <li><a class="" href="~/@item.Part_Url">@item.Part_Name</a></li>
+            }
+        </ul>        @{
+            //if (Request.Cookies["UserInfo"] != null)
+            //{
+            //    int id = Convert.ToInt32(Request.Cookies["UserInfo"].Values["User_ID"]);
+            //    Common.UserInfo = new User().GetList_Where(u => u.User_ID == id).FirstOrDefault();
+            //}
+            if (Common.UserInfo != null)
+            {
+                <div class="userinfo">
+                    @{
+                        <a href="/User/Index/@Common.UserInfo.User_ID" target="_parent"><img alt="@Common.UserInfo.User_NickName" src="~/images/userImg/@(Common.UserInfo.User_ID).png" /><p class="usernickname">@Common.UserInfo.User_NickName</p></a>
+                        <ol class="quit" style="display:none; position:absolute; top:60px; right:60px;  width:100px; background:#cfc4c4;z-index:200">
+                            <li style="float:left; width:100px;text-align:center; height:40px; line-height:40px;"><a style="color:#000; font-size:18px;" href="javascript:;" class="quitLogin">退出</a><>
+                        </ol>
+                        <script>
+                            $('.userinfo').mouseover(function () {
+                                $('.quit').show();
+                            });
+                            $('.userinfo').mouseout(function () {
+                                $('.quit').hide();
+                            });
+                        </script>
+                    }
+                </div>
+            }
+            else
+            {
+                <ol class="index_header_ol">
+                    <li>
+                        @Ajax.ActionLink("登录", "Index", "Login", new AjaxOptions()
+           {
+               HttpMethod = "GET",
+               InsertionMode = InsertionMode.Replace,
+               UpdateTargetId = "update"
+           })
+                    </li>
+                    <li><a class="zhuce" href="/Login/Register">注册</a></li>
+                </ol>
+            }
+        }
+        <form id="index_header_form" method="get" action="/Search/s">
+            <input id="index_header_form_text" class="index_header_form_text search_top" name="StrSearch" type="text" value="JAVA" />
+            <input id="index_header_form_button" class="index_header_form_button" type="submit" value="" />
+        </form>
+    </div>
+
+    <div class="person_top">
+        <div>
+            <img src="~/images/class/header.png" />
+            <ul>
+                <li><h1>@Model.User_NickName</h1></li>
+                <li>学习时长&nbsp;12小时22分</li>
+                <li>个人签名</li>
+            </ul>
+        </div>
+    </div>
+
+    @*@RenderSection("Nav", true)*@
+    <ul class="person_content_ul">
+        <li><a href="/User/Index/@Model.User_ID">主页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Course/@Model.User_ID">课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li class="person_action"><a href="/User/Question/@Model.User_ID">问题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Note/@Model.User_ID">笔记&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Follow/@Model.User_ID">我的关注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/PersonInfo/@Model.User_ID">个人资料&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+    </ul>
+    <div class="person_content">
+        <div class="person">
+            <p class="person_p">
+                @{
+                    int tab = Convert.ToInt32(ViewBag.Page);
+                    switch (tab)
+                    {
+                        case 1:
+                            <a class="ajax_goto_tab tab_active" id="uq" data-id="@(Model.User_ID)|0">问题</a>
+                            <a class="ajax_goto_tab" id="ua" data-id="@(Model.User_ID)|0">回答</a>
+                            <a class="ajax_goto_tab" id="uqc" data-id="@(Model.User_ID)|0">收藏</a>
+                            break;
+                        case 2:
+                        <a class="ajax_goto_tab" id="uq" data-id="@(Model.User_ID)|0">问题</a>
+                        <a class="ajax_goto_tab tab_active" id="ua" data-id="@(Model.User_ID)|0">回答</a>
+                        <a class="ajax_goto_tab" id="uqc" data-id="@(Model.User_ID)|0">收藏</a>
+                            break;
+                        case 3:
+                        <a class="ajax_goto_tab" id="uq" data-id="@(Model.User_ID)|0">问题</a>
+                        <a class="ajax_goto_tab" id="ua" data-id="@(Model.User_ID)|0">回答</a>
+                        <a class="ajax_goto_tab tab_active" id="uqc" data-id="@(Model.User_ID)|0">收藏</a>
+                            break;
+                        default:
+                        <a class="ajax_goto_tab tab_active" id="uq" data-id="@(Model.User_ID)|0">问题</a>
+                        <a class="ajax_goto_tab" id="ua" data-id="@(Model.User_ID)|0">回答</a>
+                        <a class="ajax_goto_tab" id="uqc" data-id="@(Model.User_ID)|0">收藏</a>
+                            break;
+                    }
+                }
+            </p>
+            @*@Ajax.ActionLink("问题", "Question", "User", new { id = @Model.User_ID }, new AjaxOptions()
+                            {
+                                UpdateTargetId = "replace",
+                                InsertionMode = InsertionMode.Replace,
+                                HttpMethod = "get"
+                            }, new { @class = "ajax_a_v tab_active" })
+                @Ajax.ActionLink("回答", "an", "User", new { id = @Model.User_ID }, new AjaxOptions()
+                            {
+                                UpdateTargetId = "replace",
+                                InsertionMode = InsertionMode.Replace,
+                                HttpMethod = "get"
+                            }, new { @class = "ajax_a_v" })
+                @Ajax.ActionLink("收藏", "qc", "User", new { id = @Model.User_ID }, new AjaxOptions()
+                            {
+                                UpdateTargetId = "replace",
+                                InsertionMode = InsertionMode.Replace,
+                                HttpMethod = "get"
+                            }, new { @class = "ajax_a_v" })*@
+            <div id="content-null" style="display:none;"><p>正在加载内容...</p></div>
+            <div id="replace">
+                @{
+                    int page = Convert.ToInt32(ViewBag.Page);
+                    switch (page)
+                    {
+                        case 1:
+                            @Html.Action("q", "User", new { id = Model.User_ID })
+                            break;
+                        case 2:
+
+                        @Html.Action("an", "User", new { id = Model.User_ID })
+                            break;
+                        case 3:
+
+                        @Html.Action("qc", "User", new { id = Model.User_ID })
+                            break;
+                        default:
+                        @Html.Action("qc", "User", new { id = Model.User_ID })
+                            break;
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+    @*@RenderBody()*@
+    <div id="index_footer">
+        <div>
+            <ul class="index_footer_ul">
+                <li><a class="index_footer_ul1" href="http://weibo.com/zzuli5166?mod=myfollow&is_hot=1" target="_blank"></a></li>
+                <li><a class="index_footer_ul2" href="http://jiaowu.zzuli.edu.cn/jwweb/MAINFRM.aspx" target="_blank"></a></li>
+                <li><a class="index_footer_ul3" href="http://my.zzuli.edu.cn/" target="_blank"></a></li>
+                <li><a class="index_footer_ul4" href="http://cs.zzuli.edu.cn/" target="_blank"></a></li>
+            </ul>
+            <ol class="index_footer_ol">
+                <li><a class="" href="#">企业人才</a></li>
+                <li><a class="" href="#">人才招聘</a></li>
+                <li><a class="" href="#">联系我们</a></li>
+                <li><a class="" href="#">讲师招聘</a></li>
+                <li><a class="" href="#">常见问题</a></li>
+                <li><a class="" href="#">意见反馈</a></li>
+                <li><a class="" href="#">慕课大学</a></li>
+                <li><a class="" href="#">友情链接</a></li>
+            </ol>
+            <p class="index_footer_p">© 2016 imooc.com  京ICP备13046642号</p>
+        </div>
+    </div>
+</body>
+</html>

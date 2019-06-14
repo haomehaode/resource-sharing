@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUpDown.cshtml";
+}
+
+@using ZZULIWeb.Models
+<div class="download_content">
+    <ul class="download_content_ul">
+        <li><a id="download_active" href="/DownLoad/Index">下载</a></li>
+        <li><a href="~/UpLoad/Index">上传</a></li>
+    </ul>
+    <div class="download_content_div">
+        <form>
+            方向:
+            <select id="lb_nav0" name="Nav0">
+                <option value="-1">--未选择--</option>
+                @{
+                    List<Navigations> list = new Navigation().GetNavigation0();
+                    foreach (Navigations nav in list)
+                    {
+                        <option value="@nav.Nav_ID">@nav.Nav_Name</option>
+                    }
+                }
+                @*<option>后台</option>
+                    <option>JAVA</option>
+                    <option>C</option>
+                    <option>.net</option>
+                    <option>Ｃ++</option>*@
+            </select>
+            分类:
+            <select id="lb_nav1" name="Nav1">
+                <option value="-1">--未选择--</option>
+            </select>
+            @*类型:
+                <select>
+                    <option value="-1">--所有--</option>
+                    <option value="-1">课程</option>
+                    <option value="-1">问题</option>
+                    <option value="-1">笔记</option>
+                </select>*@
+            <input id="search" type="button" value="搜索" data-id="1" />
+        </form>
+        <div id="content-null" style="display:none;"><p>正在查找，请稍后...</p></div>
+        <div id="replace">
+            @Html.Action("getcontent", "DownLoad", new { nav0 = -1, nav1 = -1, pageIndex = 1 })
+        </div>
+    </div>
+</div>
+
+

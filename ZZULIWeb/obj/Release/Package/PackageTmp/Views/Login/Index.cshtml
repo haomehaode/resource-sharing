@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "登录";
+}
+@section Bundle{
+    @Styles.Render("~/login_css")
+    @Scripts.Render("~/login_js")
+}
+@using ZZULIWeb.Models
+@model ZZULIWeb.UserInfo
+
+
+<div id="wrapper">
+    <div class="box">
+        <div id="dialogBg"></div>
+        <div id="dialog" class="animated">
+            @*<img class="dialogIco" width="50" height="50" src="~/images/class/header.png" alt="" />*@
+            <div class="dialogTop">
+                <a href="javascript:;" class="claseDialogBtn">关闭</a>
+            </div>
+            <form action="" method="post" id="editForm">
+                <table class="editInfos">
+                    <tr><td><label><font color="#ff0000">* </font>账号：@Html.TextBoxFor(u => u.User_Account, new { @class = "ipt", @maxlength = "16" })</label></td><td><p id="valid-account"></p></td></tr>
+                    <tr><td><label><font color="#ff0000">* </font>密码：@Html.TextBoxFor(u => u.User_Password, new { @class = "ipt", @type = "password", @maxlength = "16" })</label></td><td><p id="valid-pwd"></p></td></tr>
+                    <tr><td>@Html.CheckBox("repwd", false, new { @value = "下次自动登录" })下次自动登录</td><td>@Html.ActionLink("注册", "Register", "Login")</td></tr>
+                </table>
+            </form>
+            <input type="button" value="登录" class="submitBtn" />
+        </div>
+    </div>
+</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>

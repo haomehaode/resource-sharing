@@ -1,0 +1,88 @@
+.person2_notes{
+	width:1000px;
+	float:right;
+	position:relative;
+	margin-top:20px;
+}
+a{
+	border:none;
+	outline:none;
+}
+.person2_notes li{
+	margin-left:80px;
+	padding:10px 0 10px 0;
+	border-top:1px solid #666;
+}
+.person2_notes img{
+	position:absolute;
+	left:20px;
+	top:30px;
+}
+.person2_notes ul{
+    height:30px;
+	width:920px;
+}
+.person2_notes ul li{	
+    float:left;
+    font-size:14px;
+    color:#787d82;
+    line-height:30px;
+	margin:0 10px 0 0;
+	border:none;
+}
+.person2_notes h4{	
+    font-size:18px;
+	width:500px;
+	height:30px;
+    color:#000000;
+    line-height:60px;
+	margin-bottom:20px;
+    position:relative;
+    left:-236px;
+}
+.person2_notes dt{
+	height:36px;
+	line-height:30px;
+}
+.person2_notes dt a{
+	font-size:16px;
+	color:#666;
+}
+.person2_notes dd p{
+	font-size:14px;
+	line-height:24px;
+}
+.person2_notes dd span{
+	height:30px;
+	line-height:40px;
+	font-size:14px;
+	color:#930;
+}
+.person2_notes ol{
+	height:30px;
+	line-height:30px;
+	margin:10px 80px 20px 0;
+    float:right;
+}
+.person2_notes ol li{
+	border:none;
+	float:left;
+	margin:0;
+	padding:0;
+	margin-right:20px;
+}
+.person2_notes ol li a{
+	font-size:14px;
+	color:#666;
+	padding:4px 6px;
+}
+.person2_notes ol li a:hover,#percon_notes_border{
+	border:1px solid #999;
+}
+
+
+
+
+
+
+

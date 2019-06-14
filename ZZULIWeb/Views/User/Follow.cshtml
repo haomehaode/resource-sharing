@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+@section Nav{
+
+    <ul class="person_content_ul">
+        <li><a href="/User/Index/@Model.User_ID">主页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Course/@Model.User_ID">课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Question/@Model.User_ID">问题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Note/@Model.User_ID">笔记&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li class="person_action"><a href="/User/Follow/@Model.User_ID">我的关注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/PersonInfo/@Model.User_ID">个人资料&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+    </ul>
+}
+<div class="person_content">
+    <div class="person">
+        <ul class="question_left_ul">
+            @{
+                if (ViewBag.FollowList == null || ViewBag.FollowList.Count <= 0)
+                {
+                    <div id="content-null"><p>还没有关注别人~</p></div>
+                }
+                else
+                {
+                    foreach (Follow f in ViewBag.FollowList)
+                    {
+                        <li class="question_left_li" style="width:900px;">
+                            <a href="/User/Index/@f.F_Target"><img src="~/images/userImg/@(f.F_Target).png" /></a>
+                            @*<ul>
+                                <li>来自:</li>
+                                <li><a href="#">c</a></li>
+                                <li><a href="#">java</a></li>
+                                <li><a href="#">Python</a></li>
+                            </ul>*@
+                            <a href="/User/Index/@f.F_Target"><h4 style="font-size:18px;">@f.UserInfo1.User_NickName</h4></a>
+                            @*<dl style="margin-top:6px;">
+                                <dt><a style="font-size:16px; color:#666;" href="#">慕课网原来那些免费的路劲呢？</a></dt>
+                                <dd><p>视频中FW选择某块图片时，老师并没有说方法。很苦恼自己摸索了下。原来是选择LOGO这块图片时，出现选择框后点右键。找到插入矩形切片。快捷键是ALT+SHIFT+U。。</p></dd>
+                            </dl>
+                            <ol>
+                                <li class="question_border"><a href="#">赞同3</a></li>
+                                <li><a href="#">反对</a></li>
+                                <li>浏览量</li>
+                            </ol>*@
+                        </li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+
+@{
+    if (ViewBag.pageNum > 1)
+    {
+            <!--分页导航-->
+        <div class="page_nav">
+            @if (ViewBag.CurrentPageIndex == 1)
+            {
+                <span class="page_disabled">首页</span>
+                <span class="page_disabled">上一页</span>
+            }
+            else
+            {
+                <a class="ajax_goto" data-id="@(Model.User_ID)|0" id="follow">首页</a>
+                <a class="ajax_goto" data-id="@(Model.User_ID)|(@ViewBag.CurrentPageIndex - 1)" id="follow">上一页</a>
+            }
+            <p>
+                @{
+        if (ViewBag.pageNum <= 10)
+        {
+            for (int i = 1; i <= ViewBag.pageNum; i++)
+            {
+                if (ViewBag.CurrentPageIndex == i)
+                {
+                    <a class="ajax_goto page_action" data-id="@(Model.User_ID)|@i" id="follow">@i</a>
+                }
+                else
+                {
+                    <a class="ajax_goto" data-id="@(Model.User_ID)|@i" id="follow">@i</a>
+                }
+            }
+        }
+        else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+        {
+            int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+            if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+            {
+                startIndex = ViewBag.pageNum - 9;
+            }
+            int n = 1;
+            while (n <= 10)
+            {
+                if (ViewBag.CurrentPageIndex == startIndex)
+                {
+                    <a class="ajax_goto page_action" data-id="@(Model.User_ID)|@startIndex" id="follow">@startIndex</a>
+                }
+                else
+                {
+                    <a class="ajax_goto" data-id="@(Model.User_ID)|@startIndex" id="follow">@startIndex</a>
+                }
+                startIndex++;
+                n++;
+            }
+        }
+                }
+            </p>
+            @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+            {
+                <span class="page_disabled">下一页</span>
+                <span class="page_disabled">尾页</span>
+            }
+            else
+            {
+                <a class="ajax_goto" data-id="@(Model.User_ID)|@(ViewBag.CurrentPageIndex + 1)" id="follow">下一页</a>
+                <a class="ajax_goto" data-id="@(Model.User_ID)|@ViewBag.pageNum" id="follow">尾页</a>
+            }
+        </div>
+    }
+}

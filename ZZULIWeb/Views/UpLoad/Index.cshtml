@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUpDown.cshtml";
+}
+<script src="Scripts/loading/prefixfree.min.js"></script>
+<link href="~/Content/test.css" rel="stylesheet" />
+<link href="~/Content/common.css" rel="stylesheet" />
+@*<style>
+        canvas {
+            background: #111;
+            border: 1px solid #171717;
+            display: block;
+            left: 50%;
+            margin: -51px 0 0 -201px;
+            position: absolute;
+            top: 50%;
+            color: white;
+        }
+    </style>
+    <script src="Scripts/loading/index.js"></script>
+    <div style="text-align:center;clear:both">
+    </div>*@
+@using ZZULIWeb.Models
+<div class="download_content">
+    <ul class="download_content_ul">
+        <li><a href="~/DownLoad/Index">下载</a></li>
+        <li><a id="download_active" href="~/UpLoad/Index">上传</a></li>
+    </ul>
+    <div class="upload_content_div">
+        @*<form method="post" action="/UpLoad/upload" enctype="multipart/form-data">*@
+        <form id="uploadform" enctype="multipart/form-data">
+            <!--webkitdirectory-->
+            课程文件：<input style="margin-bottom:10px;" type="file"  id="Moves" /><br>
+            课程名字：<input type="text" id="Cou_Name" value="" /><br>
+            @*课程标题：<input type="text" value="" id="Cou_Title" /><br>*@
+            方向:
+            <select id="lb_nav0" name="Nav0">
+                <option value="-1">--未选择--</option>
+                @{
+                    List<Navigations> list = new Navigation().GetNavigation0();
+                    foreach (Navigations nav in list)
+                    {
+                        <option value="@nav.Nav_ID">@nav.Nav_Name</option>
+                    }
+                }
+                @*<option>后台</option>
+                <option>JAVA</option>
+                <option>C</option>
+                <option>.net</option>
+                <option>Ｃ++</option>*@
+            </select>
+            分类:
+            <select id="lb_nav1" name="Nav1">
+                <option value="-1">--未选择--</option>
+            </select>
+            @*@foreach (Navigations nav in ViewBag.TagsList)
+            {
+
+                <input class="tags" type="button" value="@nav.Nav_Name" />
+            }*@
+            @*类型:
+            <select>
+                <option>基础</option>
+                <option>框架</option>
+                <option>工具</option>
+            </select>*@<br>
+            简介：<br>
+            <textarea rows="6" cols="80" id="Cou_Describe"></textarea><br>
+            图片：<input type="file" accept=".png" value="浏览..." id="Cou_Img" /><br>
+            <input style="padding:4px 6px; cursor:pointer; outline:none; border:none; position:relative;  left:700px; bottom:40px; font-size:16px; color:#808080; margin-top:10px;" id="uploadbtn" type="button" value="提交" />
+        </form>
+
+    </div>
+</div>
+
+
+<div id="wrapper">
+    <div class="box">
+        <div id="dialogBg"></div>
+        <div id="dialog" class="animated">
+            <div class="dialogTop">
+                <a href="javascript:;" class="claseDialogBtn">关闭</a>
+            </div>
+            <form action="" method="post" id="editForm">
+                <table class="editInfos">
+                   正在上传。。。请稍后。。。
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+

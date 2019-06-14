@@ -1,0 +1,205 @@
+﻿@{
+    @*<script src="~/Scripts/index_showNav.js"></script>
+        <link href="~/Content/index.css" rel="stylesheet" />
+        <script src="~/Scripts/other.js"></script>*@
+}
+@section Bundle{
+    @Styles.Render("~/index_css")
+    @Scripts.Render("~/index_js")
+}
+@using ZZULIWeb.Models;
+@using System.Xml
+<!--功能分区-->
+@section Partition{
+    <ul class="index_header_nav">
+        @foreach (Partition item in new Navigation().GetPartition())
+        {
+            <li><a class="" href="~/@item.Part_Url">@item.Part_Name</a></li>
+        }
+    </ul>
+}
+<!--导航栏-->
+<div id="index_nav" class="r">
+    <a href="#" class="a" id="index_prev"><</a>
+    <a href="#" class="a" id="index_next">></a>
+    <ul class="index_nav_ul a">
+        @foreach (Navigations item in @ViewBag.NavList0)
+        {
+            <li>
+                <a href="/Course/List/nav_@item.Nav_ID/nav_0/page_1">@item.Nav_Name</a>
+                <div class="index_nav_ul1 a">
+                    <dl>
+                        @{foreach (Navigations tag in @ViewBag.NavList1)
+                        {
+                            if (tag.Ower_ID == item.Nav_ID)
+                            {
+                                <dt>&nbsp;<a href="/Course/List/nav_@item.Nav_ID/nav_@tag.Nav_ID/page_1">@tag.Nav_Name</a>&nbsp;/</dt>
+                            }
+                        }
+                        }
+                    </dl>
+                    <dl>
+                        <dt>课程推荐</dt>
+                        @{
+                        List<Courses> list = new Course().GetRecommendCourseByNav0(item.Nav_ID);
+                        foreach (Courses c in list)
+                        {
+                            <dd><a class="" href="~/Course/Section/@c.Cou_ID">课程|@c.Cou_Name</a></dd>
+                        }
+                        }
+                        @*<dd><a class="" href="#">课程|hello,移动WEB</a></dd>
+                            <dd><a class="" href="#">课程|hello,移动WEB</a></dd>
+                            <dd><a class="" href="#">课程|hello,移动WEB</a></dd>*@
+                    </dl>
+                </div>
+            </li>
+        }
+
+    </ul>
+</div>
+
+<div id="index_content" class="r">
+    <span class="a">好课推荐</span>
+    <p class="a"><a href="/Course/List">更多&nbsp;></a></p>
+    <!--好课推荐，按照学习人数，显示10门课程-->
+    <ul class="index_content_ul">
+        @foreach (Courses c in ViewBag.CourseList)
+        {
+        <li>
+            <a class="r" href="~/Course/Section/@c.Cou_ID" target="_blank">
+                @*<div class="a index_content_ul_div" class="index_content_ul_div1">*@
+                <div class="a index_content_ul_div">
+                    <h3>@c.Cou_Name</h3>
+                    <p class="index_content_ul_div_p">
+                        @if (c.Cou_Describe.Length > 40)
+                            { @Html.Raw(c.Cou_Describe.Substring(0, 40) + "...");
+                            }
+                            else
+                            {@Html.Raw(c.Cou_Describe);
+                            }
+                    </p>
+                </div>
+                <div class="a index_content_ul_div11">(@c.Cou_StudyNum)人在学</div>
+            </a>
+        </li>
+        }
+    </ul>
+
+    <div class="index_content_bottom">
+        @{foreach (Navigations nav in ViewBag.NavList0)
+        {
+            <div class="index_content_bottom_1 r">
+                <a class="index_more a" href="/Course/List/nav_@nav.Nav_ID/nav_0/page_1">更多&nbsp;></a>
+                <!--第一块儿-->
+                <div class="index_content_bottom_11 a">
+                    <!--显示名称-->
+                    <h2>@nav.Nav_Name</h2>
+                    <!--显示热门笔记-->
+                    <ul class="a">
+                        @{List<Notes> NoteList = new Note().GetNotesTopNByTags(@nav.Nav_ID, n => n.N_Hot, 4);
+                        foreach (Notes note in NoteList)
+                        {
+                            <li><a href="~/Note/n/@note.N_ID" target="_blank">@note.N_Title</a></li>
+                        }
+                        }
+                    </ul>
+                </div>
+                @{List<Courses> courseList = new Course().GetCourseTopNByTags(@nav.Nav_ID, c => c.Cou_Hot, 10);
+
+                <!--热度第一的课程-->
+                    <div class="index_content_bottom_12 a">
+                        <a href="~/Course/Section/@courseList[0].Cou_ID" target="_blank">
+                            <h1>@courseList[0].Cou_Name</h1>
+                        </a>
+                        @*<a class="r" href="MovieDetail/@courseList[0].Cou_ID">
+                                <div class="a index_content_ul_div" id="index_content_bottom_14_div1">
+                                    <h3>@courseList[0].Cou_Name</h3>
+                                    <p>@courseList[0].Cou_Describe</p>
+                                </div>
+                                <div class="a index_content_bottom_142">@courseList[0].Cou_StudyNum 人在学</div>
+                            </a>*@
+                    </div>
+
+                <!--热度第二的课程-->
+                    <div class="index_content_bottom_13 a">
+                        <a href="~/Course/Section/@courseList[1].Cou_ID" target="_blank">
+                            <h1>@courseList[1].Cou_Name</h1>
+                        </a>
+                        @*<a class="r" href="MovieDetail/@courseList[1].Cou_ID">
+                                <div class="a index_content_ul_div" id="index_content_bottom_14_div1">
+                                    <h3>@courseList[1].Cou_Name</h3>
+                                    <p>@courseList[1].Cou_Describe</p>
+                                </div>
+                                <div class="a index_content_bottom_142">@courseList[1].Cou_StudyNum 人在学</div>
+                            </a>*@
+                    </div>
+                <!--热度第三的课程-->
+                    <div class="index_content_bottom_14 a">
+                        <a class="r" href="~/Course/Section/@courseList[2].Cou_ID" target="_blank">
+                            @*<div class="a index_content_bottom_141" id="index_content_bottom_14_div1">*@
+                            @*<div class="a index_content_bottom_141" id="index_content_bottom_14_div1">*@
+                            <div class="a index_content_ul_div">
+                                <h3>@courseList[2].Cou_Name</h3>
+                                <p class="index_content_ul_div_p">
+                                    @if (courseList[2].Cou_Describe.Length > 40)
+                                    { @Html.Raw(courseList[2].Cou_Describe.Substring(0, 40) + "...");
+                                    }
+                                    else
+                                    {@Html.Raw(courseList[2].Cou_Describe);
+                                    }
+                                </p>
+                            </div>
+                            <div class="a index_content_ul_div11">@courseList[2].Cou_StudyNum 人在学</div>
+                        </a>
+                    </div>
+                <!--热度第四的课程-->
+                    <div class="index_content_bottom_15 a">
+                        <a class="r" href="~/Course/Section/@courseList[3].Cou_ID" target="_blank">
+                            @*<div class="a index_content_bottom_142" id="index_content_bottom_14_div2">*@
+                            @* <div class="a index_content_bottom_141" id="index_content_bottom_14_div2">  *@
+                            <div class="a index_content_ul_div">
+                                <h3>@courseList[3].Cou_Name</h3>
+                                <p class="index_content_ul_div_p">
+                                    @if (courseList[3].Cou_Describe.Length > 40)
+                                    { @Html.Raw(courseList[3].Cou_Describe.Substring(0, 40) + "...");
+                                    }
+                                    else
+                                    {@Html.Raw(courseList[3].Cou_Describe);
+                                    }
+                                </p>
+                            </div>
+                            <div class="a index_content_ul_div11">@courseList[3].Cou_StudyNum 人在学</div>
+                        </a>
+                    </div>
+                <!--热度第五的课程-->
+                    <div class="index_content_bottom_16 a">
+                        <a class="r index_content_bottom_16a" href="~/Course/Section/@courseList[4].Cou_ID" target="_blank">
+                            @* <div class="a index_content_bottom_161" id="index_content_bottom_16_div"> *@
+                            @*<div class="a index_content_bottom_141" id="index_content_bottom_16_div">*@
+                            <div class="a index_content_ul_div">
+                                <h3>@courseList[4].Cou_Name</h3>
+                                <p class="index_content_ul_div_p">
+                                    @if (@courseList[4].Cou_Describe.Length > 40)
+                                    { @Html.Raw(courseList[4].Cou_Describe.Substring(0, 40) + "...");
+                                    }
+                                    else
+                                    {@Html.Raw(courseList[4].Cou_Describe);
+                                    }
+                                </p>
+                            </div>
+                            <div class="a index_content_ul_div11">@courseList[4].Cou_StudyNum 人在学</div>
+                        </a>
+                        <!--热度6-10的课程-->
+                        <ul class="a">
+                            @for (int i = 5; i < courseList.Count; i++)
+                            {
+                                <li><a href="~/Course/Section/@courseList[i].Cou_ID" target="_blank">< @courseList[i].Cou_Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        }
+        }
+    </div>
+</div>

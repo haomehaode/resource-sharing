@@ -1,0 +1,109 @@
+.video_content{
+	width:1200px;
+	margin:0 auto;
+	font-size:14px;
+}
+.video_content_l{
+	width:800px;
+	float:left;
+}
+.video_content ol{
+	width:550px;
+	border-bottom:1px solid #999;
+	height:80px;
+	line-height:80px;
+	padding-left:250px;
+}
+.video_content ol li{
+	float:left;
+	margin-right:50px;
+}
+
+.video_content ul{
+	border-top:1px solid #CCC;
+}
+.video_content_l ul li{
+	padding:20px 10px 50px 20px;
+	margin-top:20px;
+	border-bottom:1px solid #CCC;
+}
+.video_content_l li img{
+	float:left;
+}
+.video_content_l div{
+	padding-left:70px;	
+}	
+.video_content_l h2{
+	line-height:40px;
+}
+.video_content_l p{
+	line-height:34px;
+	overflow:hidden;
+}
+.video_content_l a{
+	float:left;
+	margin-top:10px;
+	color:#93999f;
+}
+.video_content_l span a{
+	float:right;
+	background:url(../images/class/shou.png) no-repeat;
+	padding-left:24px;
+	border:none;
+}
+.video_content_l span a:hover{
+	opacity:0.6;
+}
+.video_content_l form{
+	width:800px;
+	height:160px;
+	padding:20px;
+}
+.video_content_l textarea{
+	width:680px;
+	height:80px;
+	margin-left:30px;
+	padding:10px;	
+}
+.video_content_l input{
+	height:40px;
+	line-height:30px;
+	padding:0 10px;
+	cursor:pointer;		
+	float:right;
+	margin:20px 30px 0 0;
+	background:#090;
+	color:#fff;
+	border:none;
+}
+.video_content_r{
+	width:300px;
+	float:right;
+	height:200px;
+}
+.video_content_r h4{
+	line-height:76px;
+	font-size:20px;
+	color:#14191e;
+}
+.video_content_r li{
+	line-height:24px;
+	padding:10px 0;
+	border-bottom:1px solid #999;
+}
+.video_content_r li a{
+	color:#14191e;
+}
+.video_content_r a:hover{
+	color:#ec1500;
+}
+
+
+
+
+
+
+
+
+
+

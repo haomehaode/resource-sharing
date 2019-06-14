@@ -1,0 +1,243 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutQuestion.cshtml";
+}
+
+@section Bundle{
+    @Styles.Render("~/questiondes_css")
+    @Scripts.Render("~/questiondes_js")
+}
+
+@model ZZULIWeb.Questions
+@using ZZULIWeb.Models
+
+<div class="question_particulars">
+    <div class="question_particulars_l fl">
+        <h2>@Model.Q_Title</h2>
+        <p>@Html.Raw(Model.Q_Content_Style)</p>
+        <span>提问者<a href="~/User/Index/@Model.User_ID">@Model.UserInfo.User_NickName</a></span>
+        <ol>
+            <li><span>标签</span></li>
+            @foreach (Navigations n in ViewBag.TagList)
+            {
+                <li><a href="~/Search/s?StrSearch=@HttpUtility.UrlEncode(n.Nav_Name)">@n.Nav_Name</a></li>
+            }
+        </ol>
+        @*<form class="question_particulars_form">
+                <font>添加回答</font>
+                <span></span>
+            </form>*@
+
+        <form id="submitform" data-id="@(Model.Q_ID)">
+            @if (Common.UserInfo != null)
+            {
+                <img src="~/images/userImg/@(Common.UserInfo.User_ID).png" />
+            }
+            <textarea rows="3" cols="70" id="content"></textarea>
+            <input type="button" class="submit_questionanswer" value="发表评论" />
+        </form>
+        @*<div id="question_particulars_content_bottom_form">
+                <a href="#"><img src="images/class/header.png" /></a>
+                <h5>用户的名字</h5>
+                <form>
+                    <textarea rows="3" cols="70"></textarea>
+                    <input class="question_particulars_content_bottom_form_no" type="button" value="取消" />
+                    <input class="question_particulars_content_bottom_form_yes" type="button" value="确定">
+                </form>
+            </div>
+            <div class="question_particulars_text">
+                <a href="#"><img src="images/class/header.png" /></a>
+                <h3>用户的米昂子</h3>
+                <a class="question_particulars_text_ans" href="#">回答</a>
+            </div>*@
+        <h6>@(new Question().GetAnswerNum(Model.Q_ID)) 个回答</h6>
+        <ul>
+            @if (ViewBag.AnswerList == null || ViewBag.AnswerList.Count <= 0)
+            {
+                <div id="content-null">
+                    <p>还没有人评论哦~~~</p>
+                </div>
+            }
+            else
+            {
+                foreach (Answers an in ViewBag.AnswerList)
+                {
+                    <li>
+                        <img src="~/images/userImg/@(an.User_ID).png" />
+                        @{
+                            <div>
+                                @{
+                                    <dl>
+                                        <dt><a href="~/User/Index/@an.User_ID">@an.UserInfo.User_NickName</a></dt>
+                                        <dd>
+                                            <p>@an.A_Content</p>
+                                        </dd>
+                                    </dl>
+                                    <ol>
+                                        @{
+                    if (Common.UserInfo == null)
+                    {
+                        <li class="question_border"><a href="javascript:;" class="like" data-id="@an.A_ID|15"><span>赞同 @an.A_Likes</span></a></li>
+                                            <li><a href="javascript:;" class="notlike" data-id="@an.A_ID|19"><span>反对 @an.A_NotLikes</span></a></li>
+                    }
+                    else
+                    {
+                        if (Common.IsLike(Common.UserInfo.User_ID, an.A_ID, 15))
+                        {
+                            <li class="question_border"><a href="javascript:;" class="like" data-id="@an.A_ID|15"><span class="class_like">赞同 @an.A_Likes</span></a></li>
+                                            <li style="display:none;"><a href="javascript:;" class="notlike" data-id="@an.A_ID|19"><span>反对 @an.A_NotLikes</span></a></li>
+                        }
+                        else if (Common.IsNotLike(Common.UserInfo.User_ID, an.A_ID, 19))
+                        {
+                            <li class="question_border" style="display:none;"><a href="javascript:;" class="like" data-id="@an.A_ID|15"><span class="class_like">赞同 @an.A_Likes</span></a></li>
+                                            <li><a href="javascript:;" class="notlike" data-id="@an.A_ID|19"><span class="class_notlike">反对 @an.A_NotLikes</span></a></li>
+                        }
+                        else
+                        {
+                            <li class="question_border"><a href="javascript:;" class="like" data-id="@an.A_ID|15"><span>赞同 @an.A_Likes</span></a></li>
+                                            <li><a href="javascript:;" class="notlike" data-id="@an.A_ID|19"><span>反对 @an.A_NotLikes</span></a></li>
+                        }
+                    }
+                    <li><a href="javascript:;" class="notes_answer" data-id="@(Model.Q_ID)|@(an.A_ID)">@(new Question().GetAnswerOfAnswerNum(Model.Q_ID, an.A_ID))  个回复</a></li>
+                                        }
+                                    </ol>
+                                }
+                            </div>
+
+                    List<Answers> list = new Question().GetAnswerOfAnswer(Model.Q_ID, an.A_ID);
+                    if (list != null && list.Count > 0)
+                    {
+                        foreach (Answers a in list)
+                        {
+                            <div id="question_comment">
+                                <a href="~/User/Index/@a.User_ID"><img src="~/images/userImg/@(a.User_ID).png" /></a>
+                                <h1><a style="margin-left:20px;" href="~/User/Index/@a.User_ID">@a.UserInfo.User_NickName</a></h1>
+                                <p>@a.A_Content</p>
+                                <a style="display:block; margin:10px 0 0 58px;" class="notes_answer" href="javascript:;" data-id="@(Model.Q_ID)|@(an.A_ID)">回复</a>
+                            </div>
+                        }
+                    }
+
+                    <div id="question_particulars_content_bottom_form">
+                        <a href="~/User/Index/@Common.UserInfo.User_ID"><img src="~/images/userImg/@(Common.UserInfo.User_ID).png" /></a>
+                        <h5>@Model.UserInfo.User_NickName</h5>
+                        <form>
+                            <textarea rows="3" cols="70" id="answercontent"></textarea>
+                            <input class="question_particulars_content_bottom_form_no" type="button" value="取消" />
+                            <input id="submit_questionanswerofanswer" class="question_particulars_content_bottom_form_yes" type="button" value="确定">
+                        </form>
+                    </div>
+                        }
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <div class="question_particulars_r fr">
+        <a style="color:#fff;" class="question_particulars_r_submit" href="/Question">我要提问</a>
+        <span>相关问题</span>
+        @if (ViewBag.RelevantQuestion == null || ViewBag.RelevantQuestion.Count <= 0)
+        {
+            <div id="content-null">
+                <p>没有相关信息</p>
+            </div>
+        }
+        else
+        {
+            <ul>
+                @foreach (Questions q in ViewBag.RelevantQuestion)
+                {
+                    <li>
+                        <a href="/Question/des/@q.Q_ID">
+                            @if (q.Q_Title.Length > 20)
+                            { @Html.Raw(q.Q_Title.Substring(0, 20) + "...");
+                            }
+                            else
+                            { @Html.Raw(q.Q_Title);
+                            }
+                        </a><span>@(new Question().GetAnswerNum(q.Q_ID)) 个回答</span>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+@section Page{
+    @{
+        int question_id = Model.Q_ID;
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="/Question/des/@question_id">首页</a>
+                    <a class="page" href="/Question/des/@question_id/page_@(ViewBag.CurrentPageIndex-1)">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="/Question/des/@question_id/page_@i" class="page_action">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Question/des/@question_id/page_@i">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="/Question/des/@question_id/page_@startIndex" class="page_action">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="/Question/des/@question_id/page_@startIndex">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+                @*for (int j = startIndex; j <= 5; j++)
+                    {
+                        <a href="/Question/des/@question_id/@j">@j</a>
+                    }
+                    for (int k = pageNum - 5 + 1; k <= pageNum; k++)
+                    {
+                        <a href="/Question/des/@question_id/@k">@k</a>
+                    }*@
+            }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a class="page" href="/Question/des/@question_id/page_@(ViewBag.CurrentPageIndex+1)">下一页</a>
+                    <a href="/Question/des/@question_id/page_@ViewBag.pageNum">尾页</a>
+                }
+            </div>
+        }
+    }
+}

@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model ZZULIWeb.UserInfo
+@using ZZULIWeb.Models
+<script src="~/Scripts/personinfo.js"></script>
+@section Nav{
+    <ul class="person_content_ul">
+        <li><a href="/User/Index/@Model.User_ID">主页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Course/@Model.User_ID">课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Question/@Model.User_ID">问题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Note/@Model.User_ID">笔记&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li><a href="/User/Follow/@Model.User_ID">我的关注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        <li class="person_action"><a href="/User/PersonInfo/@Model.User_ID">个人资料&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+    </ul>
+}
+
+
+<div class="person_content">
+    <div class="person">
+        <div class="person_data">
+            <p><em>个人资料</em><a href="#">编辑</a></p>
+            <form class="form1">
+                <h4>编辑个人信息<a href="#">X</a></h4>
+                昵称:&nbsp;&nbsp;&nbsp;<input class="person_data_txt" type="text" value="@Model.User_NickName" /><br />
+                姓名:&nbsp;&nbsp;&nbsp;<input class="person_data_txt" type="text" value="鲁毫辉" /><br />
+                性别:&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="gender" id="a" checked="checked" /><label for="a">&nbsp;&nbsp;男</label>&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="gender" id="b" /><label for="b">&nbsp;&nbsp;女</label><br />
+
+                邮箱:&nbsp;&nbsp;&nbsp;<input class="person_data_txt" type="text" value="1111111111@qq.com" /><br />
+                学院:&nbsp;&nbsp;&nbsp;
+                <select>
+                    <option>计算机与通信工程学院</option>
+                    <option>经济与管理学院</option>
+                    <option>政法法学</option>
+                    <option>软件学院</option>
+                    <option>食工学院</option>
+                    <option>物理学院</option>
+                </select><br />
+                专业:&nbsp;&nbsp;&nbsp;
+                <select>
+                    <option>软件工程</option>
+                    <option>3G</option>
+                    <option>嵌入式</option>
+                    <option>网络工程</option>
+                    <option>电子信息技术</option>
+                    <option>信息工程</option>
+                </select><br />
+                入学年份:&nbsp;&nbsp;&nbsp;
+                <select style="width:170px;">
+                    <option>2010</option>
+                    <option>2011</option>
+                    <option>2012</option>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                </select><br />
+                <input class="ok" type="button" value="确定" />
+                <input class="no" type="button" value="取消" />
+            </form>
+            <form class="form2">
+                <h3>修改密码<a href="#">X</a></h3>
+                输入原始密码:&nbsp;&nbsp;&nbsp;<input class="one" type="text" value="输入密码" /><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;输入新密码:&nbsp;&nbsp;<input type="text" value="输入密码" /><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;确认新密码:&nbsp;&nbsp;<input type="text" value="再次输入密码" /><br />
+                <input id="ok" type="button" value="确定" />
+                <input id="no" type="button" value="取消" />
+            </form>
+            <ul>
+                <li>
+                    <span>昵称</span>
+                    <font>@Model.User_NickName</font>
+                </li>
+                <li>
+                    <span>账号</span>
+                    <font>@Model.User_Account</font>
+                </li>
+                <li>
+                    <span>密码</span>
+                    <font>已设置<a href="#">修改</a></font>
+                </li>
+                <hr />
+                <li>
+                    <span>性别</span>
+                    <font>@if (Model.User_Gender == null)
+                    { @Html.Raw("未设置");
+                    }
+                    else
+                    { @Html.Raw(Model.User_Gender);
+                    }</font>
+                </li>
+                <li>
+                    <span>邮箱</span>
+                    <font>@if (Model.User_Email == "")
+                    { @Html.Raw("未设置");
+                    }
+                    else
+                    { @Html.Raw(Model.User_Email);
+                    }</font>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

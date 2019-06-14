@@ -1,0 +1,246 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNote.cshtml";
+}
+@model ZZULIWeb.Notes
+@using ZZULIWeb.Models
+@section Bundle{
+    @Styles.Render("~/notedes_css")
+    @Scripts.Render("~/notedes_js")
+}
+
+
+<div class="notes_particulars_content">
+    <div class="notes_particulars_content_top">
+        @*<h6><a href="#">手记&nbsp;&nbsp;&nbsp;\</a>内容的名字</h6>*@
+        <h1>@Model.N_Title</h1>
+        <ul>
+            <li>@Common.GetTimeStringToNow(@Model.N_Time)</li>
+            <li>浏览 @Model.N_PageViews</li>
+            <li>评论 @(new Note().GetNoteCommentNum(@Model.N_ID))</li>
+        </ul>
+
+
+
+        <p>
+
+            @Html.Raw(Model.N_Content_Style)
+
+        </p>
+
+
+
+
+        <ol>
+            <li><span>标签</span></li>
+            @foreach (Navigations n in ViewBag.TagList)
+            {
+                <li><a href="~/Search/s?StrSearch=@HttpUtility.UrlEncode(n.Nav_Name)">@n.Nav_Name</a></li>
+            }
+        </ol>
+    </div>
+
+    <div class="notes_particulars_content_middle">
+        @*<div class="notes_particulars_content_middle_img">
+            <img src="~/images/userImg/@(Model.User_ID).png" />
+            <h2>@Model.
+            .User_NickName</h2>
+        </div>*@
+        <form id="submitform" data-id="@(Model.N_ID)">
+            @if (Common.UserInfo != null)
+            {
+                <img src="~/images/userImg/@(Common.UserInfo.User_ID).png" />
+            }
+            <textarea id="content"></textarea>
+            <input type="button" class="submit_notecomment" value="发表评论" />
+        </form>
+        @*<div id="sample" style="margin-left:50px;">
+                <div id="myArea1" style="width: 1100px; height: 200px; border: 1px solid #000;">
+
+                </div>
+                <script>
+                    var area1, area2;
+
+                    function toggleArea1() {
+                        if (!area1) {
+                            area1 = new nicEditor({ fullPanel: true }).panelInstance('myArea1', { hasPanel: true });
+                        } else {
+                            area1.removeInstance('myArea1');
+                            area1 = null;
+                        }
+                    }
+                    bkLib.onDomLoaded(function () { toggleArea1(); });
+                </script>
+            </div>*@
+        <a href="javascript:;" class="submitdata_comment_nottarget" data-id="@(Model.N_ID)|31">评论</a>
+    </div>
+    <!--赞、踩、收藏-->
+    <div style="width:1200px; height:150px; margin-top:50px; text-align:center;">
+        @if (Common.UserInfo == null)
+        {
+            <ol>
+                <li><a href="javascript:;" class="like" data-id="@(Model.N_ID)|16"><span class="zan1">顶 @Model.N_Likes</span><img class="zan" src="~/images/index/zan.png" /></a></li>
+                <li>
+                    <a href="javascript:;" class="notlike" data-id="@(Model.N_ID)|20"><span class="zan1">踩 @Model.N_NotLikes</span><img class="zan" src="~/images/index/zan.png" /></a>
+                </li>
+                <li><a href="javascript:;" class="collect" data-id="@(Model.N_ID)|10"><span class="zan1">收藏 @Model.N_CollectNum</span><img class="zan" src="~/images/index/zan.png" /></a></li>
+            </ol>
+        }
+        else
+        {
+            <ol>
+                @if (Common.IsLike(Common.UserInfo.User_ID, Model.N_ID, 16))
+                {
+                    <li><a href="javascript:;" class="like" data-id="@(Model.N_ID)|16"><span class="zan1 class_like">顶 @Model.N_Likes</span><img class="zan" src="~/images/index/zan.png" /></a></li>
+    <li style="display:none;">
+        <a href="javascript:;" class="notlike" data-id="@(Model.N_ID)|20"><span class="zan1">踩 @Model.N_NotLikes</span><img class="zan" src="~/images/index/zan.png" /></a>
+    </li>
+                }
+                else if (Common.IsNotLike(Common.UserInfo.User_ID, Model.N_ID, 20))
+                {
+                    <li style="display:none;"><a href="javascript:;" class="like" data-id="@(Model.N_ID)|16"><span class="zan1">顶 @Model.N_Likes</span><img class="zan" src="~/images/index/zan.png" /></a></li>
+                    <li>
+                        <a href="javascript:;" class="notlike" data-id="@(Model.N_ID)|20"><span class="zan1 class_notlike">踩 @Model.N_NotLikes</span><img class="zan" src="~/images/index/zan.png" /></a>
+                    </li>
+                }
+                else
+                {
+                    <li><a href="javascript:;" class="like" data-id="@(Model.N_ID)|16"><span class="zan1">顶 @Model.N_Likes</span><img class="zan" src="~/images/index/zan.png" /></a></li>
+                    <li><a href="javascript:;" class="notlike" data-id="@(Model.N_ID)|20"><span class="zan1">踩 @Model.N_NotLikes</span><img class="zan" src="~/images/index/zan.png" /></a></li>
+                }
+                @if (Common.IsCollect(Common.UserInfo.User_ID, Model.N_ID, 10))
+                {
+                    <li><a href="javascript:;" class="collect" data-id="@(Model.N_ID)|10"><span class="zan1 class_collect">收藏 @Model.N_CollectNum</span><img class="zan" src="~/images/index/zan.png" /></a></li>
+                }
+                else
+                {
+                    <li>
+                        <a href="javascript:;" class="collect" data-id="@(Model.N_ID)|10"><span class="zan1">收藏 @Model.N_CollectNum</span><img class="zan" src="~/images/index/zan.png" /></a>
+                    </li>
+                }
+            </ol>
+        }
+    </div>
+    <!--评论-->
+    <div class="notes_particulars_content_bottom">
+        @if (ViewBag.CommentList == null)
+        {
+            <div id="content-null">
+                <p>该笔记还没有评论</p>
+            </div>
+        }
+        else
+        {
+            <ul>
+                @foreach (NotesComments nc in ViewBag.CommentList)
+                {
+                    <li>
+                        <img src="~/images/userImg/@(nc.UserInfo.User_ID).png" />
+                        <div>
+                            <h4><a href="/User/Index/@nc.User_ID">@nc.UserInfo.User_NickName</a></h4>
+                            <p>@nc.NC_Content</p>
+                            <ol>
+                                <li><span>@Common.GetTimeStringToNow(@nc.NC_Time)</span></li>
+                                @if (Common.UserInfo == null)
+                                {
+                                    <li><a href="javascript:;" class="like" data-id="@(nc.NC_ID)|17"><span>赞同 @nc.NC_Likes</span></a></li>
+                                }
+                                else
+                                {
+                                    if (Common.IsLike(Common.UserInfo.User_ID, nc.NC_ID, 17))
+                                    {
+                                        <li><a href="javascript:;" class="like" data-id="@(nc.NC_ID)|17"><span class="class_like">赞同 @nc.NC_Likes</span></a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="javascript:;" class="like" data-id="@(nc.NC_ID)|17"><span>赞同 @nc.NC_Likes</span></a></li>
+                                    }
+                                }
+                            </ol>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+
+    </div>
+</div>
+
+@section Page{
+    @{
+        int note_id = Model.N_ID;
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="/Note/n/@note_id">首页</a>
+                    <a class="page" href="/Note/n/@note_id/page_@(ViewBag.CurrentPageIndex-1)">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="/Note/n/@note_id/page_@i" class="page_action">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Note/n/@note_id/page_@i">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="/Note/n/@note_id/page_@startIndex" class="page_action">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="/Note/n/@note_id/page_@startIndex">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+                @*for (int j = startIndex; j <= 5; j++)
+                    {
+                        <a href="/Note/n/@note_id/@j">@j</a>
+                    }
+                    for (int k = pageNum - 5 + 1; k <= pageNum; k++)
+                    {
+                        <a href="/Note/n/@note_id/@k">@k</a>
+                    }*@
+            }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a class="page" href="/Note/n/@note_id/page_@(ViewBag.CurrentPageIndex+1)">下一页</a>
+                    <a href="/Note/n/@note_id/page_@ViewBag.pageNum">尾页</a>
+                }
+            </div>
+        }
+    }
+}

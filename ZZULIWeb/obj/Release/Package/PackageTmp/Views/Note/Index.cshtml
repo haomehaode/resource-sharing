@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNote.cshtml";
+}
+@section Bundle{
+    @Styles.Render("~/notesave_css")
+    @Scripts.Render("~/notesave_js")
+}
+@*<link rel="stylesheet" type="text/css" href="~/Content/wangEditor.min.css" />*@
+@*<script type="text/javascript" src="wangEditor-2.1.23/wangEditor-2.1.23/dist/jsb/jquery-1.10.2.min.js"></script>*@
+@*<script type="text/javascript" src="~/Scripts/wangEditor.min.js"></script>*@
+<script type="text/javascript">
+    $(function () {
+        var editor = new wangEditor('div1');
+        editor.create();
+    });
+
+</script>
+<style type="text/css">
+    #div1 {
+        width: 100%;
+        height: 200px;
+    }
+</style>
+
+<div id="question_submit_content">
+    <div class="question_submit_content_l fl">
+        <div>
+            <h1>发布手记</h1>
+            <form class="form1">
+                <input type="text" id="title" value="" />
+            </form>
+            <span id="title_length_warning">
+
+            </span>
+                <div id="div1" style="width:1200px;margin-top:50px;">
+                    @*<p id="p_note">dskfjsdkf </p>*@
+                </div>
+
+
+            <form class="form2">
+                @foreach (Navigations nav in ViewBag.TagsList)
+                {
+                    <input type="button" class="tags" value="@nav.Nav_Name" />
+                }
+                @*<input type="button" class="tags" value="窗体应用程序" />*@
+                @*<input style="height:30px; line-height:26px;" class="submit_note" type="submit" value="提交" data-id="35" />*@
+            </form>
+            <a class="submit_note" href="#" style="width: 100px;height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: red;
+    color: #fff;
+    display: block;
+    position: relative;
+    left: 800px;">提交</a>
+
+        </div>
+    </div>
+</div>

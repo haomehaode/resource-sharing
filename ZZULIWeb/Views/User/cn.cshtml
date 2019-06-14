@@ -1,0 +1,116 @@
+﻿@{
+    Layout = null;
+}
+
+<script src="~/Scripts/ajax_goto.js"></script>
+@using ZZULIWeb.Models
+
+<ul class="person2">
+    @{
+        if (ViewBag.CourseNoteList == null || ViewBag.CourseNoteList.Count <= 0)
+        {
+            <div id="content-null">
+                <p>还没有发布过课程笔记哦！</p>
+            </div>
+        }
+        else
+        {
+            foreach (CoursesNotes cn in ViewBag.CourseNoteList)
+            {
+                <li>
+                    <ul class="person2_ul">
+                        <li>@(cn.CN_Time.Year)年@(cn.CN_Time.Month)月</li>
+                        <li>来自:<a href="~/Course/Section/@cn.Cou_ID">@cn.Courses.Cou_Name </a>&nbsp;&nbsp;<a href="~/learn/v/@cn.Mov_ID">@(cn.Move.Chap_ID)-@(cn.Move.Section_ID) @(cn.Move.Section_Name)</a></li>
+                        @*<li>html</li>
+                            <li>第一张</li>
+                            <li>div标签</li>*@
+                    </ul>
+                    <p>
+                        @if (cn.CN_Content.Length > 40)
+                        { @Html.Raw(cn.CN_Content.Substring(0, 40) + "...");
+                        }
+                        else
+                        { @Html.Raw(cn.CN_Content);
+                        }
+                </p>
+                <ol>
+                    <li class="fr">推荐 @cn.CN_Likes</li>
+                </ol>
+            </li>
+            }
+        }
+    }
+</ul>   
+
+
+
+    @{
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+            {
+            <span class="page_disabled">首页</span>
+            <span class="page_disabled">上一页</span>
+            }
+            else
+            {
+            <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|0" id="ucn">首页</a>
+            <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|(@ViewBag.CurrentPageIndex - 1)" id="ucn">上一页</a>
+            }
+                <p>
+                    @{
+        if (ViewBag.pageNum <= 10)
+        {
+            for (int i = 1; i <= ViewBag.pageNum; i++)
+            {
+                if (ViewBag.CurrentPageIndex == i)
+                {
+                <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@i" id="ucn">@i</a>
+                }
+                else
+                {
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@i" id="ucn">@i</a>
+                }
+            }
+        }
+        else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+        {
+            int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+            if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+            {
+                startIndex = ViewBag.pageNum - 9;
+            }
+            int n = 1;
+            while (n <= 10)
+            {
+                if (ViewBag.CurrentPageIndex == startIndex)
+                {
+                <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@startIndex" id="ucn">@startIndex</a>
+                }
+                else
+                {
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@startIndex" id="ucn">@startIndex</a>
+                }
+                startIndex++;
+                n++;
+            }
+        }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+            {
+            <span class="page_disabled">下一页</span>
+            <span class="page_disabled">尾页</span>
+            }
+            else
+            {
+            <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@(ViewBag.CurrentPageIndex + 1)" id="ucn">下一页</a>
+            <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@ViewBag.pageNum" id="ucn">尾页</a>
+            }
+            </div>
+        }
+    }
+
+

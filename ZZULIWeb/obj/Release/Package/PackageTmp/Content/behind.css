@@ -1,0 +1,158 @@
+@charset "utf-8";
+/* CSS Document */
+body,h1,h2,h3,h4,h5,h6,p,dl,dd,ul,ol,pre,form,input,textarea,th,td,select{margin:0;padding:0;}
+em{font-style:normal}
+li{list-style:none}
+a{text-decoration:none;}
+img{border:none; vertical-align:top;}
+table{border-collapse:collapse;}
+textarea{ resize:none;overflow:auto;}
+body { font-size:12px; font-family: Arial, sans-serif; color:#000000;}
+
+.a{position: absolute;}
+.r{position: relative;}
+.fl{float:left;}
+.fr{float:right;}
+
+/*登录页面*/
+.behind_register{
+	width:500px;
+	margin:200px auto;
+	box-shadow:2px 2px 4px #999;
+}
+.behind_register h3{
+	height:50px;
+	background:#999;
+	font:26px/50px bolder;
+	text-align:center;
+}
+.behind_register div{
+	height:170px;
+	padding:20px;
+	background:#CCC;
+}
+.behind_register div img{
+	width:100px;
+	height:100px;
+	float:left;
+	margin:24px 0 0 20px;
+}
+.behind_register div form{
+	width:280px;
+	height:170px;
+	float:right;
+	padding-left:20px;
+	font-size:14px;
+}
+.behind_register div form h4{
+	height:30px;
+	font:16px/30px red;
+	text-align:center;
+}
+.behind_register div form input{
+	margin:0 0 10px 0;
+	border:1px solid #000;
+	outline:none;
+	background:#fff;
+	height:24px;
+	line-height:24px;
+}
+.behind_register div form input[type="button"]{
+	width:70px;
+	height:30px;
+	line-height:20px;
+	cursor:pointer;
+	margin-left:20px;
+	font-size:14px;
+	background:#999;
+}
+.behind_register div form p{
+	display:inline-block;
+	width:50px;
+	height:26px;
+	font:14px;
+	line-height:26px;
+	text-align:center;
+	float:right;
+	margin-right:76px;
+	border:1px solid #000;
+}
+
+
+/*首页页面*/
+.behind_index{
+	width:1200px;
+	margin:0 auto;
+}
+.index_top,.index_footer{
+	height:40px;
+	line-height:40px;
+	font-size:22px;
+	text-align:center;
+	background:#ccc;
+	border-radius:20px;
+}
+.index_footer{
+	clear:both;
+}
+.index_content{
+	width:1200px;
+	clear:both;
+}
+.index_l{
+	width:180px;
+	float:left;
+	font-size:16px;
+}
+.index_l ul{
+	display:none;
+	text-align:center;
+	padding:0 10px;
+}
+.index_l h1{
+	height:40px;
+	line-height:40px;
+	font-size:20px;
+	border-radius:30px;
+	background:#CCC;
+	text-align:center;
+	margin-bottom:10px;
+	cursor:pointer;
+}
+.index_l ul li{
+	height:30px;
+	line-height:30px;
+	border-radius:20px;
+	margin-bottom:10px;
+	cursor:pointer;
+	background:#CCC;
+}
+.index_r{
+	width:940px;
+	float:right;
+	background:#999;
+	border-radius:30px;
+	padding:30px;
+	height:800px;
+}
+.index_r table{
+	font-size:18px;
+}
+.index_r table td a{
+	font-size:12px;
+	color:#FC6;
+}
+.index_r table td{
+	text-align:center;
+}
+#list .active { 
+	background:url(img/ico2.gif) no-repeat 5px center #FF9;
+}
+#list ul .hover { 
+	background:#6FF;
+}
+/*登录页面*/
+/*登录页面*/
+/*登录页面*/
+/*登录页面*/
+/*登录页面*/

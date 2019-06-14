@@ -1,0 +1,39 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.recommend_content{
+	width:1200px;
+	margin:0 auto;
+	clear:both;
+	padding-top:20px;
+}
+.recommend_content_ul{
+	width:150px;
+	float:left;
+}
+.recommend_content_ul a{
+	display:block;
+	height:60px;
+	line-height:60px;
+	font-size:20px;
+	text-align:center;
+	margin-top:60px;
+	background:#ccc;
+	border-radius:30px 0 30px 0;
+	color:#000;
+}
+.recommend_content_ul a:hover,#recommend_active{
+	color:#fff;
+	background:#808080;
+}
+.recommend_content_div{
+	width:1000px;
+	float:right;
+	border-top:1px solid #808080;
+}
+.recommend_content_div li{
+	border:none;
+	border-bottom:1px solid #666;
+}
+.recommend_content_div li li{
+	border:none;
+}

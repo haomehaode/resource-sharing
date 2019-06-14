@@ -1,0 +1,97 @@
+/* CSS Document */
+#class_top{width:100%; height:200px; background:url(../images/class/top.png) no-repeat; opacity:0.7;}
+.class_top_div{width:1200px; height:200px; margin:0 auto;}
+.class_top_div ul{height:50px; line-height:50px; font-size:16px; color:rgba(255,255,255,.5); float:left; margin-left:-562px;}
+.class_top_div ul li{float:left; }
+.class_top_div ul a{color:rgba(255,255,255,.5); padding:0 8px;}
+.class_top_div ul a:hover{color:#FFFFFF;}
+.class_top_div h1{clear:both; height:50px; line-height:50px; color:#FFFFFF; padding:0;}
+.class_top_a{float:left; width:140px; height:50px; background:#00b43c; line-height:50px; text-align:center; color:#FFFFFF; font-size:18px; font-weight:bold; margin-top:30px; }
+.class_top_div ol{width:1200px; height:50px; margin-top:30px;}
+.class_top_div ol li{width:68px; height:50px; line-height:25px; float:left; text-align:center; padding:0 4px; border-right:1px solid #FFFFFF; font-size:14px; padding: 0 20px; color:#FFFFFF;}
+
+
+
+#class_content{width:1200px; margin:0 auto; clear:both; padding-top:40px}
+.class_content_l{width:800px; float:left;}
+.class_content_l p{width:800px; line-height:30px; font-size:14px; color:#4d555d; overflow:hidden; padding-left:20px;}
+.class_content_l_ul{height:80px; line-height:80px; padding-left:10px;}
+.class_content_l_ul li{width:80px; float:left;}
+.class_content_l_ul a{font-size:16px; color:#938384; padding:0 10px; font-weight:bold;}
+.class_content_l_ul a:hover,.class_active a{color:#20FC55;}
+#list { width:800px; border-bottom:1px solid #d1d6da; display:block;}
+#list h2 { height:60px; line-height:60px; font-size:20px; color:#07111b;  border-top:1px solid #d1d6da; background:url(../images/class/dit.png) no-repeat 16px 20px; text-indent:64px; cursor:pointer;}
+#list ul { display:block; padding-bottom:20px;}
+#list ul li { width:740px; margin-left:60px; height:40px; line-height:40px; text-indent:10px; background:#f3f5f7; margin-bottom:10px; color:#787d82; cursor:pointer;}
+#list ul .hover { background:#4d555d; color:#FFFFFF; }
+
+#list1{display:block;}
+/*.class_content_l2{border-top:1px solid #d1d6da; padding-top:20px; }*/
+.class_content_l2 img{float:left; margin:20px;}
+.class_content_l2 form{float:left; margin-top:20px;}
+.class_content_l2 form textarea{left:10px; top:-30px; line-height:30px; font-size:14px; color:#000000; font-weight:800; text-align:left;}
+.class_content_l2 form input{ width:100px; height:40px; background:#07F11A; left:700px; top:-20px; outline:none; border:none; color:#FFFFFF;}
+.class_content_l2 ul{border-top:1px solid #d1d6da; /*margin-top:130px;*/ clear:both;}
+.class_content_l2 li{width:800px; border-bottom:1px solid #d1d6da; float:left; padding-bottom:20px;}
+.class_content_l2 li img{float:left; margin:20px;} 
+.class_content_l2 dl{float:left; margin-top:16px; padding-right:10px;}
+.class_content_l2 dt a{font-size:14px; color:#4d555d; font-weight:bold; height:30px; line-height:30px;}
+.class_content_l2 dt a:hover{color:#000000;}
+.class_content_l2 dd p{line-height:24px; padding-left:0; width:700px; font-size:14px; color:#303538; margin-bottom:10px;}
+.class_content_l2 dd span,.class_content_l2 dd a{font-size:12px; color:#93999f;}
+.class_content_l2 dd a{margin-left:20px;}
+.class_content_l2 dd a strong{float:right; background:url(../images/class/shou.png) no-repeat; height:20px; line-height:20px; padding-left:30px;}
+.class_content_l2 dd a:hover{color:red;}
+.class_content_l2 textarea{text-indent:10px;}
+
+#list2{display:block;}
+.class_content_l3 h4{font-size:18px; line-height:30px;}
+.class_content_l3 ul{border-top:1px solid #d1d6da; clear:both;}
+.class_content_l3 li{width:800px; border-bottom:1px solid #d1d6da; float:left; padding-bottom:20px;}
+.class_content_l3 li img{float:left; margin:20px;} 
+.class_content_l3 dl{float:left; margin-top:16px; padding-right:10px;}
+.class_content_l3 dt a{font-size:14px; color:#4d555d; font-weight:bold; height:30px; line-height:30px;}
+.class_content_l3 dt a:hover{color:#000000;}
+.class_content_l3 dd p{line-height:24px; padding-left:0; width:700px; font-size:14px; color:#303538; margin-bottom:10px;}
+.class_content_l3 dd span,.class_content_l3 dd a{font-size:12px; color:#93999f;}
+.class_content_l3 dd a{margin-left:20px;}
+.class_content_l3 dd a strong{float:right; margin-left:10px;}
+.class_content_l3 dd a font{margin-left:4px;}
+.class_content_l3 dd a:hover{opacity:0.8;}
+
+
+#list3{display:block;}
+.class_content_l4 ul{border-top:1px solid #d1d6da; clear:both;}
+.class_content_l4 li{width:800px; border-bottom:1px solid #d1d6da; float:left; padding-bottom:20px;}
+.class_content_l4 li img{float:left; margin:20px;} 
+.class_content_l4 dl{float:left; margin-top:16px; padding-right:10px;}
+.class_content_l4 dt a{font-size:14px; color:#4d555d; font-weight:bold; height:30px; line-height:30px;}
+.class_content_l4 dt a:hover{color:#000000;}
+.class_content_l4 dd p{line-height:24px; padding-left:0; width:700px; font-size:14px; color:#303538; margin-bottom:10px;}
+.class_content_l4 dd span,.class_content_l4 dd a{font-size:12px; color:#93999f;}
+.class_content_l4 dd a{margin-left:20px;}
+.class_content_l4 dd div{float:right; line-height:20px; height:20px;}
+.class_content_l4 dd a strong{float:right; background:url(../images/class/shou.png) no-repeat; height:20px; line-height:20px; padding-left:30px;}
+.class_content_l4 dd a:hover{opacity:0.8;}
+
+
+.class_content_r{width:300px; float:right; overflow:hidden;} 
+.class_content_r div{padding:0 20px 30px 20px; border-bottom:1px solid #d1d6da;}
+.class_content_r h4{font-size:16px; color:#000000; margin-bottom:20px;}
+.class_content_r p{text-indent:30px; padding-right:40px; font-size:12px; color:#000000; background:url(../images/class/file.png) no-repeat 0 4px; margin-bottom:10px;}
+.class_content_r a{color:#00b33b; margin-left:70px; outline:none; border:none; }
+.class_content_r a:hover{color:#000000;}
+.class_content_r dl{padding-left:20px; margin-top:30px; border-bottom:1px solid #d1d6da; padding-bottom:50px; margin-bottom:30px;}
+.class_content_r dt{ margin-bottom:10px;font-size:16px; color:#000000; font-weight:bold;}
+.class_content_r dd{font-size:12px; color:#8e557d; height:30px; line-height:30px;}
+.class_content_r ul{padding-left:20px; overflow:hidden; border-bottom:1px solid #d1d6da; padding-bottom:20px;}
+.class_content_r ul li{float:left;}
+.class_content_r ul a{font-size:12px; color:#8e557d; height:30px; line-height:30px; margin-left:0; display:block; width:300px;}
+.class_content_r ul a:hover{color:#000000;} 
+.class_tuijian{margin-left:20px;}
+
+
+
+
+
+

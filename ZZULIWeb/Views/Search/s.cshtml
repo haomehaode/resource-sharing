@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutSearch.cshtml";
+}
+@section Bundle{
+    @Styles.Render("~/search_css")
+    @Scripts.Render("~/search_js")
+}
+@using ZZULIWeb.Models
+<div class="search">
+    <div>
+        <form method="get" action="/Search/s">
+            <input class="search_txt" name="StrSearch" type="text" value="@ViewBag.CurrentSearch" />
+            <input class="search_btn" type="submit" value="搜索" />
+        </form>
+        <ul>
+            <li>热门搜索:</li>
+            @{
+                foreach (string str in ViewBag.HostSearch)
+                {
+                    <li><a href="/Search/s?StrSearch=@HttpUtility.UrlEncode(str)">@str</a></li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+<div class="search_content">
+    <div class="search_content_top">
+        <ul>
+            <li id="search_content_top_active"><a href="/Search/s?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">全站</a></li>
+            <li><a href="/Search/c?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">课程</a></li>
+            <li><a href="/Search/q?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">问题</a></li>
+            <li><a href="/Search/n?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">笔记</a></li>
+        </ul>
+        <p>共找到 @ViewBag.ResultNum 个相关的结果</p>
+    </div>
+    @if (ViewBag.CurrentSearch == "")
+    {
+        <div id="content-null">
+            <p>请在搜索框中输入搜索内容</p>
+        </div>
+    }
+    else if (ViewBag.ResultNum == 0)
+    {
+        <div id="content-null">
+            <p>没有与“@ViewBag.CurrentSearch”相关的结果</p>
+        </div>
+    }
+    else
+    {
+        <div class="search_content_class">
+            <h1>课程</h1>
+            <ul>
+                @foreach (Courses course in ViewBag.CourseList)
+                {
+                    <li>
+                        <img src="~/images/course/@(course.Cou_ID).png" />
+                        <div>
+                            <h2><span>[课程]</span><a href="~/Course/Section/@course.Cou_ID">@course.Cou_Name</a></h2>
+                            <font>
+                                @foreach (Navigations nav in Common.GetFrom_Course(course.Cou_ID))
+                                {<em>@nav.Nav_Name</em>}<em>@course.Cou_StudyNum 人学习</em>
+                            </font>
+                            <p>
+                                课程简介： @if (course.Cou_Describe.Length > 20)
+                                { @Html.Raw(course.Cou_Describe.Substring(0, 20));
+                                }
+                                else
+                                {@Html.Raw(course.Cou_Describe);
+                                }
+                            </p>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <a href="/Search/c?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)" class="search_more">更多课程搜索的结果</a>
+        </div>
+
+        <div class="search_content_question">
+            <h1>问题</h1>
+            <ul>
+                @foreach (Questions question in ViewBag.QuestionList)
+                {
+                    <li>
+                        <h3><a href="~/Question/des/@question.Q_ID">@question.Q_Title</a></h3>
+                        @{
+                    Answers an = new Question().GetHotestAnswer(question.Q_ID);
+                    if (an == null)
+                    {
+                        <div>
+                            <p>@if (question.Q_Content.Length > 40)
+                            {@Html.Raw(question.Q_Content.Substring(0, 40) + "...");
+                            }
+                            else
+                            {@Html.Raw(question.Q_Content);
+                            }</p>
+                        </div>
+                    }
+                    else
+                    {
+                    <h4><a href="~/User/Index/@an.User_ID">@an.UserInfo.User_NickName</a>的回答</h4>
+                            <p>
+                                @if (an.A_Content.Length > 20)
+                                {@Html.Raw(an.A_Content.Substring(0, 20) + "...");
+                                }
+                                else
+                                {@Html.Raw(an.A_Content);
+                                }
+                            </p>
+                    }
+                        }
+                    </li>
+                }
+            </ul>
+            <a href="/Search/q?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)" class="search_more">更多问题搜索的结果</a>
+        </div>
+
+        <div class="search_content_notes">
+            <h1>笔记</h1>
+            <ul>
+                @foreach (Notes note in ViewBag.NoteList)
+                {
+                    <li>
+                        <a href="#">@note.N_Title</a>
+                        <p>
+                            @if (note.N_Content.Length > 20)
+                            {@Html.Raw(note.N_Content.Substring(0, 20) + "...");
+                            }
+                            else
+                            {@Html.Raw(note.N_Content);
+                            }
+                        </p>
+                    </li>
+                }
+            </ul>
+            <a href="/Search/n?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)" class="search_more">更多笔记搜索的结果</a>
+        </div>
+    }
+</div>

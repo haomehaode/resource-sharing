@@ -1,0 +1,1599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZZULIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Answers">
+    <Key>
+      <PropertyRef Name="A_ID" />
+    </Key>
+    <Property Name="A_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Q_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="A_Target" Type="Int32" Nullable="false" />
+    <Property Name="A_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="A_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="A_Likes" Type="Int32" Nullable="false" />
+    <Property Name="A_NotLikes" Type="Int32" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_Questios_Answers" FromRole="Answers" ToRole="Questions" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_Answers" FromRole="Answers" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="Cou_ID" />
+    </Key>
+    <Property Name="Cou_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cou_Name" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cou_Describe" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cou_Hot" Type="Decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="Cou_Likes" Type="Int32" Nullable="false" />
+    <Property Name="Cou_NotLikes" Type="Int32" Nullable="false" />
+    <Property Name="Cou_StudyNum" Type="Int32" Nullable="false" />
+    <Property Name="Cou_CollectNum" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Cou_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Is_UpLoading" Type="Boolean" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserLearnCoursesRecord" Relationship="Self.FK_Course_UserLearnCoursesRecord" FromRole="Courses" ToRole="UserLearnCoursesRecord" />
+    <NavigationProperty Name="CoursesComment" Relationship="Self.FK_Courses_Coursescomment" FromRole="Courses" ToRole="CoursesComment" />
+    <NavigationProperty Name="CoursesNotes" Relationship="Self.FK_Courses_CoursesNotes" FromRole="Courses" ToRole="CoursesNotes" />
+    <NavigationProperty Name="CoursesQuestions" Relationship="Self.FK_Courses_CoursesQuestions" FromRole="Courses" ToRole="CoursesQuestions" />
+    <NavigationProperty Name="Move" Relationship="Self.FK_Courses_Move" FromRole="Courses" ToRole="Move" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_Courses_UserInfo" FromRole="Courses" ToRole="UserInfo" />
+    <NavigationProperty Name="UserLearnSectionRecord" Relationship="Self.FK_Courses_UserLearnSectionRecord" FromRole="Courses" ToRole="UserLearnSectionRecord" />
+  </EntityType>
+  <EntityType Name="CoursesAnswers">
+    <Key>
+      <PropertyRef Name="CA_ID" />
+    </Key>
+    <Property Name="CA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CQ_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="CA_Target" Type="Int32" Nullable="false" />
+    <Property Name="CA_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CA_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CA_Likes" Type="Int32" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CoursesQuestions" Relationship="Self.FK_CoursesQuestions_CoursesAnswers" FromRole="CoursesAnswers" ToRole="CoursesQuestions" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_CoursesAnswers" FromRole="CoursesAnswers" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="CoursesComment">
+    <Key>
+      <PropertyRef Name="CCom_ID" />
+    </Key>
+    <Property Name="CCom_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cou_ID" Type="Int32" Nullable="false" />
+    <Property Name="Mov_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="CCom_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CCom_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CCom_Likes" Type="Int32" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_Coursescomment" FromRole="CoursesComment" ToRole="Courses" />
+    <NavigationProperty Name="Move" Relationship="Self.FK_Move_CoursesComment" FromRole="CoursesComment" ToRole="Move" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_CoursesComment" FromRole="CoursesComment" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="CoursesNotes">
+    <Key>
+      <PropertyRef Name="CN_ID" />
+    </Key>
+    <Property Name="CN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cou_ID" Type="Int32" Nullable="false" />
+    <Property Name="Mov_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="CN_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CN_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CN_Likes" Type="Int32" Nullable="false" />
+    <Property Name="CN_Hot" Type="Decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_CoursesNotes" FromRole="CoursesNotes" ToRole="Courses" />
+    <NavigationProperty Name="Move" Relationship="Self.FK_Move_CoursesNotes" FromRole="CoursesNotes" ToRole="Move" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_CoursesNotes" FromRole="CoursesNotes" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="CoursesQuestions">
+    <Key>
+      <PropertyRef Name="CQ_ID" />
+    </Key>
+    <Property Name="CQ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cou_ID" Type="Int32" Nullable="false" />
+    <Property Name="Mov_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="CQ_Title" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CQ_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CQ_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CQ_Hot" Type="Decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="CQ_PageView" Type="Int32" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_CoursesQuestions" FromRole="CoursesQuestions" ToRole="Courses" />
+    <NavigationProperty Name="CoursesAnswers" Relationship="Self.FK_CoursesQuestions_CoursesAnswers" FromRole="CoursesQuestions" ToRole="CoursesAnswers" />
+    <NavigationProperty Name="Move" Relationship="Self.FK_Move_CoursesQuestions" FromRole="CoursesQuestions" ToRole="Move" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_CoursesQuestions" FromRole="CoursesQuestions" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Follow">
+    <Key>
+      <PropertyRef Name="F_ID" />
+    </Key>
+    <Property Name="F_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="F_Target" Type="Int32" Nullable="false" />
+    <Property Name="F_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_Follow" FromRole="Follow" ToRole="UserInfo" />
+    <NavigationProperty Name="UserInfo1" Relationship="Self.FK_UserInfo_Follow_2" FromRole="Follow" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Move">
+    <Key>
+      <PropertyRef Name="Mov_ID" />
+    </Key>
+    <Property Name="Mov_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cou_ID" Type="Int32" Nullable="false" />
+    <Property Name="Is_Chapter" Type="Boolean" Nullable="false" />
+    <Property Name="Chap_ID" Type="Int32" Nullable="false" />
+    <Property Name="Chap_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Section_ID" Type="Int32" />
+    <Property Name="Section_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_Move" FromRole="Move" ToRole="Courses" />
+    <NavigationProperty Name="CoursesComment" Relationship="Self.FK_Move_CoursesComment" FromRole="Move" ToRole="CoursesComment" />
+    <NavigationProperty Name="CoursesNotes" Relationship="Self.FK_Move_CoursesNotes" FromRole="Move" ToRole="CoursesNotes" />
+    <NavigationProperty Name="CoursesQuestions" Relationship="Self.FK_Move_CoursesQuestions" FromRole="Move" ToRole="CoursesQuestions" />
+    <NavigationProperty Name="UserLearnSectionRecord" Relationship="Self.FK_Move_UserLearnSectionRecord" FromRole="Move" ToRole="UserLearnSectionRecord" />
+  </EntityType>
+  <EntityType Name="Navigations">
+    <Key>
+      <PropertyRef Name="Nav_ID" />
+    </Key>
+    <Property Name="Nav_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nav_Name" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ower_ID" Type="Int32" Nullable="false" />
+    <Property Name="Nav_FollowNum" Type="Int32" Nullable="false" />
+    <Property Name="Nav_Describe" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nav_Type" Type="Int32" Nullable="false" />
+    <Property Name="Nav_UseNum" Type="Int32" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NewAry" Relationship="Self.FK__NewAry__Nav_ID__7ADC2F5E" FromRole="Navigations" ToRole="NewAry" />
+    <NavigationProperty Name="UserAry" Relationship="Self.FK__UserAry__Nav_ID__770B9E7A" FromRole="Navigations" ToRole="UserAry" />
+    <NavigationProperty Name="ObjectTags" Relationship="Self.FK_Navigations_ObjectTags" FromRole="Navigations" ToRole="ObjectTags" />
+    <NavigationProperty Name="UserFollows" Relationship="Self.FK_Navigations_UserFollow" FromRole="Navigations" ToRole="UserFollows" />
+  </EntityType>
+  <EntityType Name="NewAry">
+    <Key>
+      <PropertyRef Name="Arr_ID" />
+    </Key>
+    <Property Name="Arr_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Nav_ID" Type="Int32" Nullable="false" />
+    <Property Name="Ary_Sco" Type="Double" />
+    <NavigationProperty Name="Navigations" Relationship="Self.FK__NewAry__Nav_ID__7ADC2F5E" FromRole="NewAry" ToRole="Navigations" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__NewAry__User_ID__79E80B25" FromRole="NewAry" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Notes">
+    <Key>
+      <PropertyRef Name="N_ID" />
+    </Key>
+    <Property Name="N_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="N_Title" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="N_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="N_Content_Style" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="N_IsOriginal" Type="Boolean" Nullable="false" />
+    <Property Name="N_PageViews" Type="Int32" Nullable="false" />
+    <Property Name="N_Likes" Type="Int32" Nullable="false" />
+    <Property Name="N_NotLikes" Type="Int32" Nullable="false" />
+    <Property Name="N_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="N_Hot" Type="Decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="N_CollectNum" Type="Int32" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NotesComments" Relationship="Self.FK_Notes_NotesComments" FromRole="Notes" ToRole="NotesComments" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_Notes" FromRole="Notes" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="NotesComments">
+    <Key>
+      <PropertyRef Name="NC_ID" />
+    </Key>
+    <Property Name="NC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="N_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="NC_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NC_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NC_Likes" Type="Int32" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK_Notes_NotesComments" FromRole="NotesComments" ToRole="Notes" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_NotesComments" FromRole="NotesComments" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="ObjectTags">
+    <Key>
+      <PropertyRef Name="OT_ID" />
+    </Key>
+    <Property Name="OT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Obj_Type" Type="Int32" Nullable="false" />
+    <Property Name="Obj_ID" Type="Int32" Nullable="false" />
+    <Property Name="Obj_TagID" Type="Int32" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Navigations" Relationship="Self.FK_Navigations_ObjectTags" FromRole="ObjectTags" ToRole="Navigations" />
+    <NavigationProperty Name="OptionType" Relationship="Self.FK_OptionType_ObjectTags" FromRole="ObjectTags" ToRole="OptionType" />
+  </EntityType>
+  <EntityType Name="OptionType">
+    <Key>
+      <PropertyRef Name="OT_ID" />
+    </Key>
+    <Property Name="OT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OT_Name" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ObjectTags" Relationship="Self.FK_OptionType_ObjectTags" FromRole="OptionType" ToRole="ObjectTags" />
+    <NavigationProperty Name="UserCollections" Relationship="Self.FK_OptionType_UserCollections" FromRole="OptionType" ToRole="UserCollections" />
+    <NavigationProperty Name="UserLikes" Relationship="Self.FK_OptionType_UserLikes" FromRole="OptionType" ToRole="UserLikes" />
+    <NavigationProperty Name="UserNotLikes" Relationship="Self.FK_OptionType_UserNotLikes" FromRole="OptionType" ToRole="UserNotLikes" />
+    <NavigationProperty Name="UserPageViews" Relationship="Self.FK_OptionType_UserPageViews" FromRole="OptionType" ToRole="UserPageViews" />
+    <NavigationProperty Name="UserSearchRecord" Relationship="Self.FK_OptionType_UserSearchRecord" FromRole="OptionType" ToRole="UserSearchRecord" />
+  </EntityType>
+  <EntityType Name="Partition">
+    <Key>
+      <PropertyRef Name="Part_ID" />
+    </Key>
+    <Property Name="Part_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Part_Name" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Part_Url" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Priority">
+    <Key>
+      <PropertyRef Name="Pri_ID" />
+    </Key>
+    <Property Name="Pri_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pri_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_Priority_UserInfo_1" FromRole="Priority" ToRole="UserInfo" />
+    <NavigationProperty Name="UserInfo1" Relationship="Self.FK_Priority_UserInfo_2" FromRole="Priority" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="Q_ID" />
+    </Key>
+    <Property Name="Q_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Q_Title" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Q_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Q_Content_Style" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Q_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Q_Hot" Type="Decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="Q_PageViews" Type="Int32" Nullable="false" />
+    <Property Name="Q_CollectNum" Type="Int32" Nullable="false" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Questios_Answers" FromRole="Questions" ToRole="Answers" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_Questions" FromRole="Questions" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="ResourceComment">
+    <Key>
+      <PropertyRef Name="RC_ID" />
+    </Key>
+    <Property Name="RC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="RC_Target" Type="Int32" Nullable="false" />
+    <Property Name="RC_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RC_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ResourceInfo" Relationship="Self.FK_ResourceComment" FromRole="ResourceComment" ToRole="ResourceInfo" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_ResourceComment" FromRole="ResourceComment" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="ResourceInfo">
+    <Key>
+      <PropertyRef Name="R_ID" />
+    </Key>
+    <Property Name="R_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="R_Type" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="R_Name" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="R_Content" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="R_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="R_DownLoad" Type="Int32" Nullable="false" />
+    <Property Name="R_Hot" Type="Decimal" Precision="18" Scale="7" Nullable="false" />
+    <NavigationProperty Name="ResourceComment" Relationship="Self.FK_ResourceComment" FromRole="ResourceInfo" ToRole="ResourceComment" />
+    <NavigationProperty Name="ResourceType" Relationship="Self.FK_ResourceType_ResourceInfo" FromRole="ResourceInfo" ToRole="ResourceType" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_ResourceInfo" FromRole="ResourceInfo" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="ResourceType">
+    <Key>
+      <PropertyRef Name="RT_ID" />
+    </Key>
+    <Property Name="RT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RT_Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ResourceInfo" Relationship="Self.FK_ResourceType_ResourceInfo" FromRole="ResourceType" ToRole="ResourceInfo" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserAry">
+    <Key>
+      <PropertyRef Name="Arr_ID" />
+    </Key>
+    <Property Name="Arr_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Nav_ID" Type="Int32" Nullable="false" />
+    <Property Name="Ary_Sco" Type="Int32" />
+    <NavigationProperty Name="Navigations" Relationship="Self.FK__UserAry__Nav_ID__770B9E7A" FromRole="UserAry" ToRole="Navigations" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__UserAry__User_ID__76177A41" FromRole="UserAry" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserCollections">
+    <Key>
+      <PropertyRef Name="UC_ID" />
+    </Key>
+    <Property Name="UC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UC_Type" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="UC_Target" Type="Int32" Nullable="false" />
+    <Property Name="UC_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OptionType" Relationship="Self.FK_OptionType_UserCollections" FromRole="UserCollections" ToRole="OptionType" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_UserCollections" FromRole="UserCollections" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserFollows">
+    <Key>
+      <PropertyRef Name="UF_ID" />
+    </Key>
+    <Property Name="UF_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Nav_ID" Type="Int32" Nullable="false" />
+    <Property Name="UF_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Navigations" Relationship="Self.FK_Navigations_UserFollow" FromRole="UserFollows" ToRole="Navigations" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_UserFollow" FromRole="UserFollows" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Account" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Password" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_NickName" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Priority" Type="Int32" Nullable="false" />
+    <Property Name="User_Priority_Now" Type="Int32" Nullable="false" />
+    <Property Name="User_LastLoginTime" Type="DateTime" Precision="3" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="User_Email" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="User_Gender" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_UserInfo_Answers" FromRole="UserInfo" ToRole="Answers" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_UserInfo" FromRole="UserInfo" ToRole="Courses" />
+    <NavigationProperty Name="CoursesAnswers" Relationship="Self.FK_UserInfo_CoursesAnswers" FromRole="UserInfo" ToRole="CoursesAnswers" />
+    <NavigationProperty Name="CoursesComment" Relationship="Self.FK_UserInfo_CoursesComment" FromRole="UserInfo" ToRole="CoursesComment" />
+    <NavigationProperty Name="CoursesNotes" Relationship="Self.FK_UserInfo_CoursesNotes" FromRole="UserInfo" ToRole="CoursesNotes" />
+    <NavigationProperty Name="CoursesQuestions" Relationship="Self.FK_UserInfo_CoursesQuestions" FromRole="UserInfo" ToRole="CoursesQuestions" />
+    <NavigationProperty Name="Follow" Relationship="Self.FK_UserInfo_Follow" FromRole="UserInfo" ToRole="Follow" />
+    <NavigationProperty Name="Follow1" Relationship="Self.FK_UserInfo_Follow_2" FromRole="UserInfo" ToRole="Follow" />
+    <NavigationProperty Name="NewAry" Relationship="Self.FK__NewAry__User_ID__79E80B25" FromRole="UserInfo" ToRole="NewAry" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK_UserInfo_Notes" FromRole="UserInfo" ToRole="Notes" />
+    <NavigationProperty Name="NotesComments" Relationship="Self.FK_UserInfo_NotesComments" FromRole="UserInfo" ToRole="NotesComments" />
+    <NavigationProperty Name="Priority" Relationship="Self.FK_Priority_UserInfo_1" FromRole="UserInfo" ToRole="Priority" />
+    <NavigationProperty Name="Priority1" Relationship="Self.FK_Priority_UserInfo_2" FromRole="UserInfo" ToRole="Priority" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_UserInfo_Questions" FromRole="UserInfo" ToRole="Questions" />
+    <NavigationProperty Name="ResourceComment" Relationship="Self.FK_UserInfo_ResourceComment" FromRole="UserInfo" ToRole="ResourceComment" />
+    <NavigationProperty Name="ResourceInfo" Relationship="Self.FK_UserInfo_ResourceInfo" FromRole="UserInfo" ToRole="ResourceInfo" />
+    <NavigationProperty Name="UserAry" Relationship="Self.FK__UserAry__User_ID__76177A41" FromRole="UserInfo" ToRole="UserAry" />
+    <NavigationProperty Name="UserCollections" Relationship="Self.FK_UserInfo_UserCollections" FromRole="UserInfo" ToRole="UserCollections" />
+    <NavigationProperty Name="UserFollows" Relationship="Self.FK_UserInfo_UserFollow" FromRole="UserInfo" ToRole="UserFollows" />
+    <NavigationProperty Name="UserLearnCoursesRecord" Relationship="Self.FK_UserInfo_UserLearnCoursesRecord" FromRole="UserInfo" ToRole="UserLearnCoursesRecord" />
+    <NavigationProperty Name="UserLearnSectionRecord" Relationship="Self.FK_UserInfo_UserLearnSectionRecord" FromRole="UserInfo" ToRole="UserLearnSectionRecord" />
+    <NavigationProperty Name="UserLikes" Relationship="Self.FK_UserInfo_UserLikesAndNotLikes" FromRole="UserInfo" ToRole="UserLikes" />
+    <NavigationProperty Name="UserNotLikes" Relationship="Self.FK_UserInfo_UserNotLikes" FromRole="UserInfo" ToRole="UserNotLikes" />
+    <NavigationProperty Name="UserPageViews" Relationship="Self.FK_UserInfo_UserPageViews" FromRole="UserInfo" ToRole="UserPageViews" />
+    <NavigationProperty Name="UserSearchRecord" Relationship="Self.FK_UserInfo_UserSearchRecord" FromRole="UserInfo" ToRole="UserSearchRecord" />
+  </EntityType>
+  <EntityType Name="UserLearnCoursesRecord">
+    <Key>
+      <PropertyRef Name="ULC_ID" />
+    </Key>
+    <Property Name="ULC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Cou_ID" Type="Int32" Nullable="false" />
+    <Property Name="ULC_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Course_UserLearnCoursesRecord" FromRole="UserLearnCoursesRecord" ToRole="Courses" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_UserLearnCoursesRecord" FromRole="UserLearnCoursesRecord" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserLearnSectionRecord">
+    <Key>
+      <PropertyRef Name="ULSR_ID" />
+    </Key>
+    <Property Name="ULSR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Cou_ID" Type="Int32" Nullable="false" />
+    <Property Name="Mov_ID" Type="Int32" Nullable="false" />
+    <Property Name="Is_Finish" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_UserLearnSectionRecord" FromRole="UserLearnSectionRecord" ToRole="Courses" />
+    <NavigationProperty Name="Move" Relationship="Self.FK_Move_UserLearnSectionRecord" FromRole="UserLearnSectionRecord" ToRole="Move" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_UserLearnSectionRecord" FromRole="UserLearnSectionRecord" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserLikes">
+    <Key>
+      <PropertyRef Name="UL_ID" />
+    </Key>
+    <Property Name="UL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UL_Type" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="UL_Target" Type="Int32" Nullable="false" />
+    <Property Name="UL_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OptionType" Relationship="Self.FK_OptionType_UserLikes" FromRole="UserLikes" ToRole="OptionType" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_UserLikesAndNotLikes" FromRole="UserLikes" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserNotLikes">
+    <Key>
+      <PropertyRef Name="UNL_ID" />
+    </Key>
+    <Property Name="UNL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UNL_Type" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="UNL_Target" Type="Int32" Nullable="false" />
+    <Property Name="UNL_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OptionType" Relationship="Self.FK_OptionType_UserNotLikes" FromRole="UserNotLikes" ToRole="OptionType" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_UserNotLikes" FromRole="UserNotLikes" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserPageViews">
+    <Key>
+      <PropertyRef Name="UPV_ID" />
+    </Key>
+    <Property Name="UPV_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UPV_Type" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" />
+    <Property Name="UPV_Target" Type="Int32" Nullable="false" />
+    <Property Name="UPV_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OptionType" Relationship="Self.FK_OptionType_UserPageViews" FromRole="UserPageViews" ToRole="OptionType" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_UserPageViews" FromRole="UserPageViews" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserSearchRecord">
+    <Key>
+      <PropertyRef Name="USR_ID" />
+    </Key>
+    <Property Name="USR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USR_Type" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="USR_Content" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="USR_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Extends1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Extends4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OptionType" Relationship="Self.FK_OptionType_UserSearchRecord" FromRole="UserSearchRecord" ToRole="OptionType" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_UserSearchRecord" FromRole="UserSearchRecord" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="View_All">
+    <Key>
+      <PropertyRef Name="标签" />
+      <PropertyRef Name="操作类型" />
+    </Key>
+    <Property Name="用户编号" Type="Int32" />
+    <Property Name="标签" Type="Int32" Nullable="false" />
+    <Property Name="操作类型" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_learn">
+    <Key>
+      <PropertyRef Name="用户编号" />
+      <PropertyRef Name="标签" />
+    </Key>
+    <Property Name="用户编号" Type="Int32" Nullable="false" />
+    <Property Name="标签" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Questios_Answers">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="Q_ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="Q_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Answers">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_UserLearnCoursesRecord">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="UserLearnCoursesRecord" Type="Self.UserLearnCoursesRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="UserLearnCoursesRecord">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_Coursescomment">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="CoursesComment" Type="Self.CoursesComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="CoursesComment">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_CoursesNotes">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="CoursesNotes" Type="Self.CoursesNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="CoursesNotes">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_CoursesQuestions">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="CoursesQuestions" Type="Self.CoursesQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="CoursesQuestions">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_Move">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="Move" Type="Self.Move" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="Move">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_UserLearnSectionRecord">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="UserLearnSectionRecord" Type="Self.UserLearnSectionRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="UserLearnSectionRecord">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CoursesQuestions_CoursesAnswers">
+    <End Role="CoursesQuestions" Type="Self.CoursesQuestions" Multiplicity="1" />
+    <End Role="CoursesAnswers" Type="Self.CoursesAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoursesQuestions">
+        <PropertyRef Name="CQ_ID" />
+      </Principal>
+      <Dependent Role="CoursesAnswers">
+        <PropertyRef Name="CQ_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_CoursesAnswers">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="CoursesAnswers" Type="Self.CoursesAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CoursesAnswers">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Move_CoursesComment">
+    <End Role="Move" Type="Self.Move" Multiplicity="1" />
+    <End Role="CoursesComment" Type="Self.CoursesComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Move">
+        <PropertyRef Name="Mov_ID" />
+      </Principal>
+      <Dependent Role="CoursesComment">
+        <PropertyRef Name="Mov_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_CoursesComment">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="CoursesComment" Type="Self.CoursesComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CoursesComment">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Move_CoursesNotes">
+    <End Role="Move" Type="Self.Move" Multiplicity="1" />
+    <End Role="CoursesNotes" Type="Self.CoursesNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Move">
+        <PropertyRef Name="Mov_ID" />
+      </Principal>
+      <Dependent Role="CoursesNotes">
+        <PropertyRef Name="Mov_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_CoursesNotes">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="CoursesNotes" Type="Self.CoursesNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CoursesNotes">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Move_CoursesQuestions">
+    <End Role="Move" Type="Self.Move" Multiplicity="1" />
+    <End Role="CoursesQuestions" Type="Self.CoursesQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Move">
+        <PropertyRef Name="Mov_ID" />
+      </Principal>
+      <Dependent Role="CoursesQuestions">
+        <PropertyRef Name="Mov_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_CoursesQuestions">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="CoursesQuestions" Type="Self.CoursesQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CoursesQuestions">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Follow">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Follow" Type="Self.Follow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Follow">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Follow_2">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Follow" Type="Self.Follow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Follow">
+        <PropertyRef Name="F_Target" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Move_UserLearnSectionRecord">
+    <End Role="Move" Type="Self.Move" Multiplicity="1" />
+    <End Role="UserLearnSectionRecord" Type="Self.UserLearnSectionRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Move">
+        <PropertyRef Name="Mov_ID" />
+      </Principal>
+      <Dependent Role="UserLearnSectionRecord">
+        <PropertyRef Name="Mov_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NewAry__Nav_ID__7ADC2F5E">
+    <End Role="Navigations" Type="Self.Navigations" Multiplicity="1" />
+    <End Role="NewAry" Type="Self.NewAry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Navigations">
+        <PropertyRef Name="Nav_ID" />
+      </Principal>
+      <Dependent Role="NewAry">
+        <PropertyRef Name="Nav_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAry__Nav_ID__770B9E7A">
+    <End Role="Navigations" Type="Self.Navigations" Multiplicity="1" />
+    <End Role="UserAry" Type="Self.UserAry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Navigations">
+        <PropertyRef Name="Nav_ID" />
+      </Principal>
+      <Dependent Role="UserAry">
+        <PropertyRef Name="Nav_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Navigations_ObjectTags">
+    <End Role="Navigations" Type="Self.Navigations" Multiplicity="1" />
+    <End Role="ObjectTags" Type="Self.ObjectTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Navigations">
+        <PropertyRef Name="Nav_ID" />
+      </Principal>
+      <Dependent Role="ObjectTags">
+        <PropertyRef Name="Obj_TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Navigations_UserFollow">
+    <End Role="Navigations" Type="Self.Navigations" Multiplicity="1" />
+    <End Role="UserFollows" Type="Self.UserFollows" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Navigations">
+        <PropertyRef Name="Nav_ID" />
+      </Principal>
+      <Dependent Role="UserFollows">
+        <PropertyRef Name="Nav_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NewAry__User_ID__79E80B25">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="NewAry" Type="Self.NewAry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="NewAry">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notes_NotesComments">
+    <End Role="Notes" Type="Self.Notes" Multiplicity="1" />
+    <End Role="NotesComments" Type="Self.NotesComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Notes">
+        <PropertyRef Name="N_ID" />
+      </Principal>
+      <Dependent Role="NotesComments">
+        <PropertyRef Name="N_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Notes">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_NotesComments">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="NotesComments" Type="Self.NotesComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="NotesComments">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OptionType_ObjectTags">
+    <End Role="OptionType" Type="Self.OptionType" Multiplicity="1" />
+    <End Role="ObjectTags" Type="Self.ObjectTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OptionType">
+        <PropertyRef Name="OT_ID" />
+      </Principal>
+      <Dependent Role="ObjectTags">
+        <PropertyRef Name="Obj_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OptionType_UserCollections">
+    <End Role="OptionType" Type="Self.OptionType" Multiplicity="1" />
+    <End Role="UserCollections" Type="Self.UserCollections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OptionType">
+        <PropertyRef Name="OT_ID" />
+      </Principal>
+      <Dependent Role="UserCollections">
+        <PropertyRef Name="UC_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OptionType_UserLikes">
+    <End Role="OptionType" Type="Self.OptionType" Multiplicity="1" />
+    <End Role="UserLikes" Type="Self.UserLikes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OptionType">
+        <PropertyRef Name="OT_ID" />
+      </Principal>
+      <Dependent Role="UserLikes">
+        <PropertyRef Name="UL_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OptionType_UserNotLikes">
+    <End Role="OptionType" Type="Self.OptionType" Multiplicity="1" />
+    <End Role="UserNotLikes" Type="Self.UserNotLikes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OptionType">
+        <PropertyRef Name="OT_ID" />
+      </Principal>
+      <Dependent Role="UserNotLikes">
+        <PropertyRef Name="UNL_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OptionType_UserPageViews">
+    <End Role="OptionType" Type="Self.OptionType" Multiplicity="1" />
+    <End Role="UserPageViews" Type="Self.UserPageViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OptionType">
+        <PropertyRef Name="OT_ID" />
+      </Principal>
+      <Dependent Role="UserPageViews">
+        <PropertyRef Name="UPV_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OptionType_UserSearchRecord">
+    <End Role="OptionType" Type="Self.OptionType" Multiplicity="1" />
+    <End Role="UserSearchRecord" Type="Self.UserSearchRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OptionType">
+        <PropertyRef Name="OT_ID" />
+      </Principal>
+      <Dependent Role="UserSearchRecord">
+        <PropertyRef Name="USR_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Priority_UserInfo_1">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="Pri_ID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="User_Priority" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Priority_UserInfo_2">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="Pri_ID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="User_Priority_Now" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Questions">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceComment">
+    <End Role="ResourceInfo" Type="Self.ResourceInfo" Multiplicity="1" />
+    <End Role="ResourceComment" Type="Self.ResourceComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceInfo">
+        <PropertyRef Name="R_ID" />
+      </Principal>
+      <Dependent Role="ResourceComment">
+        <PropertyRef Name="RC_Target" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_ResourceComment">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="ResourceComment" Type="Self.ResourceComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="ResourceComment">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceType_ResourceInfo">
+    <End Role="ResourceType" Type="Self.ResourceType" Multiplicity="1" />
+    <End Role="ResourceInfo" Type="Self.ResourceInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceType">
+        <PropertyRef Name="RT_ID" />
+      </Principal>
+      <Dependent Role="ResourceInfo">
+        <PropertyRef Name="R_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_ResourceInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="ResourceInfo" Type="Self.ResourceInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="ResourceInfo">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAry__User_ID__76177A41">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserAry" Type="Self.UserAry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserAry">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserCollections">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserCollections" Type="Self.UserCollections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserCollections">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserFollow">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserFollows" Type="Self.UserFollows" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserFollows">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserLearnCoursesRecord">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserLearnCoursesRecord" Type="Self.UserLearnCoursesRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserLearnCoursesRecord">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserLearnSectionRecord">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserLearnSectionRecord" Type="Self.UserLearnSectionRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserLearnSectionRecord">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserLikesAndNotLikes">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserLikes" Type="Self.UserLikes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserLikes">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserNotLikes">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserNotLikes" Type="Self.UserNotLikes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserNotLikes">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserPageViews">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="UserPageViews" Type="Self.UserPageViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserPageViews">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserSearchRecord">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserSearchRecord" Type="Self.UserSearchRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserSearchRecord">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZZULIEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answers" EntityType="Self.Answers" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" />
+    <EntitySet Name="CoursesAnswers" EntityType="Self.CoursesAnswers" />
+    <EntitySet Name="CoursesComment" EntityType="Self.CoursesComment" />
+    <EntitySet Name="CoursesNotes" EntityType="Self.CoursesNotes" />
+    <EntitySet Name="CoursesQuestions" EntityType="Self.CoursesQuestions" />
+    <EntitySet Name="Follow" EntityType="Self.Follow" />
+    <EntitySet Name="Move" EntityType="Self.Move" />
+    <EntitySet Name="Navigations" EntityType="Self.Navigations" />
+    <EntitySet Name="NewAry" EntityType="Self.NewAry" />
+    <EntitySet Name="Notes" EntityType="Self.Notes" />
+    <EntitySet Name="NotesComments" EntityType="Self.NotesComments" />
+    <EntitySet Name="ObjectTags" EntityType="Self.ObjectTags" />
+    <EntitySet Name="OptionType" EntityType="Self.OptionType" />
+    <EntitySet Name="Partition" EntityType="Self.Partition" />
+    <EntitySet Name="Priority" EntityType="Self.Priority" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" />
+    <EntitySet Name="ResourceComment" EntityType="Self.ResourceComment" />
+    <EntitySet Name="ResourceInfo" EntityType="Self.ResourceInfo" />
+    <EntitySet Name="ResourceType" EntityType="Self.ResourceType" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="UserAry" EntityType="Self.UserAry" />
+    <EntitySet Name="UserCollections" EntityType="Self.UserCollections" />
+    <EntitySet Name="UserFollows" EntityType="Self.UserFollows" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+    <EntitySet Name="UserLearnCoursesRecord" EntityType="Self.UserLearnCoursesRecord" />
+    <EntitySet Name="UserLearnSectionRecord" EntityType="Self.UserLearnSectionRecord" />
+    <EntitySet Name="UserLikes" EntityType="Self.UserLikes" />
+    <EntitySet Name="UserNotLikes" EntityType="Self.UserNotLikes" />
+    <EntitySet Name="UserPageViews" EntityType="Self.UserPageViews" />
+    <EntitySet Name="UserSearchRecord" EntityType="Self.UserSearchRecord" />
+    <EntitySet Name="View_All" EntityType="Self.View_All" />
+    <EntitySet Name="View_learn" EntityType="Self.View_learn" />
+    <AssociationSet Name="FK_Questios_Answers" Association="Self.FK_Questios_Answers">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Answers" Association="Self.FK_UserInfo_Answers">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_UserLearnCoursesRecord" Association="Self.FK_Course_UserLearnCoursesRecord">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="UserLearnCoursesRecord" EntitySet="UserLearnCoursesRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_Coursescomment" Association="Self.FK_Courses_Coursescomment">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CoursesComment" EntitySet="CoursesComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_CoursesNotes" Association="Self.FK_Courses_CoursesNotes">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CoursesNotes" EntitySet="CoursesNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_CoursesQuestions" Association="Self.FK_Courses_CoursesQuestions">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CoursesQuestions" EntitySet="CoursesQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_Move" Association="Self.FK_Courses_Move">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Move" EntitySet="Move" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_UserInfo" Association="Self.FK_Courses_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_UserLearnSectionRecord" Association="Self.FK_Courses_UserLearnSectionRecord">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="UserLearnSectionRecord" EntitySet="UserLearnSectionRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CoursesQuestions_CoursesAnswers" Association="Self.FK_CoursesQuestions_CoursesAnswers">
+      <End Role="CoursesQuestions" EntitySet="CoursesQuestions" />
+      <End Role="CoursesAnswers" EntitySet="CoursesAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_CoursesAnswers" Association="Self.FK_UserInfo_CoursesAnswers">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CoursesAnswers" EntitySet="CoursesAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Move_CoursesComment" Association="Self.FK_Move_CoursesComment">
+      <End Role="Move" EntitySet="Move" />
+      <End Role="CoursesComment" EntitySet="CoursesComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_CoursesComment" Association="Self.FK_UserInfo_CoursesComment">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CoursesComment" EntitySet="CoursesComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Move_CoursesNotes" Association="Self.FK_Move_CoursesNotes">
+      <End Role="Move" EntitySet="Move" />
+      <End Role="CoursesNotes" EntitySet="CoursesNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_CoursesNotes" Association="Self.FK_UserInfo_CoursesNotes">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CoursesNotes" EntitySet="CoursesNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Move_CoursesQuestions" Association="Self.FK_Move_CoursesQuestions">
+      <End Role="Move" EntitySet="Move" />
+      <End Role="CoursesQuestions" EntitySet="CoursesQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_CoursesQuestions" Association="Self.FK_UserInfo_CoursesQuestions">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CoursesQuestions" EntitySet="CoursesQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Follow" Association="Self.FK_UserInfo_Follow">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Follow" EntitySet="Follow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Follow_2" Association="Self.FK_UserInfo_Follow_2">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Follow" EntitySet="Follow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Move_UserLearnSectionRecord" Association="Self.FK_Move_UserLearnSectionRecord">
+      <End Role="Move" EntitySet="Move" />
+      <End Role="UserLearnSectionRecord" EntitySet="UserLearnSectionRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NewAry__Nav_ID__7ADC2F5E" Association="Self.FK__NewAry__Nav_ID__7ADC2F5E">
+      <End Role="Navigations" EntitySet="Navigations" />
+      <End Role="NewAry" EntitySet="NewAry" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAry__Nav_ID__770B9E7A" Association="Self.FK__UserAry__Nav_ID__770B9E7A">
+      <End Role="Navigations" EntitySet="Navigations" />
+      <End Role="UserAry" EntitySet="UserAry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Navigations_ObjectTags" Association="Self.FK_Navigations_ObjectTags">
+      <End Role="Navigations" EntitySet="Navigations" />
+      <End Role="ObjectTags" EntitySet="ObjectTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Navigations_UserFollow" Association="Self.FK_Navigations_UserFollow">
+      <End Role="Navigations" EntitySet="Navigations" />
+      <End Role="UserFollows" EntitySet="UserFollows" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NewAry__User_ID__79E80B25" Association="Self.FK__NewAry__User_ID__79E80B25">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="NewAry" EntitySet="NewAry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notes_NotesComments" Association="Self.FK_Notes_NotesComments">
+      <End Role="Notes" EntitySet="Notes" />
+      <End Role="NotesComments" EntitySet="NotesComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Notes" Association="Self.FK_UserInfo_Notes">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_NotesComments" Association="Self.FK_UserInfo_NotesComments">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="NotesComments" EntitySet="NotesComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OptionType_ObjectTags" Association="Self.FK_OptionType_ObjectTags">
+      <End Role="OptionType" EntitySet="OptionType" />
+      <End Role="ObjectTags" EntitySet="ObjectTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OptionType_UserCollections" Association="Self.FK_OptionType_UserCollections">
+      <End Role="OptionType" EntitySet="OptionType" />
+      <End Role="UserCollections" EntitySet="UserCollections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OptionType_UserLikes" Association="Self.FK_OptionType_UserLikes">
+      <End Role="OptionType" EntitySet="OptionType" />
+      <End Role="UserLikes" EntitySet="UserLikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OptionType_UserNotLikes" Association="Self.FK_OptionType_UserNotLikes">
+      <End Role="OptionType" EntitySet="OptionType" />
+      <End Role="UserNotLikes" EntitySet="UserNotLikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OptionType_UserPageViews" Association="Self.FK_OptionType_UserPageViews">
+      <End Role="OptionType" EntitySet="OptionType" />
+      <End Role="UserPageViews" EntitySet="UserPageViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OptionType_UserSearchRecord" Association="Self.FK_OptionType_UserSearchRecord">
+      <End Role="OptionType" EntitySet="OptionType" />
+      <End Role="UserSearchRecord" EntitySet="UserSearchRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Priority_UserInfo_1" Association="Self.FK_Priority_UserInfo_1">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Priority_UserInfo_2" Association="Self.FK_Priority_UserInfo_2">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Questions" Association="Self.FK_UserInfo_Questions">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceComment" Association="Self.FK_ResourceComment">
+      <End Role="ResourceInfo" EntitySet="ResourceInfo" />
+      <End Role="ResourceComment" EntitySet="ResourceComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_ResourceComment" Association="Self.FK_UserInfo_ResourceComment">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="ResourceComment" EntitySet="ResourceComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceType_ResourceInfo" Association="Self.FK_ResourceType_ResourceInfo">
+      <End Role="ResourceType" EntitySet="ResourceType" />
+      <End Role="ResourceInfo" EntitySet="ResourceInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_ResourceInfo" Association="Self.FK_UserInfo_ResourceInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="ResourceInfo" EntitySet="ResourceInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAry__User_ID__76177A41" Association="Self.FK__UserAry__User_ID__76177A41">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserAry" EntitySet="UserAry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserCollections" Association="Self.FK_UserInfo_UserCollections">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserCollections" EntitySet="UserCollections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserFollow" Association="Self.FK_UserInfo_UserFollow">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserFollows" EntitySet="UserFollows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserLearnCoursesRecord" Association="Self.FK_UserInfo_UserLearnCoursesRecord">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserLearnCoursesRecord" EntitySet="UserLearnCoursesRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserLearnSectionRecord" Association="Self.FK_UserInfo_UserLearnSectionRecord">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserLearnSectionRecord" EntitySet="UserLearnSectionRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserLikesAndNotLikes" Association="Self.FK_UserInfo_UserLikesAndNotLikes">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserLikes" EntitySet="UserLikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserNotLikes" Association="Self.FK_UserInfo_UserNotLikes">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserNotLikes" EntitySet="UserNotLikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserPageViews" Association="Self.FK_UserInfo_UserPageViews">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserPageViews" EntitySet="UserPageViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserSearchRecord" Association="Self.FK_UserInfo_UserSearchRecord">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserSearchRecord" EntitySet="UserSearchRecord" />
+    </AssociationSet>
+    <FunctionImport Name="PR_ALL" ReturnType="Collection(Int32)">
+      <Parameter Name="User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Nav_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PR_AllID" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="PR_CouID" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="PR_Learn" ReturnType="Collection(Int32)">
+      <Parameter Name="User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Nav_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PR_learnID" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="PR_NewAry">
+      <Parameter Name="User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Nav_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Ary_Sco" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="PR_SelAll" ReturnType="Collection(ZZULIModel.PR_SelAll_Result)">
+      <Parameter Name="User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Nav_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PR_SelectAll" ReturnType="Collection(ZZULIModel.PR_SelectAll_Result)" />
+    <FunctionImport Name="PR_UserAry">
+      <Parameter Name="User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Nav_ID" Mode="In" Type="Int32" />
+      <Parameter Name="Ary_Sco" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PR_UserID" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="SP_Account_IsExist">
+      <Parameter Name="Account" Mode="In" Type="String" />
+      <Parameter Name="IsExist" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetAllCourses" ReturnType="Collection(ZZULIModel.SP_GetAllCourses_Result)" />
+    <FunctionImport Name="SP_GetCatalogByCou_ID">
+      <Parameter Name="Cou_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetCourseCatalog_PageViewsINC">
+      <Parameter Name="Cou_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetCourses" ReturnType="Collection(ZZULIModel.SP_GetCourses_Result)" />
+    <FunctionImport Name="SP_GetCoursesTopN_OrderByHot" ReturnType="Collection(ZZULIModel.SP_GetCoursesTopN_OrderByHot_Result)">
+      <Parameter Name="Num" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetCoursesTopN_OrderByStudyNum" ReturnType="Collection(ZZULIModel.SP_GetCoursesTopN_OrderByStudyNum_Result)">
+      <Parameter Name="Num" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetFuncGroup" ReturnType="Collection(ZZULIModel.SP_GetFuncGroup_Result)" />
+    <FunctionImport Name="SP_GetNavigation" />
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ZZULIModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ZZULIModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Login_IsSuccess" ReturnType="Collection(ZZULIModel.SP_Login_IsSuccess_Result)">
+      <Parameter Name="Account" Mode="In" Type="String" />
+      <Parameter Name="Pwd" Mode="In" Type="String" />
+      <Parameter Name="IsSuccess" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateCourseHotByCou_ID">
+      <Parameter Name="Cou_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateCourseNoteHot">
+      <Parameter Name="N_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateCourseQuestionHot">
+      <Parameter Name="CQ_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateNoteHotByN_ID">
+      <Parameter Name="N_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateQuestionHotByQ_ID">
+      <Parameter Name="Q_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="PR_SelAll_Result">
+    <Property Type="Int32" Name="Arr_ID" Nullable="false" />
+    <Property Type="Int32" Name="User_ID" Nullable="false" />
+    <Property Type="Int32" Name="Nav_ID" Nullable="false" />
+    <Property Type="Int32" Name="Ary_Sco" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PR_SelectAll_Result">
+    <Property Type="Int32" Name="Arr_ID" Nullable="false" />
+    <Property Type="Int32" Name="User_ID" Nullable="false" />
+    <Property Type="Int32" Name="Nav_ID" Nullable="false" />
+    <Property Type="Int32" Name="Ary_Sco" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GetAllCourses_Result">
+    <Property Type="Int32" Name="Cou_ID" Nullable="false" />
+    <Property Type="String" Name="Cou_Name" Nullable="false" MaxLength="120" />
+    <Property Type="String" Name="Cou_Describe" Nullable="false" MaxLength="120" />
+    <Property Type="Decimal" Name="Cou_Hot" Nullable="false" Precision="18" Scale="7" />
+    <Property Type="Int32" Name="Cou_Likes" Nullable="false" />
+    <Property Type="Int32" Name="Cou_NotLikes" Nullable="false" />
+    <Property Type="Int32" Name="Cou_StudyNum" Nullable="false" />
+    <Property Type="Int32" Name="Cou_CollectNum" Nullable="false" />
+    <Property Type="Int32" Name="User_ID" Nullable="false" />
+    <Property Type="DateTime" Name="Cou_Time" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="Is_UpLoading" Nullable="false" />
+    <Property Type="String" Name="Extends1" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends2" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends3" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends4" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SP_GetCourses_Result">
+    <Property Type="Int32" Name="Cou_ID" Nullable="false" />
+    <Property Type="String" Name="Cou_Name" Nullable="false" MaxLength="120" />
+    <Property Type="String" Name="Cou_Describe" Nullable="false" MaxLength="120" />
+    <Property Type="Decimal" Name="Cou_Hot" Nullable="false" Precision="18" Scale="7" />
+    <Property Type="Int32" Name="Cou_Likes" Nullable="false" />
+    <Property Type="Int32" Name="Cou_NotLikes" Nullable="false" />
+    <Property Type="Int32" Name="Cou_StudyNum" Nullable="false" />
+    <Property Type="Int32" Name="Cou_CollectNum" Nullable="false" />
+    <Property Type="Int32" Name="User_ID" Nullable="false" />
+    <Property Type="DateTime" Name="Cou_Time" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="Is_UpLoading" Nullable="false" />
+    <Property Type="String" Name="Extends1" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends2" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends3" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends4" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SP_GetCoursesTopN_OrderByHot_Result">
+    <Property Type="Int32" Name="Cou_ID" Nullable="false" />
+    <Property Type="String" Name="Cou_Name" Nullable="false" MaxLength="120" />
+    <Property Type="String" Name="Cou_Describe" Nullable="false" MaxLength="120" />
+    <Property Type="Decimal" Name="Cou_Hot" Nullable="false" Precision="18" Scale="7" />
+    <Property Type="Int32" Name="Cou_Likes" Nullable="false" />
+    <Property Type="Int32" Name="Cou_NotLikes" Nullable="false" />
+    <Property Type="Int32" Name="Cou_StudyNum" Nullable="false" />
+    <Property Type="Int32" Name="Cou_CollectNum" Nullable="false" />
+    <Property Type="Int32" Name="User_ID" Nullable="false" />
+    <Property Type="DateTime" Name="Cou_Time" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="Is_UpLoading" Nullable="false" />
+    <Property Type="String" Name="Extends1" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends2" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends3" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends4" Nullable="true" MaxLength="10" />
+    <Property Type="Int64" Name="row" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GetCoursesTopN_OrderByStudyNum_Result">
+    <Property Type="Int32" Name="Cou_ID" Nullable="false" />
+    <Property Type="String" Name="Cou_Name" Nullable="false" MaxLength="120" />
+    <Property Type="String" Name="Cou_Describe" Nullable="false" MaxLength="120" />
+    <Property Type="Decimal" Name="Cou_Hot" Nullable="false" Precision="18" Scale="7" />
+    <Property Type="Int32" Name="Cou_Likes" Nullable="false" />
+    <Property Type="Int32" Name="Cou_NotLikes" Nullable="false" />
+    <Property Type="Int32" Name="Cou_StudyNum" Nullable="false" />
+    <Property Type="Int32" Name="Cou_CollectNum" Nullable="false" />
+    <Property Type="Int32" Name="User_ID" Nullable="false" />
+    <Property Type="DateTime" Name="Cou_Time" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="Is_UpLoading" Nullable="false" />
+    <Property Type="String" Name="Extends1" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends2" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends3" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends4" Nullable="true" MaxLength="10" />
+    <Property Type="Int64" Name="RowNum" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GetFuncGroup_Result">
+    <Property Type="Int32" Name="Part_ID" Nullable="false" />
+    <Property Type="String" Name="Part_Name" Nullable="false" MaxLength="16" />
+    <Property Type="String" Name="Part_Url" Nullable="false" MaxLength="120" />
+    <Property Type="String" Name="Extends1" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Extends2" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Extends3" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Extends4" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_Login_IsSuccess_Result">
+    <Property Type="Int32" Name="User_ID" Nullable="false" />
+    <Property Type="String" Name="User_Account" Nullable="false" MaxLength="16" />
+    <Property Type="String" Name="User_Password" Nullable="false" MaxLength="16" />
+    <Property Type="String" Name="User_NickName" Nullable="false" MaxLength="12" />
+    <Property Type="Int32" Name="User_Priority" Nullable="false" />
+    <Property Type="Int32" Name="User_Priority_Now" Nullable="false" />
+    <Property Type="DateTime" Name="User_LastLoginTime" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Extends1" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends2" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends3" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends4" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="32" />
+    <Property Type="String" Name="User_Gender" Nullable="true" MaxLength="2" />
+    <Property Type="Int32" Name="Pri_ID" Nullable="false" />
+    <Property Type="String" Name="Pri_Name" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Extends11" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends21" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends31" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Extends41" Nullable="true" MaxLength="10" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ZZULIModelStoreContainer" CdmEntityContainer="ZZULIEntities13">
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="ZZULIModel.Answers">
+        <MappingFragment StoreEntitySet="Answers">
+          <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+          <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="A_Target" ColumnName="A_Target" />
+          <ScalarProperty Name="A_Content" ColumnName="A_Content" />
+          <ScalarProperty Name="A_Time" ColumnName="A_Time" />
+          <ScalarProperty Name="A_Likes" ColumnName="A_Likes" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="ZZULIModel.Courses">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Cou_Name" ColumnName="Cou_Name" />
+          <ScalarProperty Name="Cou_Type" ColumnName="Cou_Type" />
+          <ScalarProperty Name="Cou_Describe" ColumnName="Cou_Describe" />
+          <ScalarProperty Name="Cou_Tags" ColumnName="Cou_Tags" />
+          <ScalarProperty Name="Cou_Picture" ColumnName="Cou_Picture" />
+          <ScalarProperty Name="Cou_Hot" ColumnName="Cou_Hot" />
+          <ScalarProperty Name="Cou_Catalog" ColumnName="Cou_Catalog" />
+          <ScalarProperty Name="Cou_Likes" ColumnName="Cou_Likes" />
+          <ScalarProperty Name="Cou_NotLikes" ColumnName="Cou_NotLikes" />
+          <ScalarProperty Name="Cou_StudyNum" ColumnName="Cou_StudyNum" />
+          <ScalarProperty Name="Cou_Collect" ColumnName="Cou_Collect" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_Time" ColumnName="Cou_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesAnswers">
+      <EntityTypeMapping TypeName="ZZULIModel.CoursesAnswers">
+        <MappingFragment StoreEntitySet="CoursesAnswers">
+          <ScalarProperty Name="CA_ID" ColumnName="CA_ID" />
+          <ScalarProperty Name="CQ_ID" ColumnName="CQ_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="CA_Target" ColumnName="CA_Target" />
+          <ScalarProperty Name="CA_Content" ColumnName="CA_Content" />
+          <ScalarProperty Name="CA_Time" ColumnName="CA_Time" />
+          <ScalarProperty Name="CA_Likes" ColumnName="CA_Likes" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesComment">
+      <EntityTypeMapping TypeName="ZZULIModel.CoursesComment">
+        <MappingFragment StoreEntitySet="CoursesComment">
+          <ScalarProperty Name="CCom_ID" ColumnName="CCom_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="CCom_Content" ColumnName="CCom_Content" />
+          <ScalarProperty Name="CCom_Time" ColumnName="CCom_Time" />
+          <ScalarProperty Name="CCom_Likes" ColumnName="CCom_Likes" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesNotes">
+      <EntityTypeMapping TypeName="ZZULIModel.CoursesNotes">
+        <MappingFragment StoreEntitySet="CoursesNotes">
+          <ScalarProperty Name="CN_ID" ColumnName="CN_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="CN_Content" ColumnName="CN_Content" />
+          <ScalarProperty Name="CN_Time" ColumnName="CN_Time" />
+          <ScalarProperty Name="CN_Collect" ColumnName="CN_Collect" />
+          <ScalarProperty Name="CN_Likes" ColumnName="CN_Likes" />
+          <ScalarProperty Name="CN_NotLikes" ColumnName="CN_NotLikes" />
+          <ScalarProperty Name="CN_Hot" ColumnName="CN_Hot" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesQuestions">
+      <EntityTypeMapping TypeName="ZZULIModel.CoursesQuestions">
+        <MappingFragment StoreEntitySet="CoursesQuestions">
+          <ScalarProperty Name="CQ_ID" ColumnName="CQ_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="CQ_Title" ColumnName="CQ_Title" />
+          <ScalarProperty Name="CQ_Content" ColumnName="CQ_Content" />
+          <ScalarProperty Name="CQ_Time" ColumnName="CQ_Time" />
+          <ScalarProperty Name="CQ_Collect" ColumnName="CQ_Collect" />
+          <ScalarProperty Name="CQ_Hot" ColumnName="CQ_Hot" />
+          <ScalarProperty Name="CQ_PageView" ColumnName="CQ_PageView" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Navigation">
+      <EntityTypeMapping TypeName="ZZULIModel.Navigation">
+        <MappingFragment StoreEntitySet="Navigation">
+          <ScalarProperty Name="Nav_ID" ColumnName="Nav_ID" />
+          <ScalarProperty Name="Nav_Content" ColumnName="Nav_Content" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="ZZULIModel.Notes">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="N_ID" ColumnName="N_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="N_Title" ColumnName="N_Title" />
+          <ScalarProperty Name="N_Tags" ColumnName="N_Tags" />
+          <ScalarProperty Name="N_Content" ColumnName="N_Content" />
+          <ScalarProperty Name="N_IsOriginal" ColumnName="N_IsOriginal" />
+          <ScalarProperty Name="N_PageViews" ColumnName="N_PageViews" />
+          <ScalarProperty Name="N_Likes" ColumnName="N_Likes" />
+          <ScalarProperty Name="N_NotLikes" ColumnName="N_NotLikes" />
+          <ScalarProperty Name="N_Time" ColumnName="N_Time" />
+          <ScalarProperty Name="N_Hot" ColumnName="N_Hot" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotesComments">
+      <EntityTypeMapping TypeName="ZZULIModel.NotesComments">
+        <MappingFragment StoreEntitySet="NotesComments">
+          <ScalarProperty Name="NC_ID" ColumnName="NC_ID" />
+          <ScalarProperty Name="N_ID" ColumnName="N_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="NC_Target" ColumnName="NC_Target" />
+          <ScalarProperty Name="NC_Content" ColumnName="NC_Content" />
+          <ScalarProperty Name="NC_Time" ColumnName="NC_Time" />
+          <ScalarProperty Name="NC_Likes" ColumnName="NC_Likes" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partition">
+      <EntityTypeMapping TypeName="ZZULIModel.Partition">
+        <MappingFragment StoreEntitySet="Partition">
+          <ScalarProperty Name="Part_ID" ColumnName="Part_ID" />
+          <ScalarProperty Name="Part_Name" ColumnName="Part_Name" />
+          <ScalarProperty Name="Part_Url" ColumnName="Part_Url" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Priority">
+      <EntityTypeMapping TypeName="ZZULIModel.Priority">
+        <MappingFragment StoreEntitySet="Priority">
+          <ScalarProperty Name="Pri_ID" ColumnName="Pri_ID" />
+          <ScalarProperty Name="Pri_Name" ColumnName="Pri_Name" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="ZZULIModel.Questions">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Q_Title" ColumnName="Q_Title" />
+          <ScalarProperty Name="Q_Tags" ColumnName="Q_Tags" />
+          <ScalarProperty Name="Q_Content" ColumnName="Q_Content" />
+          <ScalarProperty Name="Q_Time" ColumnName="Q_Time" />
+          <ScalarProperty Name="Q_Likes" ColumnName="Q_Likes" />
+          <ScalarProperty Name="Q_NotLikes" ColumnName="Q_NotLikes" />
+          <ScalarProperty Name="Q_Hot" ColumnName="Q_Hot" />
+          <ScalarProperty Name="Q_PageViews" ColumnName="Q_PageViews" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="ZZULIModel.Tags">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="Tag_ID" ColumnName="Tag_ID" />
+          <ScalarProperty Name="Tag_Name" ColumnName="Tag_Name" />
+          <ScalarProperty Name="Tag_Type" ColumnName="Tag_Type" />
+          <ScalarProperty Name="Tag_Url" ColumnName="Tag_Url" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserBrowseActionRecord">
+      <EntityTypeMapping TypeName="ZZULIModel.UserBrowseActionRecord">
+        <MappingFragment StoreEntitySet="UserBrowseActionRecord">
+          <ScalarProperty Name="UAR_ID" ColumnName="UAR_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="UAR_Type" ColumnName="UAR_Type" />
+          <ScalarProperty Name="UAR_Target" ColumnName="UAR_Target" />
+          <ScalarProperty Name="UAR_Time" ColumnName="UAR_Time" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="ZZULIModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="User_Account" ColumnName="User_Account" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_NickName" ColumnName="User_NickName" />
+          <ScalarProperty Name="User_Priority" ColumnName="User_Priority" />
+          <ScalarProperty Name="User_Priority_Now" ColumnName="User_Priority_Now" />
+          <ScalarProperty Name="User_LastLoginTime" ColumnName="User_LastLoginTime" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLearnCoursesRecord">
+      <EntityTypeMapping TypeName="ZZULIModel.UserLearnCoursesRecord">
+        <MappingFragment StoreEntitySet="UserLearnCoursesRecord">
+          <ScalarProperty Name="ULC_ID" ColumnName="ULC_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cou_ID" ColumnName="Cou_ID" />
+          <ScalarProperty Name="Cou_Status" ColumnName="Cou_Status" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLikesAndNotLikes">
+      <EntityTypeMapping TypeName="ZZULIModel.UserLikesAndNotLikes">
+        <MappingFragment StoreEntitySet="UserLikesAndNotLikes">
+          <ScalarProperty Name="UL_ID" ColumnName="UL_ID" />
+          <ScalarProperty Name="UL_Type" ColumnName="UL_Type" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="UL_Num" ColumnName="UL_Num" />
+          <ScalarProperty Name="UL_Option" ColumnName="UL_Option" />
+          <ScalarProperty Name="Extends1" ColumnName="Extends1" />
+          <ScalarProperty Name="Extends2" ColumnName="Extends2" />
+          <ScalarProperty Name="Extends3" ColumnName="Extends3" />
+          <ScalarProperty Name="Extends4" ColumnName="Extends4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

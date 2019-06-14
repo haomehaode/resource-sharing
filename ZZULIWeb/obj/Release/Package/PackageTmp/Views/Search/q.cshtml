@@ -1,0 +1,158 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutSearch.cshtml";
+}
+@using ZZULIWeb.Models
+@section Bundle{
+    @Styles.Render("~/search_css")
+    @Scripts.Render("~/search_js")
+}
+
+
+
+<div class="search">
+    <div>
+        <form method="get" action="/Search/q">
+            <input class="search_txt" type="text" name="StrSearch" value="@ViewBag.CurrentSearch" />
+            <input class="search_btn" type="submit" value="搜索" />
+        </form>
+        <ul>
+            <li>热门搜索:</li>
+            @foreach (string str in ViewBag.HostSearch)
+            {
+                <li><a href="/Search/s?StrSearch=@HttpUtility.UrlEncode(str)">@str</a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+
+<div class="search_content">
+    <div class="search_content_top">
+        <ul>
+            <li><a href="/Search/s?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">全站</a></li>
+            <li><a href="/Search/c?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">课程</a></li>
+            <li id="search_content_top_active"><a href="/Search/q?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">问题</a></li>
+            <li><a href="/Search/n?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">笔记</a></li>
+        </ul>
+        <p>共找到 @ViewBag.ResultNum 个相关的结果</p>
+    </div>
+    @if (ViewBag.CurrentSearch == "")
+    {
+        <div id="content-null">
+            <p>请在搜索框中输入搜索内容</p>
+        </div>
+    }
+    else if (ViewBag.ResultNum == 0)
+    {
+        <div id="content-null">
+            <p>没有与“@ViewBag.CurrentSearch”相关的结果</p>
+        </div>
+    }
+    else
+    {
+        <div class="search_content_question">
+            <ul>
+                @foreach (Questions ques in ViewBag.QuestionList)
+            {
+            <li>
+                <h3><a href="/User/Index/@ques.User_ID">@ques.UserInfo.User_NickName</a></h3>
+                @{
+                Answers an = new Question().GetHotestAnswer(ques.Q_ID);
+                    <h4><a href="/User/Index/@an.User_ID">@an.UserInfo.User_NickName</a>的回答</h4>
+                    <p>
+                        @if (an.A_Content.Length > 20)
+                            {@Html.Raw(an.A_Content.Substring(0, 20) + "...");
+                            }
+                            else
+                            {@Html.Raw(an.A_Content);
+                            }
+                    </p>
+                }
+            </li>
+            }
+            </ul>
+        </div>
+    }
+</div>
+
+@section Page{
+    @{
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="/Search/q?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">首页</a>
+
+
+                    <a class="page" href="/Search/q/page_@(ViewBag.CurrentPageIndex-1)?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="/Search/q/page_@i?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)" class="page_action">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Search/q/page_@i?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="/Search/q/page_@startIndex?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)" class="page_action">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="/Search/q/page_@startIndex?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+                @*for (int j = startIndex; j <= 5; j++)
+                    {
+                        <a href="/User/Question/@user_id/@j">@j</a>
+                    }
+                    for (int k = pageNum - 5 + 1; k <= pageNum; k++)
+                    {
+                        <a href="/User/Question/@user_id/@k">@k</a>
+                    }*@
+            }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a class="page" href="/Search/q/page_@(ViewBag.CurrentPageIndex+1)?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">下一页</a>
+                    <a href="/Search/q/page_@ViewBag.pageNum?StrSearch=@HttpUtility.UrlEncode(ViewBag.CurrentSearch)">尾页</a>
+                }
+            </div>
+        }
+    }
+}
+

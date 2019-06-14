@@ -1,0 +1,89 @@
+﻿@{
+    //Layout = null;
+    //Layout = "~/Views/Shared/_LayoutCourse.cshtml";
+}
+
+@using ZZULIWeb.Models;
+@using System.Xml;
+@model ZZULIWeb.Courses
+@using System.Linq.Expressions;
+@section Bundle{
+    @Scripts.Render("~/coursesection_js")
+    @Styles.Render("~/coursesection_css")
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/common.js"></script>*@
+}
+<ul class="class_content_l_ul">
+    <li class="class_active"><a href="~/Course/Section/@Model.Cou_ID">章节</a></li>
+    <li><a href="~/Course/Comment/@Model.Cou_ID">评论</a></li>
+    <li><a href="~/Course/Question/@Model.Cou_ID">问答</a></li>
+    <li><a href="~/Course/Note/@Model.Cou_ID">笔记</a></li>
+</ul>
+@*@section Section{*@
+<!--章节-->
+<ul id="list">
+    @{
+        //XmlDocument doc = new XmlDocument();
+        //doc.LoadXml(@Model.Cou_Catalog);
+        //XmlNodeList node = doc.GetElementsByTagName("Course");
+        //XmlNodeList section = doc.GetElementsByTagName("Section");
+        Course cou = new Course();
+        List<ZZULIWeb.Move> chapter = cou.GetChapterByCID(@Model.Cou_ID);
+        foreach (ZZULIWeb.Move move in chapter)
+        {
+            <li class="lis">
+                <h2>第@(move.Chap_ID)章 @(move.Chap_Name)</h2>
+                <ul>
+                    @{
+            List<ZZULIWeb.Move> section = cou.GetSectionByCID(Model.Cou_ID, move.Chap_ID);
+            if (Common.UserInfo == null)
+            {
+                foreach (ZZULIWeb.Move sec in section)
+                {
+                    <li class="learn_goto" data-id="@sec.Mov_ID">@*<a href="~/Learn/v/@sec.Mov_ID/#1">*@<>&nbsp;@(move.Chap_ID)-@(sec.Section_ID) @(sec.Section_Name)@*</a>*@<span style="background-color:red;float:right;">开始学习</span></li>
+                }
+            }
+            else
+            {
+                foreach (ZZULIWeb.Move sec in section)
+                {
+                    List<UserLearnSectionRecord> movelist = ViewBag.LearnedMoveList as List<UserLearnSectionRecord>;
+                    List<int> ids = (from id in movelist select id.Mov_ID).ToList();
+                    if (!ids.Contains(sec.Mov_ID))
+                    {
+
+                        <li class="learn_goto" data-id="@sec.Mov_ID">@*<a href="~/Learn/v/@sec.Mov_ID/#1">*@<>&nbsp;@(move.Chap_ID)-@(sec.Section_ID) @(sec.Section_Name)@*</a>*@<span style="background-color:red;float:right;">开始学习</span></li>
+                    }
+                    else if (movelist.Find(m => m.Mov_ID == sec.Mov_ID).Is_Finish)
+                    {
+                        <li class="learn_goto" data-id="@sec.Mov_ID">@*<a href="~/Learn/v/@sec.Mov_ID/#1">*@<>&nbsp;@(move.Chap_ID)-@(sec.Section_ID) @(sec.Section_Name)@*</a>*@<span style="background-color:red;float:right;">学习完成</span></li>
+                    }
+                    else
+                    {
+                        <li class="learn_goto" data-id="@sec.Mov_ID">@*<a href="~/Learn/v/@sec.Mov_ID/#1">*@<>&nbsp;@(move.Chap_ID)-@(sec.Section_ID) @(sec.Section_Name)@*</a>*@<span style="background-color:red;float:right;">继续学习</span></li>
+                    }
+                }
+            }
+}
+                </ul>
+            </li>
+            @*<li class="lis">
+                    <h2>第@(i + 1)章 @(section[i].Attributes["Name"].Value)</h2>
+                    <ul>
+                        @{
+                XmlNodeList child = section[i].ChildNodes;
+                for (int j = 0; j < child.Count; j++)
+                {
+                    var cou_id = node[0].Attributes["ID"].Value;
+                    var mov_id = child[j].Attributes["ID"].Value;
+                    <li><a href="~/Learn/v/v_@mov_id"><>&nbsp;@(i + 1)-@(j + 1) @(child[j].Attributes["Name"].Value)</a></li>
+
+                }
+
+                        }
+                    </ul>
+                </li>*@
+        }
+    }
+</ul>
+@*}*@

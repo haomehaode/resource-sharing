@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@section Bundle{
+    @Styles.Render("~/register_css")
+    @Scripts.Render("~/register_js")
+}
+
+@model ZZULIWeb.UserInfo
+
+<div id="wrapper">
+    <div class="box">
+        <div id="dialogBg"></div>
+        <div id="dialog" class="animated">
+            @*<img class="dialogIco" width="50" height="50" src="~/images/class/header.png" alt="" />*@
+            <div class="dialogTop">
+                <a href="javascript:;" class="claseDialogBtn">关闭</a>
+            </div>
+            <form action="" method="post" id="editForm">
+                <table class="editInfos">
+                    <tr><td><label><font color="#ff0000">* </font>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：@Html.TextBoxFor(u => u.User_Account, new { @class = "ipt", @maxlength = "16" })</label></td><td><p id="valid-account"></p></td></tr>
+                    <tr><td><label><font color="#ff0000">* </font>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：@Html.TextBoxFor(u => u.User_Password, new { @class = "ipt", @type = "password", @maxlength = "16" })</label></td><td><p id="valid-pwd"></p></td></tr>
+                    <tr><td><label><font color="#ff0000">*</font>重复密码：@Html.TextBox("pwd2", "", new { @class = "ipt", @type = "password", @maxlength = "16" })</label></td><td><p id="valid-pwd2"></p></td></tr>
+                    <tr><td><label><font color="#ff0000">*</font>验&nbsp;&nbsp;证&nbsp;&nbsp;码：@Html.TextBox("validationCode", "", new { @class = "waterTextBox", @value = "请输入验证码", @maxlength = "6" })</label></td><td><img id="img-valid-code" src="/Login/GetValidationCode" /></td></tr>
+                    <tr><td colspan="2"><p id="valid-validCode"></p></td></tr>
+                </table>
+            </form>
+            <input type="button" value="注册" class="submitBtn" />
+        </div>
+    </div>
+</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>

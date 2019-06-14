@@ -1,0 +1,46 @@
+﻿@{
+    //ViewBag.Title = "getcontent";
+    Layout = null;
+}
+@using ZZULIWeb.Models
+<div class="download_content_div_kuai">
+    @if (ViewBag.ResourceList == null || ViewBag.ResourceList.Count <= 0)
+    {
+        <div id="content-null"><p>没有相关资源~</p></div>
+    }
+    else
+    {
+        foreach (ResourceInfo re in ViewBag.ResourceList)
+        {
+            <div class="download_content_div_kuai1">
+                @{
+            List<Navigations> list = new Resource().GetResourceTags(re.R_ID);
+            if (list != null && list.Count > 0)
+            {
+                string str = "";
+                list.ForEach(n => str += n.Nav_Name + "/");
+                <h2>@str</h2>
+            }
+                }
+                @*<h2>@</h2>*@
+                <div>
+                    <h3>@(re.R_Name)@(re.ResourceType.RT_Name)</h3>
+                    <p>
+                        @if (re.R_Content.Length > 40)
+                        {@Html.Raw(re.R_Content.Substring(0, 40) + "...");
+                        }
+                        else
+                        {@Html.Raw(re.R_Content);
+                        }
+                    </p>
+
+                    <h4><font>下载 @re.R_DownLoad</font><font>上传时间：2016-01-11</font> <font>内容大小：200M</font></h4>
+                    <h4>下载 @re.R_DownLoad</h4>
+                    @*<h4>评论 @(new Resource().GetResourceCommentNum(re.R_ID))</h4>*@
+                    @*<a href="05 Global文件中的重要方法.txt">下载</a>*@
+                    <a href="~/download/test.txt">下载</a>
+                </div>
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,590 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZZULIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Answers">
+    <Key>
+      <PropertyRef Name="A_ID" />
+    </Key>
+    <Property Name="A_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Q_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="A_Target" Type="int" Nullable="false" />
+    <Property Name="A_Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="A_Time" Type="datetime" Nullable="false" />
+    <Property Name="A_Likes" Type="int" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="Cou_ID" />
+    </Key>
+    <Property Name="Cou_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cou_Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Cou_Describe" Type="nvarchar" MaxLength="120" />
+    <Property Name="Cou_Tags" Type="int" Nullable="false" />
+    <Property Name="Cou_Picture" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cou_Hot" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="Cou_Catalog" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cou_Likes" Type="int" Nullable="false" />
+    <Property Name="Cou_NotLikes" Type="int" Nullable="false" />
+    <Property Name="Cou_StudyNum" Type="int" Nullable="false" />
+    <Property Name="Cou_Collect" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Cou_Time" Type="datetime" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CoursesAnswers">
+    <Key>
+      <PropertyRef Name="CA_ID" />
+    </Key>
+    <Property Name="CA_ID" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="CQ_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="CA_Target" Type="int" Nullable="false" />
+    <Property Name="CA_Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CA_Time" Type="datetime" Nullable="false" />
+    <Property Name="CA_Likes" Type="int" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CoursesComment">
+    <Key>
+      <PropertyRef Name="CCom_ID" />
+    </Key>
+    <Property Name="CCom_ID" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Cou_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="CCom_Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CCom_Time" Type="datetime" Nullable="false" />
+    <Property Name="CCom_Likes" Type="int" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CoursesNotes">
+    <Key>
+      <PropertyRef Name="CN_ID" />
+    </Key>
+    <Property Name="CN_ID" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Cou_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="CN_Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CN_Time" Type="datetime" Nullable="false" />
+    <Property Name="CN_Collect" Type="int" Nullable="false" />
+    <Property Name="CN_Likes" Type="int" Nullable="false" />
+    <Property Name="CN_NotLikes" Type="int" Nullable="false" />
+    <Property Name="CN_Hot" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CoursesQuestions">
+    <Key>
+      <PropertyRef Name="CQ_ID" />
+    </Key>
+    <Property Name="CQ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cou_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="CQ_Title" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="CQ_Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CQ_Time" Type="datetime" Nullable="false" />
+    <Property Name="CQ_Collect" Type="int" Nullable="false" />
+    <Property Name="CQ_Hot" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="CQ_PageView" Type="int" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Navigations">
+    <Key>
+      <PropertyRef Name="Nav_ID" />
+    </Key>
+    <Property Name="Nav_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nav_Content" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Notes">
+    <Key>
+      <PropertyRef Name="N_ID" />
+    </Key>
+    <Property Name="N_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="N_Title" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="N_Tags" Type="int" Nullable="false" />
+    <Property Name="N_Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="N_IsOriginal" Type="bit" Nullable="false" />
+    <Property Name="N_PageViews" Type="int" Nullable="false" />
+    <Property Name="N_Likes" Type="int" Nullable="false" />
+    <Property Name="N_NotLikes" Type="int" Nullable="false" />
+    <Property Name="N_Time" Type="datetime" Nullable="false" />
+    <Property Name="N_Hot" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="NotesComments">
+    <Key>
+      <PropertyRef Name="NC_ID" />
+    </Key>
+    <Property Name="NC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="N_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="NC_Target" Type="int" />
+    <Property Name="NC_Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NC_Time" Type="datetime" Nullable="false" />
+    <Property Name="NC_Likes" Type="int" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Partition">
+    <Key>
+      <PropertyRef Name="Part_ID" />
+    </Key>
+    <Property Name="Part_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Part_Name" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="Part_Url" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="1" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="1" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="1" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Priority">
+    <Key>
+      <PropertyRef Name="Pri_ID" />
+    </Key>
+    <Property Name="Pri_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pri_Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="Q_ID" />
+    </Key>
+    <Property Name="Q_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Q_Title" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="Q_Tags" Type="int" Nullable="false" />
+    <Property Name="Q_Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Q_Time" Type="datetime" Nullable="false" />
+    <Property Name="Q_Likes" Type="int" Nullable="false" />
+    <Property Name="Q_NotLikes" Type="int" Nullable="false" />
+    <Property Name="Q_Hot" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+    <Property Name="Q_PageViews" Type="int" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Tag_ID" />
+    </Key>
+    <Property Name="Tag_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tag_Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Tag_Type" Type="int" Nullable="false" />
+    <Property Name="Tag_Url" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="UserBrowseActionRecord">
+    <Key>
+      <PropertyRef Name="UAR_ID" />
+    </Key>
+    <Property Name="UAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="UAR_Type" Type="int" Nullable="false" />
+    <Property Name="UAR_Target" Type="int" Nullable="false" />
+    <Property Name="UAR_Time" Type="datetime" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Account" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="User_Password" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="User_NickName" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="User_Priority" Type="int" Nullable="false" />
+    <Property Name="User_Priority_Now" Type="int" Nullable="false" />
+    <Property Name="User_LastLoginTime" Type="datetime" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="UserLearnCoursesRecord">
+    <Key>
+      <PropertyRef Name="ULC_ID" />
+    </Key>
+    <Property Name="ULC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Cou_ID" Type="int" Nullable="false" />
+    <Property Name="Cou_Status" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="UserLikesAndNotLikes">
+    <Key>
+      <PropertyRef Name="UL_ID" />
+    </Key>
+    <Property Name="UL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UL_Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="UL_Num" Type="int" Nullable="false" />
+    <Property Name="UL_Option" Type="bit" Nullable="false" />
+    <Property Name="Extends1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Extends4" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Courses_CoursesNotes">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="CoursesNotes" Type="Self.CoursesNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="CoursesNotes">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_CoursesQuestions">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="CoursesQuestions" Type="Self.CoursesQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="CoursesQuestions">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_Tags">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Tag_ID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="Cou_Tags" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_UserLearnCoursesRecord">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="UserLearnCoursesRecord" Type="Self.UserLearnCoursesRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Cou_ID" />
+      </Principal>
+      <Dependent Role="UserLearnCoursesRecord">
+        <PropertyRef Name="Cou_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Navigation_Tags">
+    <End Role="Navigations" Type="Self.Navigations" Multiplicity="1" />
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Navigations">
+        <PropertyRef Name="Nav_ID" />
+      </Principal>
+      <Dependent Role="Tags">
+        <PropertyRef Name="Tag_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Priority_UserInfo_1">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="Pri_ID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="User_Priority" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Priority_UserInfo_2">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="Pri_ID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="User_Priority_Now" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tags_Notes">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+    <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Tag_ID" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="N_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tags_Questions">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Tag_ID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="Q_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Answers">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_CoursesAnswers">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="CoursesAnswers" Type="Self.CoursesAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CoursesAnswers">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_CoursesComment">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="CoursesComment" Type="Self.CoursesComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CoursesComment">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_CoursesNotes">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="CoursesNotes" Type="Self.CoursesNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CoursesNotes">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_CoursesQuestions">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="CoursesQuestions" Type="Self.CoursesQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CoursesQuestions">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Notes">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_NotesComments">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="NotesComments" Type="Self.NotesComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="NotesComments">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_Questions">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserLikesAndNotLikes">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserLikesAndNotLikes" Type="Self.UserLikesAndNotLikes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserLikesAndNotLikes">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZZULIModelStoreContainer">
+    <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoursesAnswers" EntityType="Self.CoursesAnswers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoursesComment" EntityType="Self.CoursesComment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoursesNotes" EntityType="Self.CoursesNotes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoursesQuestions" EntityType="Self.CoursesQuestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Navigations" EntityType="Self.Navigations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotesComments" EntityType="Self.NotesComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Partition" EntityType="Self.Partition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Priority" EntityType="Self.Priority" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserBrowseActionRecord" EntityType="Self.UserBrowseActionRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLearnCoursesRecord" EntityType="Self.UserLearnCoursesRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLikesAndNotLikes" EntityType="Self.UserLikesAndNotLikes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Courses_CoursesNotes" Association="Self.FK_Courses_CoursesNotes">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CoursesNotes" EntitySet="CoursesNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_CoursesQuestions" Association="Self.FK_Courses_CoursesQuestions">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CoursesQuestions" EntitySet="CoursesQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_Tags" Association="Self.FK_Courses_Tags">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_UserInfo" Association="Self.FK_Courses_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_UserLearnCoursesRecord" Association="Self.FK_Courses_UserLearnCoursesRecord">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="UserLearnCoursesRecord" EntitySet="UserLearnCoursesRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Navigation_Tags" Association="Self.FK_Navigation_Tags">
+      <End Role="Navigations" EntitySet="Navigations" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Priority_UserInfo_1" Association="Self.FK_Priority_UserInfo_1">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Priority_UserInfo_2" Association="Self.FK_Priority_UserInfo_2">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tags_Notes" Association="Self.FK_Tags_Notes">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tags_Questions" Association="Self.FK_Tags_Questions">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Answers" Association="Self.FK_UserInfo_Answers">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_CoursesAnswers" Association="Self.FK_UserInfo_CoursesAnswers">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CoursesAnswers" EntitySet="CoursesAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_CoursesComment" Association="Self.FK_UserInfo_CoursesComment">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CoursesComment" EntitySet="CoursesComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_CoursesNotes" Association="Self.FK_UserInfo_CoursesNotes">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CoursesNotes" EntitySet="CoursesNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_CoursesQuestions" Association="Self.FK_UserInfo_CoursesQuestions">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CoursesQuestions" EntitySet="CoursesQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Notes" Association="Self.FK_UserInfo_Notes">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_NotesComments" Association="Self.FK_UserInfo_NotesComments">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="NotesComments" EntitySet="NotesComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_Questions" Association="Self.FK_UserInfo_Questions">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserLikesAndNotLikes" Association="Self.FK_UserInfo_UserLikesAndNotLikes">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserLikesAndNotLikes" EntitySet="UserLikesAndNotLikes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

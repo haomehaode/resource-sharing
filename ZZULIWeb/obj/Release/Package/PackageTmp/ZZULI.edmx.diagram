@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ef925fcd8d904f498392c03dcdc5dce1" Name="Diagram1">
+        <EntityTypeShape EntityType="ZZULIModel.Answers" Width="1.5" PointX="7.5" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.Courses" Width="1.5" PointX="5.25" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.CoursesAnswers" Width="1.5" PointX="17" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.CoursesComment" Width="1.5" PointX="9.75" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.CoursesNotes" Width="1.5" PointX="12.75" PointY="43.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.CoursesQuestions" Width="1.5" PointX="9.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.Follow" Width="1.5" PointX="5.25" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.Move" Width="1.5" PointX="7.5" PointY="50.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.Navigations" Width="1.5" PointX="6" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.NewAry" Width="1.5" PointX="8.25" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.Notes" Width="1.5" PointX="5.25" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.NotesComments" Width="1.5" PointX="12.5" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.ObjectTags" Width="1.5" PointX="11.25" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.OptionType" Width="1.5" PointX="9" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.Partition" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.Priority" Width="1.5" PointX="0.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.Questions" Width="1.5" PointX="5.25" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.ResourceComment" Width="1.5" PointX="11.25" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.ResourceInfo" Width="1.5" PointX="5.25" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.ResourceType" Width="1.5" PointX="3" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserAry" Width="1.5" PointX="8.25" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserCollections" Width="1.5" PointX="11.25" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserFollows" Width="1.5" PointX="14.25" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserInfo" Width="1.5" PointX="3" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserLearnCoursesRecord" Width="1.5" PointX="7.5" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserLearnSectionRecord" Width="1.5" PointX="9.75" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserLikes" Width="1.5" PointX="12.25" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserNotLikes" Width="1.5" PointX="14.25" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserPageViews" Width="1.5" PointX="15.25" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.UserSearchRecord" Width="1.5" PointX="15.25" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.View_All" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZZULIModel.View_learn" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ZZULIModel.FK_Questios_Answers" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_Answers" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Course_UserLearnCoursesRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Courses_Coursescomment" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Courses_CoursesNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Courses_CoursesQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Courses_Move" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Courses_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Courses_UserLearnSectionRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_CoursesQuestions_CoursesAnswers" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_CoursesAnswers" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Move_CoursesComment" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_CoursesComment" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Move_CoursesNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_CoursesNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Move_CoursesQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_CoursesQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_Follow" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_Follow_2" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Move_UserLearnSectionRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK__NewAry__Nav_ID__7ADC2F5E" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK__UserAry__Nav_ID__770B9E7A" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Navigations_ObjectTags" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Navigations_UserFollow" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK__NewAry__User_ID__79E80B25" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Notes_NotesComments" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_Notes" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_NotesComments" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_OptionType_ObjectTags" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_OptionType_UserCollections" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_OptionType_UserLikes" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_OptionType_UserNotLikes" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_OptionType_UserPageViews" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_OptionType_UserSearchRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Priority_UserInfo_1" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_Priority_UserInfo_2" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_ResourceComment" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_ResourceComment" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_ResourceType_ResourceInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_ResourceInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK__UserAry__User_ID__76177A41" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_UserCollections" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_UserFollow" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_UserLearnCoursesRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_UserLearnSectionRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_UserLikesAndNotLikes" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_UserNotLikes" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_UserPageViews" ManuallyRouted="false" />
+        <AssociationConnector Association="ZZULIModel.FK_UserInfo_UserSearchRecord" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

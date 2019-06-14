@@ -1,0 +1,82 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>后台主页</title>
+    @Scripts.Render("~/al_js")
+    @Styles.Render("~/al_css")
+    @*<link rel="stylesheet" type="text/css" href="style/behind.css" />
+        <script type="text/javascript" src="js/behind.js"></script>*@
+</head>
+
+<body>
+    <div class="behind_index">
+        <h3 class="index_top">资源共享平台</h3>
+        <div class="index_content">
+            <ul class="index_l" id="list">
+                <li class="lis">
+                    <h1>用户管理</h1>
+                    <ul>
+                        <li class="ajax_goto_tab" id="">普通用户账号管理</li>
+                    </ul>
+                </li>
+                <li class="lis">
+                    <h1>数据库管理</h1>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </li>
+                <li class="lis">
+                    <h1>系统管理</h1>
+                    <ul>
+                        <li>网站信息管理</li>
+                        <li>系统管理员账号管理</li>
+                        <li>公共管理</li>
+                        <li>上传管理</li>
+                        <li>网站访问情况管理</li>
+                    </ul>
+                </li>
+                <li class="lis">
+                    <h1>数据资源管理</h1>
+                    <ul>
+                        <li>课程</li>
+                        <li>问题</li>
+                        <li>笔记</li>
+                        <li>资源</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="index_r">
+                <table border="1">
+                    <tr style="height:50px; line-height:50px;text-align:center;">
+                        <td colspan="4">管理员信息</td>
+                    </tr>
+                    <tr>
+                        <td style="width:180px; height:40px;">账号</td>
+                        <td style="width:290px;">33333</td>
+                        <td style="width:180px;">昵称</td>
+                        <td style="width:290px;">我的名字</td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;">姓名</td>
+                        <td>张三</td>
+                        <td>性别</td>
+                        <td>男</td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;">邮箱</td>
+                        <td>33333@qq。com</td>
+                        <td>电话</td>
+                        <td>111111111</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <h3 class="index_footer">郑州轻工业学院</h3>
+    </div>
+</body>
+</html>

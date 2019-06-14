@@ -1,0 +1,141 @@
+﻿@*@{
+        Layout = "~/Views/Shared/_LayoutVideo.cshtml";
+    }
+    <script src="~/Scripts/common.js"></script>*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/video_css")
+    @Scripts.Render("~/video_js")
+    @*<link href="~/Content/video.cssok.css" rel="stylesheet" />*@
+    @*<link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">*@
+    @*<script src="~/Scripts/video.js0k.js"></script>*@
+    @*<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>*@
+    @*<link href="~/Content/video-js.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.1.1.js"></script>
+        <script src="~/Scripts/video.js"></script>*@
+    <script type="text/javascript">
+        VideoJS.setupAllWhenReady()
+    </script>
+</head>
+@using ZZULIWeb.Models
+<body>
+
+    <div class="video-js-box">
+        <video id="example_video_1" class="video-js" controls="controls" preload="auto" width="1100px" height="550px">
+            <source src="~/video/@(Model).mp4" type="video/mp4" class="video-js" />
+        </video>
+    </div>
+
+
+    <div class="video_content">
+        <!--标签页-->
+        <ol>
+            @{
+                int tab = Convert.ToInt32(ViewBag.Page);
+                switch (tab)
+                {
+                    case 1:
+            <a class="ajax_goto_tab tab_active" id="cc" data-id="@(Model)|0">评论</a>
+            <a class="ajax_goto_tab" id="cq" data-id="@(Model)|0">问答</a>
+            <a class="ajax_goto_tab" id="cn" data-id="@(Model)|0">笔记</a>
+                        break;
+                    case 2:
+            <a class="ajax_goto_tab" id="cc" data-id="@(Model)|0">评论</a>
+            <a class="ajax_goto_tab tab_active" id="cq" data-id="@(Model)|0">问答</a>
+            <a class="ajax_goto_tab" id="cn" data-id="@(Model)|0">笔记</a>
+                        break;
+                    case 3:
+            <a class="ajax_goto_tab" id="cc" data-id="@(Model)|0">评论</a>
+            <a class="ajax_goto_tab" id="cq" data-id="@(Model)|0">问答</a>
+            <a class="ajax_goto_tab tab_active" id="cn" data-id="@(Model)|0">笔记</a>
+                        break;
+                    default:
+            <a class="ajax_goto_tab tab_active" id="cc" data-id="@(Model)|0">评论</a>
+            <a class="ajax_goto_tab" id="cq" data-id="@(Model)|0">问答</a>
+            <a class="ajax_goto_tab" id="cn" data-id="@(Model)|0">笔记</a>
+                        break;
+                }
+            }
+        </ol>
+
+        <div id="content-null" style="display:none;"><p>正在加载内容...</p></div>
+        <!--内容-->
+        <div class="video_content_l" id="replace">
+            @{
+                int page = Convert.ToInt32(ViewBag.Page);
+                switch (page)
+                {
+                    case 1:
+                        @Html.Action("comment", new { id = @Model })
+                        break;
+                    case 2:
+                    @Html.Action("question", new { id = @Model })
+                        break;
+                    case 3:
+                    @Html.Action("note", new { id = @Model })
+                        break;
+                    default:
+                    @Html.Action("comment", new { id = @Model })
+                        break;
+                }
+            }
+
+        </div>
+
+        <!--推荐课程-->
+        <div class="video_content_r">
+            <h4>推荐课程</h4>
+            <ul>
+                <li>
+                    <a href="#">
+                        微信小程序入门与实战 常用组件 API 开发技巧 项目实战
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        微信小程序入门与实战 常用组件 API 开发技巧 项目实战
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        微信小程序入门与实战 常用组件 API 开发技巧 项目实战
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="index_footer">
+        <div>
+            @*@RenderSection("Page", false)*@
+            <ul class="index_footer_ul">
+                <li><a class="index_footer_ul1" href="http://weibo.com/zzuli5166?mod=myfollow&is_hot=1" target="_blank"></a></li>
+                <li><a class="index_footer_ul2" href="http://jiaowu.zzuli.edu.cn/jwweb/MAINFRM.aspx" target="_blank"></a></li>
+                <li><a class="index_footer_ul3" href="http://my.zzuli.edu.cn/" target="_blank"></a></li>
+                <li><a class="index_footer_ul4" href="http://cs.zzuli.edu.cn/" target="_blank"></a></li>
+            </ul>
+            <ol class="index_footer_ol">
+                <li><a class="" href="#">企业人才</a></li>
+                <li><a class="" href="#">人才招聘</a></li>
+                <li><a class="" href="#">联系我们</a></li>
+                <li><a class="" href="#">讲师招聘</a></li>
+                <li><a class="" href="#">常见问题</a></li>
+                <li><a class="" href="#">意见反馈</a></li>
+                <li><a class="" href="#">慕课大学</a></li>
+                <li><a class="" href="#">友情链接</a></li>
+            </ol>
+            <p class="index_footer_p">© 2016 imooc.com  京ICP备13046642号</p>
+        </div>
+    </div>
+
+
+</body>
+</html>
+

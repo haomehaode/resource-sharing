@@ -1,0 +1,189 @@
+﻿@{
+    Layout = null;
+}
+<script src="~/Scripts/ajax_goto.js"></script>
+@model ZZULIWeb.UserInfo
+@using ZZULIWeb.Models
+@*@section Nav{
+        <ul class="person_content_ul">
+            <li><a href="/User/Index/@Model.User_ID">主页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+            <li><a href="/User/UserCourse/@Model.User_ID">课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+            <li class="person_action"><a href="/User/Question/@Model.User_ID">问题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+            <li><a href="/User/Note/@Model.User_ID">笔记&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+            <li><a href="/User/PersonInfo/@Model.User_ID">个人资料&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a></li>
+        </ul>
+    }*@
+
+
+@*<div class="person_content">
+    <div class="person">
+        <p>
+            @Ajax.ActionLink("", "question", "Learn", new { id = @Model }, new AjaxOptions()
+           {
+               UpdateTargetId = "replace",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "get"
+           }, new { @class = "ajax_a" })
+                        @Ajax.ActionLink("问答", "question", "Learn", new { id = @Model }, new AjaxOptions()
+           {
+               UpdateTargetId = "replace",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "get"
+           }, new { @class = "ajax_a" })
+                        @Ajax.ActionLink("问答", "question", "Learn", new { id = @Model }, new AjaxOptions()
+           {
+               UpdateTargetId = "replace",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "get"
+           }, new { @class = "ajax_a" })
+            @Ajax.ActionLink("问答", "question", "Learn", new { id = @Model }, new AjaxOptions()
+           {
+               UpdateTargetId = "replace",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "get"
+           }, new { @class = "ajax_a" })
+        </p>
+    </div>*@
+
+
+<ul class="question_left_ul">
+    @{
+        if (ViewBag.QuestionList == null || ViewBag.QuestionList.Count <= 0)
+        {
+    <div id="content-null"><p>还没有提问过问题~</p></div>
+        }
+        else
+        {
+            foreach (Questions q in ViewBag.QuestionList)
+            {
+    <li class="question_left_li">
+        <img src="~/images/userImg/@(q.User_ID).png" />
+        @{
+                List<Navigations> list = Common.GetFrom_Question(q.Q_ID);
+                if (list != null && list.Count > 0)
+                {
+                    <ul>
+                        <li>来自</li>
+                        @foreach (Navigations nav in list)
+                        {
+                        <li><a href="~/Search/s?StrSearch=@HttpUtility.UrlEncode(nav.Nav_Name)">@nav.Nav_Name</a></li>
+                        }
+                    </ul>
+                }
+
+        }
+        <a href="~/Question/des/@q.Q_ID"><h4>@q.Q_Title</h4></a>
+        @{
+                Answers an = new Question().GetHotestAnswer(@q.Q_ID);
+                if (an == null)
+                {
+                    <dl>
+                        <dt>
+                            @if (q.Q_Content.Length > 40)
+                            { @Html.Raw(q.Q_Content.Substring(0, 40) + "...");
+                            }
+                            else
+                            { @Html.Raw(q.Q_Content);
+                            }
+                        </dt>
+                    </dl>
+                }
+                else
+                {
+                    <dl>
+                        <dt><a href="/User/Index/@an.User_ID">@an.UserInfo.User_NickName</a><font>回答</font></dt>
+                        <dd>
+                            @if (@an.A_Content.Length > 20)
+                            {<p>@an.A_Content.Substring(0, 20)</p>}
+                            else
+                            { <p>@an.A_Content</p>}
+                        </dd>
+                    </dl>
+                    @*<ol>
+                            <li class="question_border"><span>赞同 @an.A_Likes</span></li>
+                            <li><span>反对 @an.A_NotLikes</span></li>
+                            <li>浏览量 @q.Q_PageViews</li>
+                        </ol>*@
+                }
+        }
+        <ol>
+            <li>浏览 @q.Q_PageViews</li>
+            <li>回复 @(new Question().GetAnswerNum(q.Q_ID))</li>
+            <li>收藏 @(new Question().GetQuestionCollectNum(q.Q_ID))</li>
+        </ol>
+    </li>
+            }
+        }
+    }
+</ul>
+@*</div>*@
+
+
+@{
+    if (ViewBag.pageNum > 1)
+    {
+            <!--分页导航-->
+        <div class="page_nav">
+            @if (ViewBag.CurrentPageIndex == 1)
+            {
+                <a class="page_disabled">首页</a>
+                <a class="page_disabled">上一页</a>
+            }
+            else
+            {
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|0" id="uq">首页</a>
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|(@ViewBag.CurrentPageIndex - 1)" id="uq">上一页</a>
+            }
+            <p>
+                @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                    <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@i" id="uq">@i</a>
+                    }
+                    else
+                    {
+                    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@i" id="uq">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                    <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@startIndex" id="uq">@startIndex</a>
+                    }
+                    else
+                    {
+                    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@startIndex" id="uq">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+            }
+                }
+            </p>
+            @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+            {
+                <a class="page_disabled">下一页</a>
+                <a class="page_disabled">尾页</a>
+            }
+            else
+            {
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@(ViewBag.CurrentPageIndex + 1)" id="uq">下一页</a>
+                <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@ViewBag.pageNum" id="uq">尾页</a>
+            }
+        </div>
+    }
+}

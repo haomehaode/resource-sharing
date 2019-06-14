@@ -1,0 +1,276 @@
+﻿@{
+}
+@section Bundle{
+    @Styles.Render("~/questionlist_css")
+    @Scripts.Render("~/questionlist_js")
+}
+@using ZZULIWeb.Models
+
+
+
+<div class="question">
+    <div class="question_left">
+        <div class="question_top">
+            <p>
+                程序员自己的问答区
+            </p>
+            @*<form>
+                    <input type="button" value="我要提问"  />
+
+                </form>*@
+            <a class="input" href="/Question">我要提问</a>
+        </div>
+        <ul class="question_left_ul">
+            @{
+                if (ViewBag.QuestionList == null || ViewBag.QuestionList.Count <= 0)
+                {
+                    <div id="content-null">
+                        <p>还没有课程~</p>
+                    </div>
+                }
+                else
+                {
+                    foreach (Questions question in ViewBag.QuestionList)
+                    {
+                        Answers an = new Question().GetHotestAnswer(question.Q_ID);
+                        <li class="question_left_li">
+                            <img src="~/images/userImg/@(question.UserInfo.User_ID).png" />
+                            <ul>
+                                @{
+                        List<Navigations> nav_list = Common.GetFrom_Question(question.Q_ID);
+                        if (nav_list != null && nav_list.Count > 0)
+                        {
+                            string str = "来自 ";
+                            nav_list.ForEach(n => str += n.Nav_Name + " ");
+
+
+                            <li>@str</li>
+
+                        }
+                                }
+
+                                @*<li><a href="#">c</a></li>
+                                    <li><a href="#">java</a></li>
+                                    <li><a href="#">Python</a></li>*@
+                            </ul>
+                            <a href="/Question/des/@question.Q_ID"><h4>@question.Q_Title</h4></a>
+                            @if (an != null)
+                            {
+                                <dl>
+                                    <dt><a href="~/User/Index/@an.User_ID">@an.UserInfo.User_NickName</a><font>回答</font></dt>
+                                    <dd>
+                                        @if (an.A_Content.Length > 40)
+                                        {
+                                            <p>@an.A_Content.Substring(0, 40)+"..."</p>
+                                        }
+                                        else
+                                        {
+                                            <p>@an.A_Content</p>
+                                        }
+                                    </dd>
+                                </dl>
+                            }
+                            else
+                            {
+                                <p>
+                                    @if (question.Q_Content.Length > 40)
+                                    { @Html.Raw(question.Q_Content.Substring(0, 40) + "...");
+                                    }
+                                    else
+                                    { @Html.Raw(question.Q_Content);
+                                    }
+                                </p>
+                            }
+                            <ol>
+                                <li><a href="/Question/des/@question.Q_ID">浏览 @question.Q_PageViews</a></li>
+                                <li><a href="/Question/des/@question.Q_ID">回复 @(new Question().GetAnswerNum(question.Q_ID))</a></li>
+                                @*<li><a href="/Question/des/@question.Q_ID">收藏 @(new Question().GetQuestionCollectNum(question.Q_ID))</a></li>*@
+                            </ol>
+                        </li>
+
+                    }
+                }
+            }
+        </ul>
+    </div>
+    <div class="question_right">
+        @if (Common.UserInfo != null)
+        {
+            <div class="question_right_top">
+                <div class="question_right_top1">
+                    <div>
+                        <a href="~/User/Index/@Common.UserInfo.User_ID">
+                            <img src="~/images/userImg/@(Common.UserInfo.User_ID).png" />
+                            <h4>@Common.UserInfo.User_NickName</h4>
+                        </a>
+                    </div>
+                </div>
+
+                <ul>
+                    <li><a href="~/User/Question/@Common.UserInfo.User_ID/">提问 @(new User().GetQuestionNumByUID(Common.UserInfo.User_ID))</a></li>
+                    <li><a href="~/User/Question/@Common.UserInfo.User_ID/tab_2">回答 @(new User().GetAnswerNumByUID(Common.UserInfo.User_ID))</a></li>
+                    <li><a href="~/User/Question/@Common.UserInfo.User_ID/tab_3">收藏 @(new User().GetQuestionCollectionNumByUID(Common.UserInfo.User_ID))</a></li>
+                    <li><a href="~/User/Follow/@Common.UserInfo.User_ID">关注 @(new User().GetFollowNumByUID(Common.UserInfo.User_ID))</a></li>
+                </ul>
+            </div>
+        }
+
+        <div class="question_rigth_center">
+            @if (Common.UserInfo != null)
+            {
+                List<UserFollows> list = new Question().GetFollowByUID(Common.UserInfo.User_ID);
+                if (list == null || list.Count <= 0)
+                {
+                    <div class="question_rigth_center2">
+                        <h6>您还没有关注任何分类</h6>
+                        <a href="#">马上关注</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="question_rigth_center1">
+                        <h5>我关注的分类</h5>
+                        <a href="#">+</a>
+                        @foreach (UserFollows follow in list)
+                        {
+                            <a href="~/Search/s?StrSearch=@HttpUtility.UrlEncode(follow.Navigations.Nav_Name)">@follow.Navigations.Nav_Name</a>
+                        }
+                    </div>
+                }
+            }
+            <div class="question_rigth_center3">
+                <div class="question_rigth_center31">
+                    <h5>推荐分类</h5>
+                    <a href="#">全部分类</a>
+                </div>
+            </div>
+            <ul class="question_rigth_center4">
+                @{
+                    List<Navigations> follow_list;
+                    if (Common.UserInfo != null)
+                    {
+                        follow_list = new Question().GetRecommendFollow(5, Common.UserInfo.User_ID);
+                    }
+                    else
+                    {
+                        follow_list = new Question().GetRecommendFollow(5);
+                    }
+                    if (follow_list != null || follow_list.Count > 0)
+                    {
+                    foreach (Navigations f in follow_list)
+                    {
+                        <li>
+                            <div>
+                                <img src="~/images/nav/@(f.Nav_ID).png" />
+                                <dl>
+                                    <dt><a href="~/Search/s?StrSearch=@HttpUtility.UrlEncode(f.Nav_Name)">@f.Nav_Name</a></dt>
+                                    <dd>关注 @f.Nav_FollowNum</dd>
+                                </dl>
+                                <span class="question_rigth_center4a"><a href="javascript:;" class="no-follow" data-id="@f.Nav_ID">关注</a></span>
+                            </div>
+                            <p>
+                                @if (f.Nav_Describe.Length > 20)
+                                {@Html.Raw(f.Nav_Describe.Substring(0, 20) + "...");
+                                }
+                                else
+                                {@Html.Raw(f.Nav_Describe);
+                                }
+                            </p>
+                        </li>
+                    }
+                    }
+
+                }
+            </ul>
+        </div>
+    </div>
+    @*@RenderSection("Right",false)*@
+</div>
+
+
+
+
+
+
+@*@section Right{
+    }*@
+@section Page{
+    @{
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="/Question/List">首页</a>
+                    <a class="page" href="/Question/List/page_@(ViewBag.CurrentPageIndex-1)">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="/Question/List/page_@i" class="page_action">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Question/List/page_@i">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="/Question/List/page_@startIndex" class="page_action">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="/Question/List/page_@startIndex">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+                @*for (int j = startIndex; j <= 5; j++)
+                    {
+                        <a href="/Question/List/@j">@j</a>
+                    }
+                    for (int k = pageNum - 5 + 1; k <= pageNum; k++)
+                    {
+                        <a href="/Question/List/@k">@k</a>
+                    }*@
+            }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a class="page" href="/Question/List/page_@(ViewBag.CurrentPageIndex+1)">下一页</a>
+                    <a href="/Question/List/page_@ViewBag.pageNum">尾页</a>
+                }
+            </div>
+        }
+    }
+}
+
+

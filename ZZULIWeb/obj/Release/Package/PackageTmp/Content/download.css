@@ -1,0 +1,163 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.download_content{
+	width:1200px;
+	margin:0 auto;
+	clear:both;
+}
+.download_content_ul{
+	width:150px;
+	float:left;
+}
+.download_content_ul a{
+	display:block;
+	height:60px;
+	line-height:60px;
+	font-size:20px;
+	text-align:center;
+	margin-top:60px;
+	background:#ccc;
+	border-radius:30px 0 30px 0;
+	color:#000;
+}
+.download_content_ul a:hover,#download_active{
+	color:#fff;
+	background:#808080;
+}
+.download_content_div,.upload_content_div{
+	width:1000px;
+	float:right;
+}
+.download_content_div form{
+	width:980px;
+	height:60px;
+	background:#CCC;
+	font-size:22px;
+	line-height:60px;
+	padding:0 10px;
+	margin-top:30px;
+}
+.download_content_div form select,.upload_content_div form select{
+	width:150px;
+	height:36px;
+	line-height:36px;
+	font-size:22px;
+	margin-right:70px;
+}
+.download_content_div form input{
+	padding:0 20px;
+	height:40px;
+	border:none;
+	outline:none;
+	cursor:pointer;
+}
+.download_content_div_kuai{
+	width:1100px;
+	overflow:hidden;
+	margin-top:20px;
+}
+
+	.download_content_div_kuai1{
+		width:490px;
+		height:260px;
+		float:left;
+		background:#fff;
+		margin:0 13px 20px 0;
+		box-shadow:2px 2px 6px #999999;
+		position:relative;
+	}
+
+.download_content_div_kuai1 h2{
+	height:30px;
+	background:#CCC;
+	line-height:30px;
+	font-size:20px;
+	color:#fff;
+	text-align:center;
+}
+.download_content_div_kuai1 div{
+	padding:0 20px 20px 20px;
+	
+}
+.download_content_div_kuai1 h3{
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	font-weight:normal;
+	font-size:18px;
+}
+.download_content_div_kuai1 p{
+	color:#93999f;
+	font-size:12px;
+	line-height:24px;
+}
+.download_content_div_kuai1 h4{
+    width:490px;
+	height:30px;
+	line-height:30px;
+	font-size:14px;
+	color:#93999f;
+	position:absolute;
+	bottom:46px;
+}
+.download_content_div_kuai1 a{
+	display:block;
+	height:30px;
+	padding:0 10px;
+	position:absolute;
+	font-size:30px;
+	color:#000;
+	bottom:20px;
+	left:192px;
+}
+
+.download_content_div_kuai1 a:hover{
+	color:red;
+}
+.upload_content_div form{
+	width:900px;
+	background:#CCC;
+	padding-top:20px;
+	font-size:24px;
+	padding-left:100px;
+}
+.upload_content_div form input[type='text']{
+	width:200px;
+	height:30px;
+	line-height:30px;
+	margin-bottom:20px;
+}
+.upload_content_div form select{
+	margin-bottom:30px;
+}
+.upload_content_div form textarea{
+	font-size:18px;
+	line-height:24px;
+	margin:20px 0;
+}
+.upload_content_div form input[type='submit']{
+	width:100px;
+	height:50px;
+	line-height:50px;
+	position:relative;
+	left:360px;
+	margin-bottom:50px;
+	background:red;
+	border:none;
+	outline:none;
+	color:#fff;
+	font-size:18px;
+	cursor:pointer;
+}
+.upload_content_div form input[type='image']{
+	font-size:22px;
+	border:1px solid #666;
+	padding:0 10px;
+	margin-top:10px;
+	background:#fff;
+}
+
+.download_content_div_kuai1 h4 font{
+    margin-right:50px;
+}
+

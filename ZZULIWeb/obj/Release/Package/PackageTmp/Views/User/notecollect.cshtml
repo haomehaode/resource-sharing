@@ -1,0 +1,135 @@
+﻿@{
+    Layout = null;
+}
+<script src="~/Scripts/ajax_goto.js"></script>
+@using ZZULIWeb.Models
+@model ZZULIWeb.UserInfo
+
+<ul class="person2_notes">
+    @{
+        if (ViewBag.NoteList == null || ViewBag.NoteList.Count <= 0)
+        {
+            <div id="content-null">
+                <p>还没有收藏笔记~</p>
+            </div>
+        }
+        else
+        {
+            foreach (Notes note in ViewBag.NoteList)
+            {
+                <li>
+                    <img src="~/images/userImg/@(note.User_ID).png" />
+                    <ul>
+                        @{
+                List<Navigations> list = Common.GetFrom_Note(note.N_ID);
+                if (list != null && list.Count > 0)
+                {
+                    string str = "来自：";
+                    list.ForEach(n => str += n.Nav_Name + " ");
+                    <li>@str</li>
+                }
+                        }
+                        @*<li>来自:</li>
+                            <li>c</li>
+                            <li>java</li>
+                            <li>Python</li>*@
+                    </ul>
+                    <a href="/User/Index/@note.User_ID"><h4>@note.UserInfo.User_NickName</h4></a>
+                    <dl>
+                        <dt><a href="~/Note/n/@note.N_ID">@note.N_Title</a></dt>
+                        <dd>
+                            <p>
+                                @if (note.N_Content.Length > 40)
+                                {@Html.Raw(note.N_Content.Substring(0, 40) + "...");
+                                }
+                                else
+                                { @Html.Raw(note.N_Content);
+                                }
+                        </p>
+                    </dd>
+                </dl>
+                <ol>
+                    <li id="percon_notes_border">赞同 @note.N_Likes</li>
+                    <li>反对 @note.N_NotLikes</li>
+                    <li>浏览 @note.N_PageViews</li>
+                    <li>评论 @(new Note().GetNoteCommentNum(note.N_ID))</li>
+                    <li>收藏 @(new Note().GetNoteCollectionNum(note.N_ID))</li>
+                </ol>
+            </li>
+            }
+        }
+    }
+
+</ul>
+
+
+
+
+@{
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|0" id="uncollect">首页</a>
+    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|(@ViewBag.CurrentPageIndex - 1)" id="uncollect">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@i" id="uncollect">@i</a>
+                    }
+                    else
+                    {
+                        <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@i" id="uncollect">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="javascript:;" class="ajax_goto page_action" data-id="@(Model.User_ID)|@startIndex" id="uncollect">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@startIndex" id="uncollect">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+            }
+}
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@(ViewBag.CurrentPageIndex + 1)" id="uncollect">下一页</a>
+    <a href="javascript:;" class="ajax_goto" data-id="@(Model.User_ID)|@ViewBag.pageNum" id="uncollect">尾页</a>
+                }
+            </div>
+        }
+    }

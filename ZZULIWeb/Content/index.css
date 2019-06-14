@@ -1,0 +1,140 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body,h1,h2,h3,h4,h5,h6,p,dl,dd,ul,ol,pre,form,input,textarea,th,td,select{margin:0;padding:0;}
+em{font-style:normal}
+li{list-style:none}
+a{text-decoration:none;}
+img{border:none; vertical-align:top;}
+table{border-collapse:collapse;}
+textarea{ resize:none;overflow:auto;}
+
+.a{position: absolute;}
+.r{position: relative;}
+.fl{float:left;}
+.fr{float:right;}
+
+body{background:#ebebeb;}
+#register{width:300px; height:500px; border:2px solid #BF07F1; position:fixed; top:50%; margin-top:-250px; left:50%; margin-left:-150px; z-index:5; background:#DF2DC2; display:none;}
+#register_a{top:6px; right:6px; font-size:20px; outline:none;}
+
+#index_header{height: 60px; background:#FFFFFF;}
+#index_header a:hover{color:red;}
+.index_logo{width: 140px; height: 40px; float: left; margin-left:20px; margin-top:10px;}               
+.index_header_nav{float: left; margin-left: 40px;}
+.index_header_nav li{float: left; line-height: 60px;}
+.index_header_nav a{font-size: 14px; color: #07111b; font-weight: bolder;padding:10px 20px; outline:none;}
+.index_header_ol{float: right; line-height: 60px; margin-right:20px;}
+.index_header_ol li{float: left; margin-left: 32px;}
+.index_header_ol a{font-size: 14px; color: #787d82; font-weight: bolder;float:left;}
+
+
+#index_nav{width: 1200px; height: 460px; margin:0 auto 0; background:url(../images/index/free5.png) no-repeat;}
+.index_nav_ul{width:196px; height:444px; padding-top:8px; padding-left:30px;}
+.index_nav_ul a{font-size: 16px; color: #ffffe1; font-weight: bolder; display: block; width: 176px; height: 62px; line-height: 62px; border-bottom: 1px solid #FFFFFF; padding-left:8px;}
+#index_nav_none{border:none;}
+.index_nav_ul1{width: 732px; height: 460px; background: url(../images/index/be.png) no-repeat; top: 0px; left: 220px; display:none;}
+/*.index_nav_ul1 a{}*/
+.index_nav_ul1 dl{margin-left: 50px; margin-top: 40px;}
+.index_nav_ul1 dt{color: #f01414; font-size: 16px; font-weight:bolder; margin-bottom: 0px; display:inline;}
+.index_nav_ul1 a{color: #14191e; font-size: 14px;display:inline; border:none; padding:0;}
+.index_nav_ul1 a:hover{color: red;}
+#index_prev,#index_next{width:50px; height:100px; line-height:90px; text-align:center; display:block; font-size:60px; color:#FFFFFF;}
+#index_prev:hover,#index_next:hover{background:#000000; opacity:0.7;}
+#index_prev{top:170px; left:240px;}
+#index_next{top:170px; right:20px;}
+
+
+#index_content{width: 1200px; overflow: hidden; margin: 42px auto 0;}
+#index_content span{font-size: 16px; color: #07111b; top: 0; left: 0; font-weight: bolder;}
+#index_content p{font-size: 14px; top: 0; right: 4px; font-weight: bolder;}
+#index_content p a{color: #4d555d;}
+#index_content p a:hover{opacity:0.8;}
+/*好课推荐*/
+.index_content_ul{width:1220px; margin-top: 30px;}
+.index_content_ul li{width: 224px; height: 172px; float: left; margin-right: 20px; margin-bottom: 50px;}
+.index_content_ul a{width: 224px; height: 172px; float: left; background:url(../images/index/web1.jpg) no-repeat;  margin-right: 20px; margin-bottom: 50px;}
+.index_content_ul li:nth-child(1) a{background:url(../images/index/1.png) no-repeat;}
+.index_content_ul li:nth-child(2) a{background:url(../images/index/2.png) no-repeat;}
+.index_content_ul li:nth-child(3) a{background:url(../images/index/3.png) no-repeat;}
+.index_content_ul li:nth-child(4) a{background:url(../images/index/4.png) no-repeat;}
+.index_content_ul li:nth-child(5) a{background:url(../images/index/5.png) no-repeat;}
+.index_content_ul li:nth-child(6) a{background:url(../images/index/6.png) no-repeat;}
+.index_content_ul li:nth-child(7) a{background:url(../images/index/7.png) no-repeat;}
+.index_content_ul li:nth-child(8) a{background:url(../images/index/8.png) no-repeat;}
+.index_content_ul li:nth-child(9) a{background:url(../images/index/6.png) no-repeat;}
+.index_content_ul li:nth-child(10) a{background:url(../images/index/4.png) no-repeat;}
+.index_content_ul li:nth-child(11) a{background:url(../images/index/5.png) no-repeat;}
+.index_content_ul li:nth-child(12) a{background:url(../images/index/1.png) no-repeat;}
+.index_content_ul li:nth-child(13) a{background:url(../images/index/2.png) no-repeat;}
+.index_content_ul li:nth-child(14) a{background:url(../images/index/3.png) no-repeat;}
+.index_content_ul li:nth-child(15) a{background:url(../images/index/6.png) no-repeat;}
+.index_content_ul li:nth-child(16) a{background:url(../images/index/5.png) no-repeat;}
+.index_content_ul li:nth-child(17) a{background:url(../images/index/1.png) no-repeat;}
+.index_content_ul li:nth-child(18) a{background:url(../images/index/6.png) no-repeat;}
+.index_content_ul li:nth-child(19) a{background:url(../images/index/3.png) no-repeat;}
+.index_content_ul li:nth-child(20) a{background:url(../images/index/4.png) no-repeat;}
+.index_content_ul_div{width: 224px; height: 80px; background: #FFFFFF; bottom: 0px; z-index: 1; padding-top:20px;}
+.index_content_ul_div h3{z-index: 2; font-size: 14px; color:#000000; padding: 0 10px; font-weight:100;}
+.index_content_ul_div_p{font-size: 14px; line-height: 20px; color:#a099b7; padding:0 10px; font-weight:200;}
+.index_content_ul_div11{bottom: 0px; z-index: 3; font-size: 14px; background: #FFFFFF; width: 214px; height: 40px; line-height: 40px; padding-left:10px; color:#93a5c6;}
+
+/*课程第一块*/
+.index_content_bottom_1{height: 400px; margin-top: 50px; clear: both; margin-bottom:30px;}
+.index_content_bottom_11{width: 220px; height: 400px; background:url(../images/index/Web.png) no-repeat; left: 0; top: 0; padding-top:30px;}
+.index_content_bottom_11 h2{font-size:32px; line-height:36px; color:#FFFFFF; margin-left:20px;}
+.index_content_bottom_11 a{font-size:12px; color:red; line-height:24px;}
+.index_content_bottom_11 a:hover{opacity:0.7;}
+.index_content_bottom_11 ul{bottom:30px; left:20px; font-size:20px; width: 200px; overflow: hidden; padding-bottom:30px;}
+
+/*课程第二、三块*/
+.index_content_bottom_12{ left: 240px; top: 0;}
+.index_content_bottom_13{ left: 240px; bottom: -18px;}
+.index_content_bottom_12 a, .index_content_bottom_13 a{width: 500px; height: 190px; display:block; background:url(../images/index/web4.jpg) no-repeat; line-height:190px; text-align:center;}
+
+/*课程第四块、五块*/
+.index_content_bottom_14{width: 220px; height: 190px; background: #7711F7; right: 240px; top: 0;}
+.index_content_bottom_15{width: 220px; height: 190px; background: #7711F7; right: 240px; bottom: 0;}
+.index_content_bottom_14 a,.index_content_bottom_15 a{display:block; width:220px; height:190px; background:url(../images/index/web3.png) no-repeat;}
+
+/*.index_content_bottom_141{height:80px; background:#FFFFFF; bottom:0px; z-index:1; padding-top:20px;width:220px;}
+.index_content_bottom_141 h3{font-size:14px; z-index:2; color:#000000; padding: 0 10px; font-weight:100;}
+.index_content_bottom_141 p{font-size: 14px; line-height: 20px; color:#a099b7; padding:0 10px; font-weight:200;}
+.index_content_bottom_142{height:40px; bottom:0px; font-size:14px; background:#FFFFFF; line-height:40px; z-index:3; width:210px; color:#93a5c6; padding-left:10px;}*/
+
+/*课程第六块*/
+.index_content_bottom_16{width: 220px; height: 400px; background: #FFFFFF; right: 0; top: 0;}
+.index_content_bottom_16 ul{width: 200px; height:170px; overflow: hidden; bottom: 10px; left: 20px; background: #FFFFFF; line-height: 24px;  border-top: 1px solid #a099b7; padding-top: 10px;}
+.index_content_bottom_16 ul a{color: #000000; font-weight: 400; font-size: 12px;}
+.index_content_bottom_16 ul a:hover{color:red;}
+.index_content_bottom_16a{display:block; font-size: 12px; color: red; width:220px; height:200px; background:url(../images/index/web3.png) no-repeat;}
+
+.index_content_bottom_161{width:220px; height:80px; bottom:0px; background:#FFFFFF; padding-top:20px;}
+.index_content_bottom_161 h3{font-size:14px; z-index:2; color:#000000; padding: 0 10px; font-weight:100;}
+.index_content_bottom_161 p{font-size: 14px; line-height: 20px; color:#a099b7; padding:0 10px; font-weight:200;}
+.index_content_bottom_162{height:40px; bottom:0px; font-size:14px; background:#FFFFFF; line-height:40px; z-index:3; width:220px; color:#93a5c6; padding-left:10px;}
+.index_content_bottom_21{width:720px; height: 190px; left:240px;}
+.index_content_bottom_22{top:210px; left:740px;}
+.index_content_bottom_23{left:490px; top:210px;}
+.index_content_bottom_24{left:240px;}
+.index_content_bottom_21 a{width:720px; height:190px; display:block; line-height:190px; text-align:center; background:url(../images/index/prictise3.png) no-repeat; color:red;}
+
+.index_more{top:-30px; right:4px; color:#4d555d; font-size:14px; font-weight:bold;}
+.index_more:hover{opacity:0.8;}
+
+
+
+
+#index_sidebar {
+    display: block;
+    width: 20px;
+    height: 80px;
+    position: fixed;
+    right: 0px;
+    bottom: 100px;
+    background: red;
+    font-size: 16px;
+    text-align: center;
+    line-height: 20px;
+    color: #666;
+    background: #CCC;
+}

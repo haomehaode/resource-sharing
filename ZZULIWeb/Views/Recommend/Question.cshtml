@@ -1,0 +1,52 @@
+﻿@{
+    //ViewBag.Title = "Question";
+    Layout = "~/Views/Shared/_LayoutRecommend.cshtml";
+}
+@using ZZULIWeb.Models
+
+<div class="recommend_content">
+    <ul class="recommend_content_ul">
+        <li><a href="/Recommend/Course">课程</a></li>
+        <li><a href="/Recommend/Note">笔记</a></li>
+        <li><a id="recommend_active" href="/Recommend/Question">问题</a></li>
+    </ul>
+    <div class="recommend_content_div">
+        <ul class="question_left_ul">
+            @{
+                foreach (Questions ques in ViewBag.RecommendQuestionList)
+                {
+                    <li class="question_left_li" style="float:none; width:940px;">
+                        <img src="~/images/userImg/@(ques.User_ID).png" />
+                        @{
+                    List<Navigations> list = Common.GetFrom_Question(ques.Q_ID);
+                    if (list != null || list.Count > 0)
+                    {
+                        <ul>
+                            <li>来自:</li>
+                            @{
+
+                        foreach (Navigations nav in list)
+                        {
+                            <li><a href="~/Search/s?StrSearch=@HttpUtility.UrlEncode(nav.Nav_Name)">@nav.Nav_Name</a></li>
+                        }
+                            }
+                        </ul>
+                    }
+                        }
+                        <a href="~/User/Index/@ques.User_ID"><h4 style="font-size:18px;">@ques.UserInfo.User_NickName</h4></a>
+                        <dl style="margin-top:6px;">
+                            <dt><a style="font-size:16px; color:#666;" href="~/Question/des/@ques.Q_ID">@ques.Q_Title</a></dt>
+                            <dd><p>@if (ques.Q_Content.Length > 40) {@Html.Raw(ques.Q_Content.Substring(0, 40) + "..."); } else { @Html.Raw(ques.Q_Content);}</p></dd>
+                        </dl>
+                        <ol>
+                            <li>浏览 @ques.Q_PageViews</li>
+                            <li>回复 @(new Question().GetAnswerNum(ques.Q_ID))</li>
+                            <li>收藏 @(new Question().GetQuestionCollectNum(ques.Q_ID))</li>
+                        </ol>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+

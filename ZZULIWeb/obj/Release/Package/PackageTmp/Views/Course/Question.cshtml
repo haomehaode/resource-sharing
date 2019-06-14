@@ -1,0 +1,160 @@
+﻿@{
+    //Layout = null;
+}
+@using ZZULIWeb.Models
+
+@section Bundle{
+    @Scripts.Render("~/class_js")
+    @Styles.Render("~/class_css")
+}
+@*@section Question{*@
+<!--导航-->
+<ul class="class_content_l_ul">
+    <li><a href="~/Course/Section/@Model.Cou_ID">章节</a></li>
+    <li><a href="~/Course/Comment/@Model.Cou_ID">评论</a></li>
+    <li class="class_active"><a href="~/Course/Question/@Model.Cou_ID">问答</a></li>
+    <li><a href="~/Course/Note/@Model.Cou_ID">笔记</a></li>
+</ul>
+<!--问答-->
+<div id="list2" class="class_content_l3">
+    @if (ViewBag.CQList == null)
+    {
+        <div id="content-null">
+            <p>该课程还没有问题</p>
+        </div>
+    }
+    else
+    {
+        <ul>
+            @*@ViewBag.QAStr*@
+            @{
+        //List<CourseQ> cq_list = MovieHelper.GetCourseQList(@ViewBag.MovieDetail.Cou_ID);
+        foreach (CoursesQuestions cq in @ViewBag.CQList)
+        {
+            <li>
+                @{string imgStr = @cq.User_ID + ".png";
+                <a href="~/User/Index/@cq.User_ID"><img src="~/images/userImg/@imgStr" /></a>
+                }
+                <dl>
+                    <dt><a href="~/User/Index/@cq.User_ID">@cq.UserInfo.User_NickName</a></dt>
+                    <a href="/Course/quesdetail/@cq.CQ_ID">
+                        <dd><h4>@cq.CQ_Title</h4></dd>
+                        @{
+                CoursesAnswers an = new Question().GetHotesCourseAnswer(cq.CQ_ID);
+                if (an != null)
+                {
+                    <dl><dt><a href="~/User/Index/@an.User_ID">@an.UserInfo.User_NickName</a><font>回答</font></dt></dl>
+                    <dd><p>@if (an.CA_Content.Length > 40)
+                    { @Html.Raw(an.CA_Content.Substring(0, 40) + "...");
+                    }
+                    else
+                    { @Html.Raw(an.CA_Content);
+                    }</p></dd>
+                }
+                else if (cq.CQ_Content.Length > 40)
+                {
+                    <dd>
+                        <p>@Html.Raw(cq.CQ_Content.Substring(0, 40) + "...")</p>
+                    </dd>
+                }
+                else
+                {
+                    <dd><p>@cq.CQ_Content</p> </dd>
+                }
+                        }
+                    </a>
+                    <dd>
+                        <span>时间：@Common.GetTimeStringToNow(cq.CQ_Time)</span>
+                        <a>源自：@(cq.Move.Chap_ID)-@(cq.Move.Section_ID) @cq.Move.Section_Name</a>
+                        <a><strong>@(new Course().GetCourseAnswerNum(@cq.CQ_ID))<font>回答</font></strong></a><a><strong>@cq.CQ_PageView<font>浏览</font></strong></a>
+                    </dd>
+                </dl>
+            </li>
+        }
+            }
+        </ul>
+    }
+
+</div>
+
+@section Page{
+    @{
+        int course_id = Model.Cou_ID;
+        if (ViewBag.pageNum > 1)
+        {
+            <!--分页导航-->
+            <div class="page_nav">
+                @if (ViewBag.CurrentPageIndex == 1)
+                {
+                    <span class="page_disabled">首页</span>
+                    <span class="page_disabled">上一页</span>
+                }
+                else
+                {
+                    <a href="/Course/Question/@course_id">首页</a>
+                    <a class="page" href="/Course/Question/@course_id/page_@(ViewBag.CurrentPageIndex-1)">上一页</a>
+                }
+                <p>
+                    @{
+            if (ViewBag.pageNum <= 10)
+            {
+                for (int i = 1; i <= ViewBag.pageNum; i++)
+                {
+                    if (ViewBag.CurrentPageIndex == i)
+                    {
+                        <a href="/User/Question/@course_id/page_@i" class="page_action">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/User/Question/@course_id/page_@i">@i</a>
+                    }
+                }
+            }
+            else if (ViewBag.CurrentPageIndex <= ViewBag.pageNum)
+            {
+                int startIndex = ViewBag.CurrentPageIndex - 5 > 0 ? ViewBag.CurrentPageIndex - 5 : 1;
+                if (ViewBag.pageNum - ViewBag.CurrentPageIndex <= 4)
+                {
+                    startIndex = ViewBag.pageNum - 9;
+                }
+                int n = 1;
+                while (n <= 10)
+                {
+                    if (ViewBag.CurrentPageIndex == startIndex)
+                    {
+                        <a href="/Course/Question/@course_id/page_@startIndex" class="page_action">@startIndex</a>
+                    }
+                    else
+                    {
+                        <a href="/Course/Question/@course_id/page_@startIndex">@startIndex</a>
+                    }
+                    startIndex++;
+                    n++;
+                }
+                @*for (int j = startIndex; j <= 5; j++)
+                    {
+                        <a href="/Course/Comment/@course_id/@j">@j</a>
+                    }
+                    for (int k = pageNum - 5 + 1; k <= pageNum; k++)
+                    {
+                        <a href="/Course/Comment/@course_id/@k">@k</a>
+                    }*@
+            }
+                    }
+                </p>
+                @if (ViewBag.CurrentPageIndex == ViewBag.pageNum)
+                {
+                    <span class="page_disabled">下一页</span>
+                    <span class="page_disabled">尾页</span>
+                }
+                else
+                {
+                    <a class="page" href="/Course/Question/@course_id/page_@(ViewBag.CurrentPageIndex+1)">下一页</a>
+                    <a href="/Course/Question/@course_id/page_@ViewBag.pageNum">尾页</a>
+                }
+            </div>
+        }
+    }
+}
+@*}*@
+
